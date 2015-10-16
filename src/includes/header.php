@@ -17,7 +17,7 @@
     if (array_key_exists("name", $_SESSION) && array_key_exists("userid", $_SESSION)) {
       // User is logged in, show their profile picture and a "new submission" button
       // TODO: replace following echo
-      echo "<h1>error, logged in header not implemented</h1>"
+      echo "<h1>error, logged in header not implemented</h1>";
     } else {
       // User is not logged in, so display a sign up / login button
       echo "<div class='header-login'><a href='login.php'><div class='header-login-btn'>Login</div></a></div>";
