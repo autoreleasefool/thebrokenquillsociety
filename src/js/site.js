@@ -25,7 +25,7 @@ function hasScrolled() {
     return;
 
   // If they scrolled down and are past the navbar, add class .nav-up.
-  if (scrollTop > lastScrollTop && scrollTop > navbarHeight) {
+  if (scrollTop > lastScrollTop && scrollTop > navbarHeight + minimumScrollThreshold) {
     console.log("up");
     $('header').removeClass('nav-down').addClass('nav-up');
   } else {
