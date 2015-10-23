@@ -7,6 +7,7 @@ A website for the University of Ottawa Creative Writing Club (CWC). Provides a h
 * Home page
 * Header
 * Footer
+* Announcements
 * Sign up
 * Submission page
 * Posts
@@ -39,6 +40,9 @@ A website for the University of Ottawa Creative Writing Club (CWC). Provides a h
 * Footer
   * Meeting times & location
   * Facebook page
+* Announcements
+  * List of recent announcements
+  * Executive posts from Facebook?
 * Sign up
   * Username (text field, required)
   * Email (text field, required, @uottawa.ca)
