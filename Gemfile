@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.4'
 # Use postgres as the database for Active Record
 gem 'pg', '~> 0.18'
+# Creating forms
+gem 'simple_form'
 # Use Bootstrap SASS for design
 gem 'bootstrap-sass', '~> 3.3.5'
 # Use SCSS for stylesheets
