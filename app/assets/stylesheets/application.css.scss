@@ -25,7 +25,18 @@ header {
   position: fixed;
   top: 0;
   left: 0;
+  svg {
+    width: 40px;
+    height: 40px;
+    float: right;
+    text-align: center;
+    line-height: 60px;
+    margin: 10px 10px 10px 0;
+  }
 }
+
+.not-logged-in-img { fill: #8fcaff; }
+.new-work-img { fill: #fff; }
 
 .logo {
   padding: 8px 0 1px 0px;
@@ -37,21 +48,6 @@ header {
   a {
     font-family: 'Raleway', sans-serif;
   }
-}
-
-.header-login-btn {
-  width: 90px;
-  height: 40px;
-  float: right;
-  text-align: center;
-  line-height: 40px;
-  margin: 10px 10px 10px 0;
-  background: #8fcaff;
-  color: #000;
-
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
 }
 
 // Header search box
