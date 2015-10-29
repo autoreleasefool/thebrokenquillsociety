@@ -2,8 +2,11 @@
 @import "bootstrap";
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400italic|Raleway);
 
-* {font-family: 'Open Sans', sans-serif;}
-h1 {font-family: 'Raleway', sans-serif;}
+$search-box-width-std:300px;
+$search-box-width-mobile:200px;
+
+* { font-family: 'Open Sans', sans-serif; }
+h1 { font-family: 'Raleway', sans-serif; }
 
 body {
   background-color: #fff;
@@ -12,6 +15,10 @@ body {
 
 ul {
   list-style: none;
+}
+
+.error-msg {
+  color: #bb0000;
 }
 
 header {
@@ -32,6 +39,7 @@ header {
 }
 
 .not-logged-in-img { fill: #8fcaff; }
+.logged-in-img { fill: #8fcaff; }
 .new-work-img { fill: #fff; }
 
 .logo {
@@ -51,20 +59,20 @@ header {
 // Header search box
 .search-box {
   float: right;
-  width: 300px;
+  width: $search-box-width-std;
   height: 40px;
   margin: 10px 10px 10px 0;
 }
 
 .search-container {
-  width: 300px;
+  width: $search-box-width-std;
   vertical-align: middle;
   white-space: nowrap;
   position: relative;
 }
 
 .search-container input#search {
-  width: 300px;
+  width: $search-box-width-std;
   height: 40px;
   background: #2b303b;
   border: none;
@@ -82,10 +90,10 @@ header {
   transition: background .55s ease;
 }
 
-.search-container input#search::webkit-input-placeholder {color: #65737e;}
-.search-container input#search::moz-placeholder {color: #65737e;}
-.search-container input#search:moz-placeholder {color: #65737e;}
-.search-container input#search::ms-input-placeholder {color: #65737e;}
+.search-container input#search::webkit-input-placeholder { color: #65737e; }
+.search-container input#search::moz-placeholder { color: #65737e; }
+.search-container input#search:moz-placeholder { color: #65737e; }
+.search-container input#search::ms-input-placeholder { color: #65737e; }
 
 .search-container .icon {
   position: absolute;
@@ -99,4 +107,9 @@ header {
 .search-container input#search:hover, .search-container input#search:focus {
   outline: none;
   background: #f2f2f2;
+}
+
+@media screen and (max-width: 960px) {
+  .search-box, .search-container { width: $search-box-width-mobile; }
+  .search-container input#search { width: $search-box-width-mobile; }
 }

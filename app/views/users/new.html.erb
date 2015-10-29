@@ -3,7 +3,7 @@
 <p>You can visit our <span class='about'><a href='#'>about</a></span> page to learn more about participating, or sign up with your @uOttawa.ca email below.</p>
 
 <%= simple_form_for :users, url: users_path, html: { class: 'form-horizontal' }, wrapper: :horizontal_form, wrapper_mappings: { boolean: :horizontal_boolean } do |f| %>
-  <%= f.input :username, required: true, label: 'Username', error: 'You must provide a username' %>
+  <%= f.input :name, required: true, label: 'Username', error: 'You must provide a username' %>
   <%= f.input :password, required: true, label: 'Password', error: 'Your passwords must match' %>
   <%= f.input :password_confirmation, required: true, label: 'Password again', error: 'Your passwords must match' %>
   <%= f.input :email, required: true, label: 'Email', error: 'You must provide a @uOttawa.ca email' %>
