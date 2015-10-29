@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to '/', notice: 'Account created successfully'
     else
-      flash[:error] = 'An error occured!'
+      flash[:error] = @user.errors.full_messages
       render 'new'
     end
   end
@@ -22,8 +22,9 @@ class UsersController < ApplicationController
 
   private
 
+  # Parameters required/allowed to create a user entry
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :likes_to_write, :about)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :tag_list, :about)
   end
 
 end

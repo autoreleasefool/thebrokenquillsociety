@@ -3,7 +3,10 @@ class User < ActiveRecord::Base
   has_secure_password
 
   # Associations
-  has_many :works, dependent: destroy
+  has_many :works, dependent: :destroy
+
+  # Tagging
+  acts_as_taggable
 
   # Verifying valid username
   validates :name,

@@ -3,6 +3,9 @@ class Work < ActiveRecord::Base
   # Associations
   belongs_to :user
 
+  # Tagging
+  acts_as_taggable
+
   # Verifying minimum length of the title
   validates :title,
     presence: true,
