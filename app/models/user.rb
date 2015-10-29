@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  # Associations
+  has_many :works, dependent: destroy
+
   # Verifying valid username
   validates :name,
     presence: true,
