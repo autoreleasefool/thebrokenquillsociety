@@ -12,8 +12,4 @@ class Work < ActiveRecord::Base
   validates :body,
     presence: true
 
-  # Verifying that search terms were provided
-  validates :search_terms,
-    presence: true
-
 end
