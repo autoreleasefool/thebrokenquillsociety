@@ -2,6 +2,7 @@ class Work < ActiveRecord::Base
 
   # Associations
   belongs_to :user
+  has_many :comments, dependent: :delete
 
   # Tagging
   acts_as_taggable

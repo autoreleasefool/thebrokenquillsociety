@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
 
+  # Enabling password encryption
   has_secure_password
 
   # Associations
   has_many :works, dependent: :destroy
+  has_many :comments
 
   # Tagging
   acts_as_taggable
