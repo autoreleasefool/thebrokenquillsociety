@@ -3,6 +3,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400italic|Raleway);
 
 * {font-family: 'Open Sans', sans-serif;}
+h1 {font-family: 'Raleway', sans-serif;}
 
 body {
   background-color: #fff;
@@ -11,11 +12,6 @@ body {
 
 ul {
   list-style: none;
-}
-
-a, a:hover, a:visited {
-  color: #fff !important;
-  text-decoration: none !important;
 }
 
 header {
@@ -45,8 +41,10 @@ header {
   display: inline-block;
   border-bottom: 2px solid #fff;
 
-  a {
+  a, a:hover, a:visited {
     font-family: 'Raleway', sans-serif;
+    color: #fff;
+    text-decoration: none;
   }
 }
 
