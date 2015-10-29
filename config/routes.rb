@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # Routes to create a new account
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
+  get '/profile' => 'users#show'
 
   # Routes to access a user's account
   get '/login' => 'sessions#new'
