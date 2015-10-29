@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.text :name
       t.text :email
       t.string :password_digest
-      t.text :tags
+      t.text :likes_to_write
       t.text :about
 
       t.timestamps null: false

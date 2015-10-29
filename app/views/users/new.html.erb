@@ -7,7 +7,7 @@
   <%= f.input :password, required: true, label: 'Password', error: 'Your passwords must match' %>
   <%= f.input :password_confirmation, required: true, label: 'Password again', error: 'Your passwords must match' %>
   <%= f.input :email, required: true, label: 'Email', error: 'You must provide a @uOttawa.ca email' %>
-  <%= f.input :tags, required: false, label: 'What do you like to write?', placeholder: 'Genres, novels, poetry, etc.' %>
+  <%= f.input :likes_to_write, required: true, :as => :text, label: 'What do you like to write?', placeholder: 'Genres, novels, poetry, etc.' %>
   <%= f.input :about, required: true, :as => :text, label: 'Tell us about yourself' %>
   <%= f.submit 'Sign up' %>
 <% end %>
