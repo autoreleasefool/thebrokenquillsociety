@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
@@ -17,9 +18,14 @@
 
 $('document').ready(function() {
 
+  if (window.location.pathname.indexOf('search') > -1) {
+    $('#search-container').removeClass('search-container-transition');
+    $('#search-box').focus();
+  }
+
   $('#search-box').keyup(function(event) {
     // Clicks the search button when the user presses enter in the search box
-    if(event.keyCode == 13){
+    if (event.keyCode == 13) {
       $('#search-btn').click();
     }
   });
@@ -27,12 +33,6 @@ $('document').ready(function() {
   $('#search-btn').click(function() {
     // Uses user input as search query
     var searchText = document.getElementById('search-box').value;
-    if (searchText.length > 0) {
-      if (window.location.pathname.indexOf('search') > -1) {
-        window.location.replace('/search?q=' + encodeURIComponent(searchText));
-      } else {
-        window.location.href = '/search?q=' + encodeURIComponent(searchText);
-      }
-    }
+    window.location.href = '/search?q=' + encodeURIComponent(searchText);
   });
 });

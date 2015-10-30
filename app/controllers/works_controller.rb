@@ -12,7 +12,7 @@ class WorksController < ApplicationController
     @work_search_results = nil
     @user_search_results = nil
 
-    if params.has_key?(:q)
+    if params.has_key?(:q) && params[:q].length > 0
       searchKeys = params[:q].split
       @work_search_results = Work.tagged_with(searchKeys, :any => true, :order_by_matching_tag_count => true)
       @user_search_results = User.tagged_with(searchKeys, :any => true, :order_by_matching_tag_count => true)
