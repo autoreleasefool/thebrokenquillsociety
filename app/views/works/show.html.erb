@@ -3,6 +3,7 @@
 <p>Body: <%= @work.body %></p>
 <p>Tags: <%= @work.tag_list %></p>
 <p>Incomplete?: <%= @work.incomplete %></p>
+<p>Author: <%= @work.user.name %></p>
 
 <%= link_to 'Edit', edit_work_path(@work) %>
 <%= link_to 'Delete', work_path(@work), method: :delete, data: { confirm: 'Are you sure?' } %>

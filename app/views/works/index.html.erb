@@ -1,4 +1,4 @@
 <% @recent_works.each do |work| %>
-  <p><%= link_to work_title, work %></p>
+  <p><%= link_to work.title, work %></p>
   <p><%= work.created_at.strftime('%B, %d, %Y') %></p>
 <% end %>

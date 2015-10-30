@@ -40,6 +40,7 @@ class WorksController < ApplicationController
   # Creates a new work entry
   def create
     @work = Work.new(work_params)
+    @work.user = current_user
     if @work.save
       redirect_to @work
     else

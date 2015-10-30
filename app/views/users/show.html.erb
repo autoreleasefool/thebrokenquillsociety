@@ -3,3 +3,10 @@
 <p>Email: <%= @user.email %></p>
 <p>Likes: <%= @user.tag_list %></p>
 <p>About: <%= @user.about %></p>
+
+<hr />
+
+<% @user.works.each do |work| %>
+  <p><%= link_to work.title, work %></p>
+  <p><%= work.created_at.strftime('%B, %d, %Y') %></p>
+<% end %>

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :works
+  resources :works do
+    resources :comments
+  end
+  
   resources :users
 
   root 'works#index'
