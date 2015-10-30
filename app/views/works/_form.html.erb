@@ -1,0 +1,7 @@
+<%= simple_form_for @work, html: { class: 'form-horizontal' }, wrapper: :horizontal_form, wrapper_mappings: { boolean: :horizontal_boolean } do |f| %>
+  <%= f.input :title, required: true, label: 'Title', error: 'You must give this work a title' %>
+  <%= f.input :body, :as => :text, required: true, label: 'Body', error: 'A blank work cannot be submitted', placeholder: 'Once upon a time...' %>
+  <%= f.input :tag_list, required: true, label: 'Tags', error: 'Give this a tag so others can find it', placeholder: 'Type of work, genres, settings, etc.' %>
+  <%= f.input :incomplete, :as => :boolean, checked_value: true, unchecked_value: false, inline_label: 'In progress?', hint: 'Check this box if this isn\'t a full story or you want to finish it later' %>
+  <%= f.submit 'Save' %>
+<% end %>

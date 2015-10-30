@@ -19,7 +19,9 @@
 $('document').ready(function() {
 
   if (window.location.pathname.indexOf('search') > -1) {
-    $('#search-container').removeClass('search-container-transition');
+    // TODO: decide whether or not to remove transition on searching page
+    // If not removed, every time search page is loaded, the search box fades to white with auto focus
+    //$('#search-container').removeClass('search-container-transition');
     $('#search-box').focus();
   }
 

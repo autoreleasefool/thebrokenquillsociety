@@ -1,0 +1,8 @@
+<p>ID: <%= @work.id %></p>
+<p>Title: <%= @work.title %></p>
+<p>Body: <%= @work.body %></p>
+<p>Tags: <%= @work.tag_list %></p>
+<p>Incomplete?: <%= @work.incomplete %></p>
+
+<%= link_to 'Edit', edit_work_path(@work) %>
+<%= link_to 'Delete', work_path(@work), method: :delete, data: { confirm: 'Are you sure?' } %>

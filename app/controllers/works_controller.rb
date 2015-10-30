@@ -22,8 +22,19 @@ class WorksController < ApplicationController
     end
   end
 
+  # Displays the contents of a single work
+  def show
+    @work = Work.find(params[:id])
+  end
+
   # Form to submit a new work
   def new
+    @work = Work.new
+  end
+
+  # Form to edit a previously submitted work
+  def edit
+    @work = Work.find(params[:id])
   end
 
   # Creates a new work entry
@@ -35,6 +46,25 @@ class WorksController < ApplicationController
       flash[:error] = 'An error occured!'
       render 'new'
     end
+  end
+
+  # Updates a previously created work entry
+  def update
+    @work = Work.find(params[:id])
+
+    if @work.update(params[:work].permit(:title, :body, :tag_list, :incomplete))
+      redirect_to @work
+    else
+      render 'edit'
+    end
+  end
+
+  # Deletes a single work
+  def destroy
+    @work = Work.find(params[:id])
+    @work.destroy
+
+    redirect_to root_path
   end
 
   private
