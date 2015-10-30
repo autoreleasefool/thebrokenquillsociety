@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   root 'works#index'
 
+  # Route to search
+  get '/search' => 'works#search'
+
   # Routes to create a new account
   get '/signup' => 'users#new'
   post '/users' => 'users#create'

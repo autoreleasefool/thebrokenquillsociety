@@ -14,3 +14,25 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$('document').ready(function() {
+
+  $('#search-box').keyup(function(event) {
+    // Clicks the search button when the user presses enter in the search box
+    if(event.keyCode == 13){
+      $('#search-btn').click();
+    }
+  });
+
+  $('#search-btn').click(function() {
+    // Uses user input as search query
+    var searchText = document.getElementById('search-box').value;
+    if (searchText.length > 0) {
+      if (window.location.pathname.indexOf('search') > -1) {
+        window.location.replace('/search?q=' + encodeURIComponent(searchText));
+      } else {
+        window.location.href = '/search?q=' + encodeURIComponent(searchText);
+      }
+    }
+  });
+});

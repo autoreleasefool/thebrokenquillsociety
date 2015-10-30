@@ -1,0 +1,11 @@
+<% @work_search_results.each do |work| %>
+  <p><%= link_to work_title, work %></p>
+  <p><%= work.created_at.strftime('%B, %d, %Y') %></p>
+<% end %>
+
+<hr />
+
+<% @user_search_results.each do |user| %>
+  <p><%= link_to user.name, user %></p>
+  <p><%= user.created_at.strftime('%B, %d, %Y') %></p>
+<% end %>
