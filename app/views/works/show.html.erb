@@ -5,8 +5,10 @@
 <p>Incomplete?: <%= @work.incomplete %></p>
 <p>Author: <%= @work.user.name %></p>
 
-<%= link_to 'Edit', edit_work_path(@work) %>
-<%= link_to 'Delete', work_path(@work), method: :delete, data: { confirm: 'Are you sure?' } %>
+<% if @work.user == current_user %>
+  <%= link_to 'Edit', edit_work_path(@work) %>
+  <%= link_to 'Delete', work_path(@work), method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
 
 <div id='comments'>
   <h2><%= @work.comments.count %> Comments</h2>
