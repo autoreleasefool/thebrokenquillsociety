@@ -1,0 +1,8 @@
+<% if current_user %>
+  <%= simple_form_for ([@work, @work.comments.build]) do |f| %>
+    <%= f.input :body, required: true, label: 'Comment' %>
+    <%= f.submit 'Save' %>
+  <% end %>
+<% else %>
+  <p class='error-msg'>You must be signed in to leave a comment.</p>
+<% end %>

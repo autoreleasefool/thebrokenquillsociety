@@ -7,3 +7,11 @@
 
 <%= link_to 'Edit', edit_work_path(@work) %>
 <%= link_to 'Delete', work_path(@work), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<div id='comments'>
+  <h2><%= @work.comments.count %> Comments</h2>
+  <%= render @work.comments %>
+
+  <h3>Add a comment:</h3>
+  <%= render 'comments/form' %>
+</div>
