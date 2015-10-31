@@ -13,4 +13,9 @@ class ApplicationController < ActionController::Base
     redirect_to url unless current_user
   end
 
+  def index
+    @recent_works = Work.all.order('created_at DESC')
+    @recent_users = User.all.order('created_at DESC')
+  end
+
 end

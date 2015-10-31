@@ -16,8 +16,14 @@ class UsersController < ApplicationController
     end
   end
 
+  # User's profile
   def show
-    @user=User.find(params[:id])
+    @user = User.find(params[:id])
+  end
+
+  # User's submitted works
+  def works
+    @user = User.find(params[:id])
   end
 
   private

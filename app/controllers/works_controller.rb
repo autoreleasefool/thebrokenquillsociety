@@ -2,11 +2,6 @@ class WorksController < ApplicationController
 
   before_filter :authorize, :except => [:index, :search]
 
-  # Lists the most recent works
-  def index
-    @recent_works = Work.all.order('created_at DESC')
-  end
-
   # Displays the user's search results
   def search
     @work_search_results = nil
