@@ -14,7 +14,7 @@ $error-color:#bb0000;
 
 // Animation timing
 $search-anim-time-bg:.5s;
-$search-anim-time-pos: .5s;
+$search-anim-time-pos:.5s;
 
 * { font-family: 'Open Sans', sans-serif; }
 h1 { font-family: 'Raleway', sans-serif; }
@@ -43,8 +43,6 @@ header {
     float: right;
     text-align: center;
     line-height: 60px;
-    margin: 0;
-    padding: 10px $header-margin 10px 0;
   }
 }
 
@@ -52,13 +50,15 @@ header {
 .svg-header:hover { fill: $primary-color; }
 .svg-large {
   width: 40px + $header-margin;
-  height: 60px;
-  padding: 10px $header-margin 10px 0;
+  height: 40px;
+  margin: 10px 0 10px 0;
+  padding: 0 $header-margin 0 0;
 }
 .svg-small {
   width: 24px + $header-margin;
-  height: 24px + $header-margin * 2;
-  padding: $header-margin $header-margin $header-margin 0;
+  height: 40px;
+  padding: 8px $header-margin 8px 0;
+  margin: 10px 0 10px 0;
 }
 
 .login {
