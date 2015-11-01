@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
-  # Route to list a user's works
-  get '/users/:id/works' => 'users#works'
+  # Route to access current user's works
+  get '/mine' => 'users#works'
 
 end

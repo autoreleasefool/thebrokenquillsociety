@@ -2,8 +2,19 @@
 @import "bootstrap";
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400italic|Raleway);
 
+// Sizing
 $search-box-width-std:300px;
 $search-box-width-mobile:200px;
+$header-margin:18px;
+
+// Theme colors
+$primary-color:#8fcaff;
+$primary-color-dark:#74bcfc;
+$error-color:#bb0000;
+
+// Animation timing
+$search-anim-time-bg:.5s;
+$search-anim-time-pos: .5s;
 
 * { font-family: 'Open Sans', sans-serif; }
 h1 { font-family: 'Raleway', sans-serif; }
@@ -18,7 +29,7 @@ ul {
 }
 
 .error-msg {
-  color: #bb0000;
+  color: $error-color;
 }
 
 header {
@@ -29,22 +40,56 @@ header {
   top: 0;
   left: 0;
   svg {
-    width: 40px;
-    height: 40px;
     float: right;
     text-align: center;
     line-height: 60px;
-    margin: 10px 10px 10px 0;
+    margin: 0;
+    padding: 10px $header-margin 10px 0;
   }
 }
 
-.not-logged-in-img { fill: #8fcaff; }
-.logged-in-img { fill: #8fcaff; }
-.new-work-img { fill: #fff; }
+.svg-header { fill: #fff; }
+.svg-header:hover { fill: $primary-color; }
+.svg-large {
+  width: 40px + $header-margin;
+  height: 60px;
+  padding: 10px $header-margin 10px 0;
+}
+.svg-small {
+  width: 24px + $header-margin;
+  height: 24px + $header-margin * 2;
+  padding: $header-margin $header-margin $header-margin 0;
+}
+
+.login {
+  height: 100%;
+  float: right;
+  margin: 10px $header-margin 10px 0;
+}
+
+.btn-login {
+  height: 40px;
+  color: #000;
+  background-color: $primary-color;
+  border-color: $primary-color;
+}
+
+.btn-login:focus, .btn-login:active { outline: none; }
+.btn-login:active, .btn-login.active, .open .dropdown-toggle.btn-login { background-image: none; }
+
+.btn-login:hover,
+.btn-login:focus,
+.btn-login:active,
+.btn-login.active,
+.open .dropdown-toggle.btn-login {
+  color: #fff;
+  background-color: $primary-color-dark;
+  border-color: $primary-color-dark;
+}
 
 .logo {
   padding: 8px 0 1px 0px;
-  margin: 0 0 0 10px;
+  margin: 0 0 0 $header-margin;
   float: left;
   display: inline-block;
   border-bottom: 2px solid #fff;
@@ -57,11 +102,11 @@ header {
 }
 
 // Header search box
-.search-box {
-  float: right;
+.search-wrapper {
   width: $search-box-width-std;
   height: 40px;
-  margin: 10px 10px 10px 0;
+  margin: 10px $header-margin 10px 0;
+  float: right;
 }
 
 .search-container {
@@ -71,10 +116,20 @@ header {
   position: relative;
 }
 
+#header-search {
+  left: 168px;
+  -webkit-transition: left $search-anim-time-pos ease;
+  -moz-transition: left $search-anim-time-pos ease;
+  -ms-transition: left $search-anim-time-pos ease;
+  -o-transition: left $search-anim-time-pos ease;
+  transition: left $search-anim-time-pos ease;
+}
+
 .search-container input#search-box {
   width: $search-box-width-std;
   height: 40px;
   background: #2b303b;
+  outline: none;
   border: none;
   float: left;
   color: #1a1a1a;
@@ -85,11 +140,11 @@ header {
 }
 
 .search-container-transition input#search-box {
-  -webkit-transition: background .55s ease;
-  -moz-transition: background .55s ease;
-  -ms-transition: background .55s ease;
-  -o-transition: background .55s ease;
-  transition: background .55s ease;
+  -webkit-transition: background $search-anim-time-bg ease;
+  -moz-transition: background $search-anim-time-bg ease;
+  -ms-transition: background $search-anim-time-bg ease;
+  -o-transition: background $search-anim-time-bg ease;
+  transition: background $search-anim-time-bg ease;
 }
 
 .search-container input#search-box::webkit-input-placeholder { color: #65737e; }
@@ -107,11 +162,13 @@ header {
 }
 
 .search-container input#search-box:hover, .search-container input#search-box:focus {
-  outline: none;
-  background: #f2f2f2;
+  background: #fff;
 }
 
-@media screen and (max-width: 960px) {
-  .search-box, .search-container { width: $search-box-width-mobile; }
-  .search-container input#search-box { width: $search-box-width-mobile; }
+#btn-search {
+  width: 40px;
+  height: 40px;
+  z-index: 2;
+  position: absolute;
+  cursor: pointer;
 }

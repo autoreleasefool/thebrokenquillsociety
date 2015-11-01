@@ -1,6 +1,6 @@
-<h1><%= @user.name %>'s Works</h1>
+<h1><%= current_user.name %>'s Works</h1>
 
-<% @user.works.each do |work| %>
+<% current_user.works.each do |work| %>
 <p><%= link_to work.title, work %></p>
 <p><%= work.created_at.strftime('%B, %d, %Y') %></p>
 <% end %>

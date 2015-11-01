@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  # Only allow logged in users to access certain pages
+  before_filter :authorize, :only => [:works]
+
   # Form to create a new user account
   def new
   end
@@ -23,7 +26,6 @@ class UsersController < ApplicationController
 
   # User's submitted works
   def works
-    @user = User.find(params[:id])
   end
 
   private

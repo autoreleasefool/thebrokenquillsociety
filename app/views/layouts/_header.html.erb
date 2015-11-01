@@ -1,50 +1,86 @@
 <header id='header'>
 
   <!-- begin website title -->
-  <h1 class='logo'><a href='#'>Untitled</a></h1>
+  <% if current_page?(root_path) %>
+    <h1 class='logo'><a href='#'>Untitled</a></h1>
+  <% else %>
+    <h1 class='logo'><%= link_to 'Untitled', root_path %></h1>
+  <% end %>
   <!-- end website title -->
 
   <% if current_user %>
-    <!-- user profile picture when logged in -->
-    <!-- TODO: replace filler image -->
-    <a href='#'>
-      <svg class='logged-in-img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-        <g transform="matrix(1.2,0,0,1.2,-2.4,-2.4)">
-            <path d="M9,11.75C8.31,11.75 7.75,12.31 7.75,13C7.75,13.69 8.31,14.25 9,14.25C9.69,14.25 10.25,13.69 10.25,13C10.25,12.31 9.69,11.75 9,11.75ZM15,11.75C14.31,11.75 13.75,12.31 13.75,13C13.75,13.69 14.31,14.25 15,14.25C15.69,14.25 16.25,13.69 16.25,13C16.25,12.31 15.69,11.75 15,11.75ZM12,2C6.48,2 2,6.48 2,12C2,17.52 6.48,22 12,22C17.52,22 22,17.52 22,12C22,6.48 17.52,2 12,2ZM12,20C7.59,20 4,16.41 4,12C4,11.71 4.02,11.42 4.05,11.14C6.41,10.09 8.28,8.16 9.26,5.77C11.07,8.33 14.05,10 17.42,10C18.2,10 18.95,9.91 19.67,9.74C19.88,10.45 20,11.21 20,12C20,16.41 16.41,20 12,20Z" />
-        </g>
-      </svg>
-    </a>
-    <!-- end profile picture -->
+    <nav id='nav'>
+      <div class='nav-wrapper'>
+        <!-- user profile picture when logged in -->
+        <!-- TODO: replace filler image -->
+        <%= link_to user_path(current_user) do %>
+          <svg class='svg-header svg-large' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+            <g transform='matrix(1.2,0,0,1.2,-2.4,-2.4)'>
+                <path d='M9,11.75C8.31,11.75 7.75,12.31 7.75,13C7.75,13.69 8.31,14.25 9,14.25C9.69,14.25 10.25,13.69 10.25,13C10.25,12.31 9.69,11.75 9,11.75ZM15,11.75C14.31,11.75 13.75,12.31 13.75,13C13.75,13.69 14.31,14.25 15,14.25C15.69,14.25 16.25,13.69 16.25,13C16.25,12.31 15.69,11.75 15,11.75ZM12,2C6.48,2 2,6.48 2,12C2,17.52 6.48,22 12,22C17.52,22 22,17.52 22,12C22,6.48 17.52,2 12,2ZM12,20C7.59,20 4,16.41 4,12C4,11.71 4.02,11.42 4.05,11.14C6.41,10.09 8.28,8.16 9.26,5.77C11.07,8.33 14.05,10 17.42,10C18.2,10 18.95,9.91 19.67,9.74C19.88,10.45 20,11.21 20,12C20,16.41 16.41,20 12,20Z' />
+            </g>
+          </svg>
+        <% end %>
+        <!-- end profile picture -->
 
-    <!-- icon to submit new work -->
-    <a href='#'>
-      <svg class='new-work-img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-          <path d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'/>
-          <path d='M0 0h24v24H0z' fill='none'/>
-      </svg>
-    </a>
-    <!-- end icon -->
+        <!-- link to inbox -->
+        <a href='#'>
+          <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+              <g transform='matrix(1.33333,0,0,1.33333,-4,-4)'>
+                  <path d='M19,3L4.99,3C3.89,3 3.01,3.9 3.01,5L3,19C3,20.1 3.89,21 4.99,21L19,21C20.1,21 21,20.1 21,19L21,5C21,3.9 20.1,3 19,3ZM19,15L15,15C15,16.66 13.66,18 12,18C10.34,18 9,16.66 9,15L4.99,15L4.99,5L19,5L19,15Z' />
+              </g>
+          </svg>
+        </a>
+        <!-- end link to inbox -->
+
+        <!-- link to user's works -->
+        <a href='/mine'>
+          <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+              <g transform='matrix(1.2,0,0,1.2,-2.4,-2.4)'>
+                  <path d='M18,2L6,2C4.9,2 4,2.9 4,4L4,20C4,21.1 4.9,22 6,22L18,22C19.1,22 20,21.1 20,20L20,4C20,2.9 19.1,2 18,2ZM6,4L11,4L11,12L8.5,10.5L6,12L6,4Z' />
+              </g>
+          </svg>
+        </a>
+        <!-- end link to user's works -->
+
+        <!-- link to favourite works -->
+        <a href='#'>
+          <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+              <g transform='matrix(1.2,0,0,1.2,-2.4,-2.61)'>
+                  <path d='M16.5,3C14.76,3 13.09,3.81 12,5.09C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.42 2,8.5C2,12.28 5.4,15.36 10.55,20.04L12,21.35L13.45,20.03C18.6,15.36 22,12.28 22,8.5C22,5.42 19.58,3 16.5,3ZM12.1,18.55L12,18.65L11.9,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,5.99 11.07,7.36L12.94,7.36C13.46,5.99 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55Z' />
+              </g>
+          </svg>
+        </a>
+        <!-- end link to favourite works -->
+
+        <!-- link to submit new work -->
+        <a href='/works/new'>
+          <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+              <g transform='matrix(1.71429,0,0,1.71429,-8.57143,-8.57143)'>
+                  <path d='M19,13L13,13L13,19L11,19L11,13L5,13L5,11L11,11L11,5L13,5L13,11L19,11L19,13Z' />
+              </g>
+          </svg>
+        </a>
+        <!-- end link to submit new work -->
+      </div>
+    </nav>
 
   <% else %>
 
-    <!-- icon for when user not logged in -->
-    <a href='#'>
-      <svg class='not-logged-in-img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-        <g transform="matrix(1.33333,0,0,1.33333,-4,-4)">
-            <path d="M3,5L3,19C3,20.1 3.89,21 5,21L19,21C20.1,21 21,20.1 21,19L21,5C21,3.9 20.1,3 19,3L5,3C3.89,3 3,3.9 3,5ZM15,9C15,10.66 13.66,12 12,12C10.34,12 9,10.66 9,9C9,7.34 10.34,6 12,6C13.66,6 15,7.34 15,9ZM6,17C6,15 10,13.9 12,13.9C14,13.9 18,15 18,17L18,18L6,18L6,17Z" />
-        </g>
-      </svg>
-    </a>
-    <!-- end icon -->
+    <div class='login'>
+      <!-- button for when user not logged in -->
+      <a href='/login'><button class='btn btn-login'>Login / Sign up</button></a>
+      <!-- end button -->
+    </div>
 
   <% end %>
 
   <!-- begin search box -->
-  <div class='search-box'>
-    <div id='search-container' class='search-container search-container-transition'>
-      <span class='icon' id='search-btn'><i class='fa fa-search'></i></span>
-      <%= text_field_tag :q, params[:q], onfocus: 'this.value = this.value', id: "search-box", placeholder: 'Search...' %>
+  <div class='search-wrapper'>
+    <div id='header-search' class='search-container search-container-transition'>
+      <span id='search-icon' class='icon'><i class='fa fa-search'></i></span>
+      <%= text_field_tag :q, params[:q], onfocus: 'this.value = this.value', id: 'search-box', placeholder: 'Search...' %>
     </div>
+    <div id='btn-search'></div>
   </div>
   <!-- end search box -->
 
