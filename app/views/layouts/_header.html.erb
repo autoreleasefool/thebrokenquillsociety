@@ -92,12 +92,8 @@
   <% end %>
 
   <!-- begin search box -->
-  <div class='search-wrapper'>
-    <% if current_user %>
-      <div id='header-search' class='search-container search-container-transition'>
-    <% else %>
-      <div class='search-container search-container-transition'>
-    <% end %>
+  <div id='search-slider' class='search-wrapper'>
+    <div class='search-container search-container-transition'>
       <span id='search-icon' class='icon'><i class='fa fa-search'></i></span>
       <%= text_field_tag :q, params[:q], onfocus: 'this.value = this.value', id: 'search-box', placeholder: 'Search...' %>
     </div>

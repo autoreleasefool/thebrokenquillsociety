@@ -123,6 +123,18 @@ header {
 }
 
 // Header search box
+#search-slider {
+  position: relative;
+  float: right;
+  left: 168px;
+
+  -webkit-transition: left $search-anim-time-pos ease;
+  -moz-transition: left $search-anim-time-pos ease;
+  -ms-transition: left $search-anim-time-pos ease;
+  -o-transition: left $search-anim-time-pos ease;
+  transition: left $search-anim-time-pos ease;
+}
+
 .search-wrapper {
   width: $search-box-width-std;
   height: 40px;
@@ -135,15 +147,6 @@ header {
   vertical-align: middle;
   white-space: nowrap;
   position: relative;
-}
-
-#header-search {
-  left: 168px;
-  -webkit-transition: left $search-anim-time-pos ease;
-  -moz-transition: left $search-anim-time-pos ease;
-  -ms-transition: left $search-anim-time-pos ease;
-  -o-transition: left $search-anim-time-pos ease;
-  transition: left $search-anim-time-pos ease;
 }
 
 .search-container input#search-box {

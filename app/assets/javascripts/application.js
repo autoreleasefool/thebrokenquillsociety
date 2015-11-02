@@ -27,17 +27,11 @@ $('document').ready(function() {
 
   $('#nav').hover(
     function() {
-      // Set left of search container to 0, to show profile icons
-      var searchContainers = document.getElementsByClassName('search-container');
-      for(i = 0; i < searchContainers.length; i++) {
-        searchContainers[i].style.left = 0;
-      }
+      var search = document.getElementById('search-slider');
+      search.style.left = 0;
     }, function() {
-      // Set left of search container to normal, to hide profile icons
-      var searchContainers = document.getElementsByClassName('search-container');
-      for(i = 0; i < searchContainers.length; i++) {
-        searchContainers[i].style.left = '168px';
-      }
+      var search = document.getElementById('search-slider');
+      search.style.left = '168px';
     });
 
   $('#search-box').keyup(
@@ -61,6 +55,7 @@ $('document').ready(function() {
       window.location.href = '/search?q=' + encodeURIComponent(searchText);
     });
 
+  // Shows / hides the relevant nav hint on hover
   $('#profile-svg').hover(
     function() {
       $('#profile-hint').addClass('nav-hint-visible');
