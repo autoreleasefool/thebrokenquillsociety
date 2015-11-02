@@ -12,8 +12,8 @@
     <nav id='nav'>
       <div class='nav-wrapper'>
         <!-- link to user profile -->
-        <%= link_to user_path(current_user) do %>
-          <svg class='svg-header svg-large' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <%= link_to user_path(current_user), id: 'profile-svg' do %>
+          <svg class='svg-header svg-small' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <g transform="matrix(1.5,0,0,1.5,-6,-6)">
                   <path d="M12,12C14.21,12 16,10.21 16,8C16,5.79 14.21,4 12,4C9.79,4 8,5.79 8,8C8,10.21 9.79,12 12,12ZM12,14C9.33,14 4,15.34 4,18L4,20L20,20L20,18C20,15.34 14.67,14 12,14Z" />
               </g>
@@ -22,7 +22,7 @@
         <!-- end link to user profile -->
 
         <!-- link to inbox -->
-        <a href='#'>
+        <a href='#' id='inbox-svg'>
           <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
               <g transform='matrix(1.33333,0,0,1.33333,-4,-4)'>
                   <path d='M19,3L4.99,3C3.89,3 3.01,3.9 3.01,5L3,19C3,20.1 3.89,21 4.99,21L19,21C20.1,21 21,20.1 21,19L21,5C21,3.9 20.1,3 19,3ZM19,15L15,15C15,16.66 13.66,18 12,18C10.34,18 9,16.66 9,15L4.99,15L4.99,5L19,5L19,15Z' />
@@ -32,7 +32,7 @@
         <!-- end link to inbox -->
 
         <!-- link to user's works -->
-        <a href='/mine'>
+        <a href='/mine' id='work-svg'>
           <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
               <g transform='matrix(1.2,0,0,1.2,-2.4,-2.4)'>
                   <path d='M18,2L6,2C4.9,2 4,2.9 4,4L4,20C4,21.1 4.9,22 6,22L18,22C19.1,22 20,21.1 20,20L20,4C20,2.9 19.1,2 18,2ZM6,4L11,4L11,12L8.5,10.5L6,12L6,4Z' />
@@ -42,7 +42,7 @@
         <!-- end link to user's works -->
 
         <!-- link to favourite works -->
-        <a href='#'>
+        <a href='#' id='fave-svg'>
           <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
               <g transform='matrix(1.2,0,0,1.2,-2.4,-2.61)'>
                   <path d='M16.5,3C14.76,3 13.09,3.81 12,5.09C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.42 2,8.5C2,12.28 5.4,15.36 10.55,20.04L12,21.35L13.45,20.03C18.6,15.36 22,12.28 22,8.5C22,5.42 19.58,3 16.5,3ZM12.1,18.55L12,18.65L11.9,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,5.99 11.07,7.36L12.94,7.36C13.46,5.99 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55Z' />
@@ -52,7 +52,7 @@
         <!-- end link to favourite works -->
 
         <!-- link to submit new work -->
-        <a href='/works/new'>
+        <a href='/works/new' id='new-svg'>
           <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
               <g transform='matrix(1.71429,0,0,1.71429,-8.57143,-8.57143)'>
                   <path d='M19,13L13,13L13,19L11,19L11,13L5,13L5,11L11,11L11,5L13,5L13,11L19,11L19,13Z' />
@@ -60,6 +60,24 @@
           </svg>
         </a>
         <!-- end link to submit new work -->
+      </div>
+
+      <div class='hint-wrapper'>
+        <div id='profile-hint' class='nav-hint alert alert-info' role='alert'>
+          <p>View profile</p>
+        </div>
+        <div id='inbox-hint' class='nav-hint alert alert-info' role='alert'>
+          <p>Inbox</p>
+        </div>
+        <div id='work-hint' class='nav-hint alert alert-info' role='alert'>
+          <p>My works</p>
+        </div>
+        <div id='fave-hint' class='nav-hint alert alert-info' role='alert'>
+          <p>My favourites</p>
+        </div>
+        <div id='new-hint' class='nav-hint alert alert-info' role='alert'>
+          <p>New work</p>
+        </div>
       </div>
     </nav>
 
@@ -75,7 +93,11 @@
 
   <!-- begin search box -->
   <div class='search-wrapper'>
-    <div id='header-search' class='search-container search-container-transition'>
+    <% if current_user %>
+      <div id='header-search' class='search-container search-container-transition'>
+    <% else %>
+      <div class='search-container search-container-transition'>
+    <% end %>
       <span id='search-icon' class='icon'><i class='fa fa-search'></i></span>
       <%= text_field_tag :q, params[:q], onfocus: 'this.value = this.value', id: 'search-box', placeholder: 'Search...' %>
     </div>

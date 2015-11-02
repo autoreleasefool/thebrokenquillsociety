@@ -60,4 +60,35 @@ $('document').ready(function() {
       var searchText = document.getElementById('search-box').value;
       window.location.href = '/search?q=' + encodeURIComponent(searchText);
     });
+
+  $('#profile-svg').hover(
+    function() {
+      $('#profile-hint').addClass('nav-hint-visible');
+    }, function() {
+      $('#profile-hint').removeClass('nav-hint-visible');
+    });
+  $('#inbox-svg').hover(
+    function() {
+      $('#inbox-hint').addClass('nav-hint-visible');
+    }, function() {
+      $('#inbox-hint').removeClass('nav-hint-visible');
+    });
+  $('#work-svg').hover(
+    function() {
+      $('#work-hint').addClass('nav-hint-visible');
+    }, function() {
+      $('#work-hint').removeClass('nav-hint-visible');
+    });
+  $('#fave-svg').hover(
+    function() {
+      $('#fave-hint').addClass('nav-hint-visible');
+    }, function() {
+      $('#fave-hint').removeClass('nav-hint-visible');
+    });
+  $('#new-svg').hover(
+    function() {
+      $('#new-hint').addClass('nav-hint-visible');
+    }, function() {
+      $('#new-hint').removeClass('nav-hint-visible');
+    });
 });
