@@ -135,6 +135,11 @@ header {
   transition: left $search-anim-time-pos ease;
 }
 
+#search-static {
+  position: relative;
+  float: right;
+}
+
 .search-wrapper {
   width: $search-box-width-std;
   height: 40px;
