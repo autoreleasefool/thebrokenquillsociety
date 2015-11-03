@@ -1,17 +1,53 @@
-<h1 class='work-header'>Sign up</h1>
-<p>In order to submit your work to <span class=''>Untitled</span>, you'll have to be a member of the University of Ottawa Creative Writing Club.</p>
-<p>You can visit our <span class='about'><a href='#'>about</a></span> page to learn more about participating, or sign up with your @uOttawa.ca email below.</p>
+<div class='form-header'>
+  <h1 class='title'>Sign up</h1>
+  <div class='body'>
+    <p>In order to submit your work to <span class=''>Untitled</span>, you'll have to be a member of the University of Ottawa Creative Writing Club.</p>
+    <p>You can visit our <span class='about'><a href='#'>about</a></span> page to learn more about participating, or sign up with your @uOttawa.ca email below.</p>
+  </div>
+</div>
 
 <% if flash[:error] %>
   <div class="error-msg"><%= flash[:error] %></div>
 <% end %>
 
-<%= simple_form_for :user, url: users_path, html: { class: 'form-horizontal' }, wrapper: :horizontal_form, wrapper_mappings: { boolean: :horizontal_boolean } do |f| %>
-  <%= f.input :name, required: true, label: 'Username', error: 'You must provide a username' %>
-  <%= f.input :password, required: true, label: 'Password', error: 'Your passwords must match' %>
-  <%= f.input :password_confirmation, required: true, label: 'Password again', error: 'Your passwords must match' %>
-  <%= f.input :email, required: true, label: 'Email', error: 'You must provide a @uOttawa.ca email' %>
-  <%= f.input :tag_list, required: true, :as => :text, label: 'What do you like to write?', placeholder: 'Genres, novels, poetry, etc.' %>
-  <%= f.input :about, required: true, :as => :text, label: 'Tell us about yourself' %>
-  <%= f.submit 'Sign up' %>
+<%= simple_form_for :user, url: users_path, html: { class: 'form' } do |f| %>
+  <%= f.input :name,
+        required: true,
+        label: 'Username',
+        error: 'You must provide a username',
+        input_html: { class: 'flat-input' },
+        label_html: { class: 'input-label' } %>
+  <%= f.input :password,
+        required: true,
+        label: 'Password',
+        error: 'Your passwords must match',
+        input_html: { class: 'flat-input' },
+        label_html: { class: 'input-label' } %>
+  <%= f.input :password_confirmation,
+        required: true,
+        label: 'Password again',
+        error: 'Your passwords must match',
+        input_html: { class: 'flat-input' },
+        label_html: { class: 'input-label' } %>
+  <%= f.input :email,
+        required: true,
+        label: 'Email',
+        error: 'You must provide a @uOttawa.ca email',
+        input_html: { class: 'flat-input' },
+        label_html: { class: 'input-label' } %>
+  <%= f.input :tag_list,
+        required: true,
+        label: 'What do you like to write?',
+        placeholder: 'Genres, novels, poetry, etc.',
+        input_html: { class: 'flat-input' },
+        label_html: { class: 'input-label' } %>
+  <%= f.input :about,
+        required: true,
+        :as => :text, label:
+        'Tell us about yourself',
+        input_html: { class: 'flat-input tall-area' },
+        label_html: { class: 'input-label' } %>
+  <div class='form-submit'>
+    <%= f.submit 'Sign up', :class => 'btn btn-lg btn-theme' %>
+  </div>
 <% end %>
