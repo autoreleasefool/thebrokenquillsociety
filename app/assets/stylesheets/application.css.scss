@@ -148,13 +148,16 @@ header {
 }
 
 .login {
-  height: 60px;
   float: right;
-  margin: 10px $header-margin 10px 0;
+  margin: 10px $header-margin 0 0;
 }
+
+.btn-login-caret { height: 40px; }
 
 .btn-login {
   height: 40px;
+  padding-top: 9px;
+  vertical-align: middle;
 }
 
 .btn-theme {

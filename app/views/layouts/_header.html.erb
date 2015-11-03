@@ -13,9 +13,9 @@
       <div class='nav-wrapper'>
         <!-- link to user profile -->
         <%= link_to user_path(current_user), id: 'profile-svg' do %>
-          <svg class='svg-header svg-small' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <g transform="matrix(1.5,0,0,1.5,-6,-6)">
-                  <path d="M12,12C14.21,12 16,10.21 16,8C16,5.79 14.21,4 12,4C9.79,4 8,5.79 8,8C8,10.21 9.79,12 12,12ZM12,14C9.33,14 4,15.34 4,18L4,20L20,20L20,18C20,15.34 14.67,14 12,14Z" />
+          <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+              <g transform='matrix(1.5,0,0,1.5,-6,-6)'>
+                  <path d='M12,12C14.21,12 16,10.21 16,8C16,5.79 14.21,4 12,4C9.79,4 8,5.79 8,8C8,10.21 9.79,12 12,12ZM12,14C9.33,14 4,15.34 4,18L4,20L20,20L20,18C20,15.34 14.67,14 12,14Z' />
               </g>
           </svg>
         <% end %>
@@ -83,11 +83,19 @@
 
   <% else %>
 
-    <div class='login'>
-      <!-- button for when user not logged in -->
-      <a href='/login'><button class='btn btn-theme btn-login'>Login / Sign up</button></a>
-      <!-- end button -->
+    <!-- Login / sign up button -->
+    <div class='btn-group login'>
+      <a class='btn btn-theme btn-login' href='/login'>Login</a>
+      <button type='button' class='btn btn-theme btn-login-caret dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+        <span class='caret'></span>
+        <span class='sr-only'>Toggle Dropdown</span>
+      </button>
+      <ul class='dropdown-menu pull-right'>
+        <li><a href='/login'>Login</a></li>
+        <li><a href='/signup'>Sign up</a></li>
+      </ul>
     </div>
+    <!-- end login button -->
 
   <% end %>
 
