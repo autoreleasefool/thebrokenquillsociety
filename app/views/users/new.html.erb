@@ -11,7 +11,6 @@
   <%= f.input :name,
         required: true,
         label: 'Username',
-        error: 'You must provide a username',
         input_html: { class: 'flat-input' },
         label_html: { class: 'input-label' } %>
   <% if @user_errors && @user_errors[:name] %>
@@ -39,7 +38,6 @@
   <%= f.input :email,
         required: true,
         label: 'Email',
-        error: 'You must provide a @uOttawa.ca email',
         placeholder: 'xyz@uottawa.ca',
         input_html: { class: 'flat-input' },
         label_html: { class: 'input-label' } %>
@@ -59,8 +57,8 @@
 
   <%= f.input :about,
         required: true,
-        :as => :text, label:
-        'Tell us about yourself',
+        :as => :text,
+        label: 'Tell us about yourself',
         input_html: { class: 'flat-input tall-area' },
         label_html: { class: 'input-label' } %>
   <% if @user_errors && @user_errors[:about] %>

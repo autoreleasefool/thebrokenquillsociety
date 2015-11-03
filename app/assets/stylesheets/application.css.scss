@@ -35,6 +35,33 @@ ul {
 
 // Form
 
+.has-error .control-label {
+  color: inherit;
+}
+
+input[type='checkbox'] {
+    display: none;
+}
+
+.checkbox label {
+  padding-left: 0;
+}
+
+.checkbox-label {
+  padding-left: 8px;
+  font-size: 12pt;
+}
+
+p.checkbox-hint {
+  padding-top: 8px;
+  color: #636363;
+}
+
+.checkbox label svg {
+  fill: $primary-color-dark;
+  vertical-align: middle;
+}
+
 .input-label {
   font-family: 'Raleway', sans-serif;
   font-size: 14pt;
@@ -64,6 +91,11 @@ input.flat-input:focus::-webkit-input-placeholder { color:#5a5a5a; }
 input.flat-input:focus::-moz-placeholder  { color:#5a5a5a; }
 input.flat-input:focus:-moz-placeholder  { color:#5a5a5a; }
 input.flat-input:focus::-ms-input-placeholder { color:#5a5a5a; }
+
+textarea.flat-input:focus::-webkit-input-placeholder { color:#5a5a5a; }
+textarea.flat-input:focus::-moz-placeholder  { color:#5a5a5a; }
+textarea.flat-input:focus:-moz-placeholder  { color:#5a5a5a; }
+textarea.flat-input:focus::-ms-input-placeholder { color:#5a5a5a; }
 
 textarea.tall-area {
   height: 8em;

@@ -39,7 +39,10 @@ class WorksController < ApplicationController
     if @work.save
       redirect_to @work
     else
-      flash[:error] = 'An error occured!'
+      @work_errors = {}
+      @work.errors.each do |attr, msg|
+        @work_errors[attr] = msg
+      end
       render 'new'
     end
   end
