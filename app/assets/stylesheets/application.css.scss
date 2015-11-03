@@ -132,11 +132,7 @@ header {
   margin: 10px 0 10px 0;
 }
 
-#profile-hint { margin: $hint-margin $hint-margin 0; }
-#inbox-hint { margin: $hint-margin $hint-margin 0; }
-#work-hint { margin: $hint-margin $hint-margin 0; }
-#fave-hint { margin: $hint-margin $hint-margin 0; }
-#new-hint { margin: $hint-margin $hint-margin 0; }
+#profile-hint, #inbox-hint, #work-hint, #fave-hint, #new-hint, #logout-hint { margin: $hint-margin $hint-margin 0; }
 
 .nav-hint {
   display: none;
@@ -202,7 +198,7 @@ header {
 #search-slider {
   position: relative;
   float: right;
-  left: 168px;
+  left: 210px;
 
   -webkit-transition: left $search-anim-time-pos ease;
   -moz-transition: left $search-anim-time-pos ease;

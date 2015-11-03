@@ -31,7 +31,7 @@ $('document').ready(function() {
       search.style.left = 0;
     }, function() {
       var search = document.getElementById('search-slider');
-      search.style.left = '168px';
+      search.style.left = '210px';
     });
 
   $('#search-box').keyup(
@@ -85,5 +85,11 @@ $('document').ready(function() {
       $('#new-hint').addClass('nav-hint-visible');
     }, function() {
       $('#new-hint').removeClass('nav-hint-visible');
+    });
+  $('#logout-svg').hover(
+    function() {
+      $('#logout-hint').addClass('nav-hint-visible');
+    }, function() {
+      $('#logout-hint').removeClass('nav-hint-visible');
     });
 });
