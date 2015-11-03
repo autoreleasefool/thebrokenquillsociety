@@ -5,10 +5,10 @@ A website for the University of Ottawa Creative Writing Club (CWC). Provides a h
 ## What it needs
 
 * Home page
-* Header
+* ~~Header~~
 * Footer
 * Announcements
-* Sign up
+* ~~Sign up~~
 * Submission page
 * Posts
 * Search
@@ -31,28 +31,28 @@ A website for the University of Ottawa Creative Writing Club (CWC). Provides a h
     * Comments
     * Users
   * List of themes for semester
-* Header
-  * Home page
-  * Sign up / login / logout
-  * Submit
-  * Search
-  * Profile (when available)
+* ~~Header~~
+  * ~~Home page~~
+  * ~~Sign up / login / logout~~
+  * ~~Submit~~
+  * ~~Search~~
+  * ~~Profile (when available)~~
 * Footer
   * Meeting times & location
   * Facebook page
 * Announcements
   * List of recent announcements
   * Executive posts from Facebook?
-* Sign up
-  * Username (text field, required)
-  * Email (text field, required, @uottawa.ca)
-  * Password (password field, required)
-  * Confirm password (password field, required)
-  * Profile picture (image upload, not required)
-  * What do you like to write? (text field, not required)
-  * About me (multi line text field, not required)
-  * Usage:
-    * Must not be logged in (links should be replaced with profile links)
+* ~~Sign up~~
+  * ~~Username (text field, required)~~
+  * ~~Email (text field, required, @uottawa.ca)~~
+  * ~~Password (password field, required)~~
+  * ~~Confirm password (password field, required)~~
+  * ~~Profile picture (image upload, not required)~~
+  * ~~What do you like to write? (text field, not required)~~
+  * ~~About me (multi line text field, not required)~~
+  * ~~Usage:~~
+    * ~~Must not be logged in (links should be replaced with profile links)~~
 * Submission page
   * Title (text field, required)
   * Tags (with suggestions?)
@@ -85,7 +85,6 @@ A website for the University of Ottawa Creative Writing Club (CWC). Provides a h
     * Link to profile / submissions
 * User profile
   * Username
-  * Profile picture
   * About me
   * What do they like to write?
   * Last login date
@@ -97,7 +96,6 @@ A website for the University of Ottawa Creative Writing Club (CWC). Provides a h
     * Most recent
 * Edit profile
   * Load fields from database
-  * Profile picture (image upload, not required)
   * What do you like to write? (text field, not required)
   * About me (multi line text field, not required)
   * Change password - Old password, new password, confirm password
@@ -108,35 +106,25 @@ A website for the University of Ottawa Creative Writing Club (CWC). Provides a h
 
 ## Database
 
-* Users
-  * Username (string, not null)
-  * Email (string, not null, ends in @uottawa.ca)
-  * Password (string, not null)
-  * Profile picture filehandle (string, optional)
-  * About me (string, optional)
-  * Preferred mediums / genres (string, optional)
-  * Last login date (datetime, not null)
-  * Account creation date (datetime, not nul)
-  * Id (number, not null)
-* Submission
-  * Name (string, not null)
-  * Date created (datetime, not null)
-  * Date modified (datetime, not null)
-  * Tags (string, optional)
-  * filehandle (string, not null)
-  * Id (number, not null)
-  * author id (fk, not null)
-* Comments
-  * author id (fk, not null)
-  * submission id (fk, not null)
-  * date created (datetime, not null)
-  * body (string, not null)
-* Tags
-  * Id (number, not null)
-  * Tag (string, not null)
-* UserTags
-  * UserId (fk, not null)
-  * TagId (fk, not null)
-* SubmissionTags
-  * SubmissionId (fk, not null)
-  * TagId (fk, not null)
+* ~~Users~~
+  * ~~Username (string, not null)~~
+  * ~~Email (string, not null, ends in @uottawa.ca)~~
+  * ~~Password (string, not null)~~
+  * ~~About me (string, optional)~~
+  * ~~Preferred mediums / genres (string, optional)~~
+  * ~~Last login date (datetime, not null)~~
+  * ~~Account creation date (datetime, not nul)~~
+  * ~~Id (number, not null)~~
+* ~~Submission~~
+  * ~~Name (string, not null)~~
+  * ~~Date created (datetime, not null)~~
+  * ~~Date modified (datetime, not null)~~
+  * ~~Tags (string, optional)~~
+  * ~~Body (string, not null)~~
+  * ~~Id (number, not null)~~
+  * ~~author id (fk, not null)~~
+* ~~Comments~~
+  * ~~author id (fk, not null)~~
+  * ~~submission id (fk, not null)~~
+  * ~~date created (datetime, not null)~~
+  * ~~body (string, not null)~~
