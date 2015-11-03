@@ -6,15 +6,16 @@ class SessionsController < ApplicationController
 
   # Creates a new user session
   def create
-    user = User.find_by_email(params[:email])
+    user = User.find_by_email(params[:session][:email])
 
     # If the user exists and the password entered is valid
-    if user && user.authenticate(params[:password])
+    if user && user.authenticate(params[:session][:password])
       # Save the user id inside the browser cookie
       session[:user_id] = user.id
       redirect_to '/'
     else
-      redirect_to '/login'
+      @login_error = 1
+      render 'new'
     end
   end
 
