@@ -14,7 +14,10 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to '/', notice: 'Account created successfully'
     else
-      flash[:error] = @user.errors.full_messages
+      @user_errors = {}
+      @user.errors.each do |attr, msg|
+        @user_errors[attr] = msg
+      end
       render 'new'
     end
   end

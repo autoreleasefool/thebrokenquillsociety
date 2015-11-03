@@ -13,36 +13,3 @@ $error-color:#bb0000;
     text-decoration: underline;
   }
 }
-
-.input-label {
-  font-family: 'Raleway', sans-serif;
-  font-size: 16pt;
-  padding: 0;
-  margin: 0 0 .25em 0;
-}
-
-.flat-input {
-  margin: 0;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  background: #e6e6e6;
-  color: #000;
-  -webkit-appearance: none;
-  -webkit-border-radius: 0;
-  border-radius: 0;
-}
-
-.flat-input:focus {
-  outline: none;
-  background: $primary-color;
-}
-
-input.flat-input:focus::-webkit-input-placeholder { color:#5a5a5a; }
-input.flat-input:focus::-moz-placeholder  { color:#5a5a5a; }
-input.flat-input:focus:-moz-placeholder  { color:#5a5a5a; }
-input.flat-input:focus::-ms-input-placeholder { color:#5a5a5a; }
-
-textarea.tall-area {
-  height: 8em;
-}

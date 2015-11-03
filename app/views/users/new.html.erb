@@ -6,47 +6,67 @@
   </div>
 </div>
 
-<% if flash[:error] %>
-  <div class="error-msg"><%= flash[:error] %></div>
-<% end %>
-
 <%= simple_form_for :user, url: users_path, html: { class: 'form' } do |f| %>
+
   <%= f.input :name,
         required: true,
         label: 'Username',
         error: 'You must provide a username',
         input_html: { class: 'flat-input' },
         label_html: { class: 'input-label' } %>
+  <% if @user_errors && @user_errors[:name] %>
+    <div class='alert alert-danger'><%= @user_errors[:name] %></div>
+  <% end %>
+
   <%= f.input :password,
         required: true,
         label: 'Password',
-        error: 'Your passwords must match',
         input_html: { class: 'flat-input' },
         label_html: { class: 'input-label' } %>
+  <% if @user_errors && @user_errors[:password] %>
+    <div class='alert alert-danger'><%= @user_errors[:password] %></div>
+  <% end %>
+
   <%= f.input :password_confirmation,
         required: true,
-        label: 'Password again',
-        error: 'Your passwords must match',
+        label: 'Confirm password',
         input_html: { class: 'flat-input' },
         label_html: { class: 'input-label' } %>
+  <% if @user_errors && @user_errors[:password_confirmation] %>
+    <div class='alert alert-danger'><%= @user_errors[:password_confirmation] %></div>
+  <% end %>
+
   <%= f.input :email,
         required: true,
         label: 'Email',
         error: 'You must provide a @uOttawa.ca email',
+        placeholder: 'xyz@uottawa.ca',
         input_html: { class: 'flat-input' },
         label_html: { class: 'input-label' } %>
+  <% if @user_errors && @user_errors[:email] %>
+    <div class='alert alert-danger'><%= @user_errors[:email] %></div>
+  <% end %>
+
   <%= f.input :tag_list,
         required: true,
         label: 'What do you like to write?',
         placeholder: 'Genres, novels, poetry, etc.',
         input_html: { class: 'flat-input' },
         label_html: { class: 'input-label' } %>
+  <% if @user_errors && @user_errors[:tag_list] %>
+    <div class='alert alert-danger'><%= @user_errors[:tag_list] %></div>
+  <% end %>
+
   <%= f.input :about,
         required: true,
         :as => :text, label:
         'Tell us about yourself',
         input_html: { class: 'flat-input tall-area' },
         label_html: { class: 'input-label' } %>
+  <% if @user_errors && @user_errors[:about] %>
+    <div class='alert alert-danger'><%= @user_errors[:about] %></div>
+  <% end %>
+
   <div class='form-submit'>
     <%= f.submit 'Sign up', :class => 'btn btn-lg btn-theme' %>
   </div>
