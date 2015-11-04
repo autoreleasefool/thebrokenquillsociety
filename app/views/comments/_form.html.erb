@@ -11,6 +11,9 @@
           label: 'Comment',
           input_html: { class: 'flat-input tall-area' },
           label_html: { class: 'input-label' } %>
+    <% if params[:error] %>
+      <div class='alert alert-danger'>There was an error submitting your comment.</div>
+    <% end %>
 
     <%= f.submit 'Save',
           :class => 'btn btn-lg btn-theme' %>
@@ -23,7 +26,7 @@
           input_html: { class: 'flat-input tall-area' },
           label_html: { class: 'input-label' },
           :disabled => true %>
-    <div class='alert alert-danger'>You must be signed in to leave a comment.</div>
+    <div class='alert alert-warning'>You must be signed in to leave a comment.</div>
 
     <%= f.submit 'Save',
           :class => 'btn btn-lg btn-default',

@@ -6,6 +6,6 @@ class Comment < ActiveRecord::Base
 
   # Verifying that a body was provided for the comment
   validates :body,
-    presence: true
+    presence: { message: 'You cannot submit a blank comment.' }
 
 end

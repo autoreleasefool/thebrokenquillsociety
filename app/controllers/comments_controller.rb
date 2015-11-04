@@ -6,9 +6,10 @@ class CommentsController < ApplicationController
     @comment = @work.comments.create(params[:comment].permit(:body))
     @comment.user = current_user
 
-    # TODO: show error if comment cannot be saved?
-    @comment.save
-
-    redirect_to work_path(@work)
+    if @comment.save
+      redirect_to work_path(@work)
+    else
+      redirect_to controller: 'works', action: 'show', id: params[:work_id], error: '1'
+    end
   end
 end
