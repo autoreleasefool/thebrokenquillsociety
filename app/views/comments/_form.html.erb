@@ -1,8 +1,33 @@
-<% if current_user %>
-  <%= simple_form_for ([@work, @work.comments.build]) do |f| %>
-    <%= f.input :body, required: true, label: 'Comment' %>
-    <%= f.submit 'Save' %>
+<div class='form-header'>
+  <h1 class='title'>Leave a comment</h1>
+</div>
+
+<%= simple_form_for ([@work, @work.comments.build]), html: { class: 'form' } do |f| %>
+
+  <% if current_user %>
+
+    <%= f.input :body,
+          required: true,
+          label: 'Comment',
+          input_html: { class: 'flat-input tall-area' },
+          label_html: { class: 'input-label' } %>
+
+    <%= f.submit 'Save',
+          :class => 'btn btn-lg btn-theme' %>
+
+  <% else %>
+
+    <%= f.input :body,
+          required: true,
+          label: 'Comment',
+          input_html: { class: 'flat-input tall-area' },
+          label_html: { class: 'input-label' },
+          :disabled => true %>
+    <div class='alert alert-danger'>You must be signed in to leave a comment.</div>
+
+    <%= f.submit 'Save',
+          :class => 'btn btn-lg btn-default',
+          :disabled => true %>
   <% end %>
-<% else %>
-  <p class='error-msg'>You must be signed in to leave a comment.</p>
+
 <% end %>

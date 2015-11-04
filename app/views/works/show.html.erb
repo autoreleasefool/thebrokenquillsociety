@@ -12,8 +12,7 @@
 
 <div id='comments'>
   <h2><%= @work.comments.count %> Comments</h2>
-  <%= render @work.comments %>
+  <%= render :partial => @work.comments %>
 
-  <h3>Add a comment:</h3>
   <%= render 'comments/form' %>
 </div>

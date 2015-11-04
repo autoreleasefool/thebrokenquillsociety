@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
 
-  before_filter :authorize, :except => [:index, :search]
+  before_filter :authorize, :except => [:index, :search, :show]
 
   # Displays the user's search results
   def search
