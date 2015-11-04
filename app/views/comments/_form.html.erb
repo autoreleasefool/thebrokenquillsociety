@@ -15,8 +15,10 @@
       <div class='alert alert-danger'>There was an error submitting your comment.</div>
     <% end %>
 
-    <%= f.submit 'Save',
-          :class => 'btn btn-lg btn-theme' %>
+    <div class='form-submit'>
+      <%= f.submit 'Save',
+            :class => 'btn btn-lg btn-theme' %>
+    </div>
 
   <% else %>
 
@@ -28,9 +30,11 @@
           :disabled => true %>
     <div class='alert alert-warning'>You must be signed in to leave a comment.</div>
 
-    <%= f.submit 'Save',
-          :class => 'btn btn-lg btn-default',
-          :disabled => true %>
+    <div class='form-submit'>
+      <%= f.submit 'Save',
+            :class => 'btn btn-lg btn-default',
+            :disabled => true %>
+    </div>
   <% end %>
 
 <% end %>

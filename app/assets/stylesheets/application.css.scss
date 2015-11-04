@@ -1,6 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic|Raleway:400,700);
+@import url(https://fonts.googleapis.com/css?family=Raleway|Montserrat|Droid+Sans:400,700);
 
 // Sizing
 $search-box-width-std:300px;
@@ -17,8 +17,8 @@ $primary-color-dark:#59df59;
 $search-anim-time-bg:.5s;
 $search-anim-time-pos:.5s;
 
-* { font-family: 'Open Sans', sans-serif; }
-h1 { font-family: 'Raleway', sans-serif; }
+* { font-family: 'Droid Sans', sans-serif; }
+h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
 
 body {
   background-color: #fff;
@@ -63,9 +63,8 @@ p.checkbox-hint {
 }
 
 .input-label {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 14pt;
-  font-weight: bold;
   padding: 0;
   margin: 0 0 .25em 0;
 }
@@ -103,7 +102,7 @@ textarea.tall-area {
 
 .form-header {
   width: 75%;
-  max-width: 600px;
+  max-width: 50em;
   margin: 0 auto 0 auto;
 
   .title {
@@ -112,6 +111,7 @@ textarea.tall-area {
   }
 
   .body {
+    font-size: 12pt;
     padding: 0;
     margin: .5em 0 .5em 0;
   }
@@ -119,7 +119,7 @@ textarea.tall-area {
 
 .form {
   width: 75%;
-  max-width: 600px;
+  max-width: 50em;
   padding: 0;
   margin: .5em auto .5em auto;
 }
@@ -146,6 +146,9 @@ header {
     float: right;
     text-align: center;
     line-height: $header-height;
+  }
+  h1 {
+    font-family: 'Raleway', sans-serif;
   }
 }
 
