@@ -12,7 +12,7 @@
     <p id='incomplete'>The author has marked this work as incomplete.</p>
   <% end %>
   <hr />
-  <p id='body'><%= @work.body %></p>
+  <%= simple_format @work.body, class: 'body' %>
   <p id='tags'><strong>Tags:</strong> <%= @work.tag_list %></p>
 
   <hr />

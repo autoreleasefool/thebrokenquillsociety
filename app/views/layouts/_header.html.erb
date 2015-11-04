@@ -2,9 +2,9 @@
 
   <!-- begin website title -->
   <% if current_page?(root_path) %>
-    <h1 class='logo'><a href='#'>Untitled</a></h1>
+    <h1 class='logo'><a href='#'><%= UntitledCWC::Application::WEBSITE_NAME %></a></h1>
   <% else %>
-    <h1 class='logo'><%= link_to 'Untitled', root_path %></h1>
+    <h1 class='logo'><%= link_to UntitledCWC::Application::WEBSITE_NAME, root_path %></h1>
   <% end %>
   <!-- end website title -->
 
