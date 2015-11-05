@@ -6,13 +6,13 @@ A website for the University of Ottawa Creative Writing Club (CWC). Provides a h
 
 * Home page
 * ~~Header~~
-* Footer
+* ~~Sidebar~~
 * Announcements
 * ~~Sign up~~
-* Submission page
+* ~~Submission page~~
 * Posts
 * Search
-* Comments
+* ~~Comments~~
 * About / Executive
 * User profiles
 * Edit profiles
@@ -21,8 +21,8 @@ A website for the University of Ottawa Creative Writing Club (CWC). Provides a h
 
 * Home page
   * Introduction to the website
-  * Login
-  * Sign up
+  * ~~Login~~
+  * ~~Sign up~~
   * Top
     * Contributors
     * Number of comments on submission
@@ -37,7 +37,7 @@ A website for the University of Ottawa Creative Writing Club (CWC). Provides a h
   * ~~Submit~~
   * ~~Search~~
   * ~~Profile (when available)~~
-* Footer
+* Sidebar
   * Meeting times & location
   * Facebook page
 * Announcements
@@ -53,26 +53,25 @@ A website for the University of Ottawa Creative Writing Club (CWC). Provides a h
   * ~~About me (multi line text field, not required)~~
   * ~~Usage:~~
     * ~~Must not be logged in (links should be replaced with profile links)~~
-* Submission page
-  * Title (text field, required)
-  * Tags (with suggestions?)
-  * Complete / incomplete (checkbox, required)
-  * Body (multi line text field, required) - max length?
-  * Save / submit
-  * Cancel (go back one page)
-  * Usage:
-    * Can be used to edit old submissions
-      * Clicking 'edit' on a submission (only shown if logged in user is creator) opens the submission page with the content filled, and the id of the story in the url? Pressing save must compare original author and use id in url to save the story
-    * Must be logged in to view page
-* Posts
-  * Title
-  * Author
-  * Tags
-  * Body
-  * Submit comment
-    * Must be logged in
-    * Comment text
-  * Comments
+* ~~Submission page~~
+  * ~~Title (text field, required)~~
+  * ~~Tags (with suggestions?)~~
+  * ~~Complete / incomplete (checkbox, required)~~
+  * ~~Body (multi line text field, required)~~
+  * ~~Save / submit~~
+  * ~~Usage:~~
+    * ~~Can be used to edit old submissions~~
+      * ~~Clicking 'edit' on a submission (only shown if logged in user is creator) opens the submission page with the content filled, and the id of the story in the url? Pressing save must compare original author and use id in url to save the story~~
+    * ~~Must be logged in to view page~~
+* ~~Posts~~
+  * ~~Title~~
+  * ~~Author~~
+  * ~~Tags~~
+  * ~~Body~~
+  * ~~Submit comment~~
+    * ~~Must be logged in~~
+    * ~~Comment text~~
+  * ~~Comments~~
 * Search
   * Search by tags & title
   * Order alphabetical, by most recent
