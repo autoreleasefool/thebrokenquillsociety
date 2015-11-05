@@ -9,6 +9,10 @@ $header-margin:18px;
 $header-height:60px;
 $hint-margin:4px;
 
+// Sidebar
+$sidebar-width:300px;
+$content-padding:10px;
+
 // Theme colors
 $primary-color:#99ff99;
 $primary-color-dark:#59df59;
@@ -18,7 +22,16 @@ $search-anim-time-bg:.5s;
 $search-anim-time-pos:.5s;
 
 * { font-family: 'Droid Sans', sans-serif; }
-h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1.title, h2.title {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
 body {
   background-color: #fff;
@@ -29,8 +42,53 @@ ul {
   list-style: none;
 }
 
+hr {
+  border-color: #eee;
+  background-color: #eee;
+}
+
 .underlined {
   text-decoration: underline;
+}
+
+.btn-theme {
+  color: #000;
+  background-color: $primary-color;
+  border-color: $primary-color;
+}
+
+.btn-theme:focus, .btn-theme:active { outline: none; }
+.btn-theme:active, .btn-theme.active, .open .dropdown-toggle.btn-theme { background-image: none; }
+
+.btn-theme:hover,
+.btn-theme:focus,
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
+  color: #fff;
+  background-color: $primary-color-dark;
+  border-color: $primary-color-dark;
+}
+
+// Sidebar
+
+#main {
+}
+
+#sidebar {
+  width: $sidebar-width;
+  height: 100%;
+  right: 0;
+  top: $header-height;
+  position: fixed;
+  background-color: #fff;
+  border-left: 1px solid #eee;
+}
+
+#content {
+  padding-right: $sidebar-width;
+  top: $header-height;
+  background: #fff;
 }
 
 // Form
@@ -120,8 +178,8 @@ textarea.tall-area {
 .form {
   width: 75%;
   max-width: 50em;
-  padding: 0;
-  margin: .5em auto .5em auto;
+  padding: .5em 0 .5em 0;
+  margin: 0 auto 0 auto;
 }
 
 .form-group {
@@ -130,7 +188,8 @@ textarea.tall-area {
 
 .form-submit {
   text-align: center;
-  margin: 2em auto 2em auto;
+  margin: 2em auto 0 auto;
+  padding: 0 0 2em 0;
 }
 
 // Header
@@ -193,25 +252,6 @@ header {
   height: 40px;
   padding-top: 9px;
   vertical-align: middle;
-}
-
-.btn-theme {
-  color: #000;
-  background-color: $primary-color;
-  border-color: $primary-color;
-}
-
-.btn-theme:focus, .btn-theme:active { outline: none; }
-.btn-theme:active, .btn-theme.active, .open .dropdown-toggle.btn-theme { background-image: none; }
-
-.btn-theme:hover,
-.btn-theme:focus,
-.btn-theme:active,
-.btn-theme.active,
-.open .dropdown-toggle.btn-theme {
-  color: #fff;
-  background-color: $primary-color-dark;
-  border-color: $primary-color-dark;
 }
 
 .logo {
@@ -310,5 +350,5 @@ header {
 }
 
 @media screen and (max-width: 720px) {
-  .form, .form-header { width: 90%; }
+  .form, .form-header { width: 90%; max-width: 720px; }
 }

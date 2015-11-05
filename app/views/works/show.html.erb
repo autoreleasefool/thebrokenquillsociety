@@ -1,23 +1,24 @@
 <div class='work'>
-  <h1 id='title'><%= @work.title %></h1>
+  <h1 id='work-title' class='title'><%= @work.title %></h1>
   <!-- TODO: show the options to admins as well -->
-  <h2 id='author'>Written by
+  <h2 id='work-author'>Written by
     <%= link_to @work.user.name, users_path(@work.user) %>
     <% if current_user == @work.user %>
-      <span id='options'>&nbsp;(<%= link_to 'edit', edit_work_path(@work) %> - <%= link_to 'delete', work_path(@work), method: :delete, data: { confirm: 'Are you sure you want to delete this work? It cannot be recovered.' } %>)
+      <span id='work-options'>&nbsp;(<%= link_to 'edit', edit_work_path(@work) %> - <%= link_to 'delete', work_path(@work), method: :delete, data: { confirm: 'Are you sure you want to delete this work? It cannot be recovered.' } %>)
       </span>
     <% end %>
   </h2>
   <% if @work.incomplete %>
-    <p id='incomplete'>The author has marked this work as incomplete.</p>
+    <p id='work-incomplete'>The author has marked this work as incomplete.</p>
   <% end %>
   <hr />
-  <%= simple_format @work.body, class: 'body' %>
-  <p id='tags'><strong>Tags:</strong> <%= @work.tag_list %></p>
+  <%= simple_format @work.body, id: 'work-body' %>
+  <p id='work-tags'><strong>Tags:</strong> <%= @work.tag_list %></p>
+</div>
 
-  <hr />
+<div id='comments-wrapper'>
   <div id='comments'>
-    <h2><%= pluralize(@work.comments.count, 'comments') %></h2>
+    <h2 class='title'><%= pluralize(@work.comments.count, 'comments') %></h2>
     <% if @work.comments.count > 0 %>
       <%= render :partial => @work.comments %>
     <% else %>

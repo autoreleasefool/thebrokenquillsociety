@@ -1,16 +1,32 @@
+#comments-wrapper {
+  background-color: #f2f2f2;
+}
 
-#comments .comment {
-  margin: 1em 0 1em 0;
+#comments {
+  width: 75%;
+  max-width: 50em;
+  margin: 0 auto 0 auto;
 
-  p.author, p.body {
-    text-align: justify;
-    padding: 0;
-    margin: .5em 0 .5em 0;
+  .comment {
+    p.author, p.body {
+      padding: 0;
+      margin: .5em 0 .5em 0;
+    }
+    span.time {
+      font-size: 10pt;
+      color: #808080;
+      padding: 0;
+      margin: 0;
+    }
   }
-  span.time {
-    font-size: 10pt;
-    color: #808080;
-    padding: 0;
-    margin: 0;
+
+  .form {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .form-header {
+    width: 100%;
+    max-width: 100%;
   }
 }

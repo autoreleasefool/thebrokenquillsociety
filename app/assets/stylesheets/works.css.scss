@@ -10,29 +10,31 @@ input[type='checkbox']:checked ~ label #incomplete-unchecked { display: none; }
   width: 75%;
   max-width: 50em;
   margin: 0 auto 0 auto;
+
+  #work-title {
+    text-align: center;
+  }
+
+  #work-author {
+    font-size: 12pt;
+    text-align: center;
+  }
+
+  #work-author a, #work-author a:hover, #work-author a:visited {
+    text-decoration: none;
+    color: $primary-color-dark;
+  }
+
+  #work-body {
+    text-align: justify;
+    font-size: 12pt;
+  }
+
+  #work-tags, #work-incomplete {
+    font-size: 10pt;
+    color: #808080;
+  }
+
+  #work-incomplete { text-align: center; }
+  span#work-options, #work-options a, #work-options a:hover, #work-options a:visited { color: #206a11; }
 }
-
-.work #title { text-align: center; }
-
-.work #author {
-  font-size: 12pt;
-  text-align: center;
-}
-
-.work #author a, .work #author a:hover, .work #author a:visited {
-  text-decoration: none;
-  color: $primary-color-dark;
-}
-
-.work #body {
-  text-align: justify;
-  font-size: 12pt;
-}
-
-.work #incomplete { text-align: center; }
-.work #tags, .work #incomplete {
-  font-size: 10pt;
-  color: #808080;
-}
-
-.work span#options, .work #options a, .work #options a:hover, .work #options a:visited { color: #206a11; }

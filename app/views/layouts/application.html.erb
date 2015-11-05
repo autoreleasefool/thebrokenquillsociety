@@ -14,8 +14,25 @@
 </head>
 <body>
 
+  <!-- start header -->
   <%= render 'layouts/header' %>
-  <%= yield %>
+  <!-- end header -->
+
+  <div id='main'>
+
+    <!-- start sidebar -->
+    <div id='sidebar'>
+      <%= render 'layouts/sidebar' %>
+    </div>
+    <!-- end sidebar -->
+
+    <!-- start content -->
+    <div id='content'>
+      <%= yield %>
+    </div>
+    <!-- end content -->
+
+  </div>
 
 </body>
 </html>
