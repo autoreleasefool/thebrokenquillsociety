@@ -1,5 +1,12 @@
 <div class='comment'>
   <%= simple_format comment.body, class: 'body' %>
-  <p class='author'><strong><%= link_to comment.user.name, users_path(comment.user) %></strong> <span class='time'> - <%= time_ago_in_words(comment.created_at) %> ago</span></p>
+  <p class='author'>
+    <strong>
+      <% if comment.user %>
+        <%= link_to comment.user.name, users_path(comment.user) %>
+      <% else %>
+        <span class='time'>[Deleted]</span>
+      <% end %>
+    </strong> <span class='time'> - <%= time_ago_in_words(comment.created_at) %> ago</span></p>
 </div>
 <hr />

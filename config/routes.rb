@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   end
 
   resources :users
+  resources :announcements
 
   root 'application#index'
 

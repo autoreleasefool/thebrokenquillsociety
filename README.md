@@ -123,7 +123,13 @@ A website for the University of Ottawa Creative Writing Club (CWC). Provides a h
   * ~~Id (number, not null)~~
   * ~~author id (fk, not null)~~
 * ~~Comments~~
-  * ~~author id (fk, not null)~~
-  * ~~submission id (fk, not null)~~
-  * ~~date created (datetime, not null)~~
-  * ~~body (string, not null)~~
+  * ~~Author id (fk, not null)~~
+  * ~~Submission id (fk, not null)~~
+  * ~~Date created (datetime, not null)~~
+  * ~~Body (string, not null)~~
+* ~~Announcements~~
+  * ~~Title (string, not null)~~
+  * ~~Date created (datetime, not null)~~
+  * ~~Body (string, not null)~~
+  * ~~Author id (fk, not null)~~
+  * ~~Id (number, not null)~~

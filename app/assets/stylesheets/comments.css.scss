@@ -8,15 +8,15 @@
   margin: 0 auto 0 auto;
 
   .comment {
-    p.author, p.body {
-      padding: 0;
-      margin: .5em 0 .5em 0;
-    }
     span.time {
       font-size: 10pt;
       color: #808080;
       padding: 0;
       margin: 0;
+    }
+    p.author, p.body {
+      padding: 0;
+      margin: .5em 0 .5em 0;
     }
   }
 
