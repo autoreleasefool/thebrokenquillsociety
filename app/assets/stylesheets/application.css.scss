@@ -1,25 +1,7 @@
+@import 'variables';
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import url(https://fonts.googleapis.com/css?family=Norican|Raleway|Montserrat|Droid+Sans:400,700);
-
-// Sizing
-$search-box-width-std:300px;
-$search-box-width-mobile:200px;
-$header-margin:18px;
-$header-height:60px;
-$hint-margin:4px;
-
-// Sidebar
-$sidebar-width:350px;
-$content-padding:10px;
-
-// Theme colors
-$primary-color:#99ff99;
-$primary-color-dark:#59df59;
-
-// Animation timing
-$search-anim-time-bg:.5s;
-$search-anim-time-pos:.5s;
 
 * { font-family: 'Droid Sans', sans-serif; }
 h1, h2, h3, h4, h5, h6 {
@@ -31,6 +13,10 @@ h1, h2, h3, h4, h5, h6 {
 h1.title, h2.title, h3.title {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+html, body {
+  height: 100%;
 }
 
 body {
@@ -143,7 +129,7 @@ hr {
     position: relative;
   }
 
-  .sidebar-links {
+  #sidebar-links {
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -240,11 +226,6 @@ textarea.tall-area {
   width: 75%;
   max-width: 50em;
   margin: 0 auto 0 auto;
-
-  .title {
-    padding: 0;
-    margin: .5em 0 .5em 0;
-  }
 
   .body {
     font-size: 12pt;

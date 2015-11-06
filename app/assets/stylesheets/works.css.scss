@@ -1,6 +1,4 @@
-// Theme colors
-$primary-color:#99ff99;
-$primary-color-dark:#59df59;
+@import 'variables';
 
 label #incomplete-checked { display: none; }
 input[type='checkbox']:checked ~ label #incomplete-checked { display: inline-block; }
@@ -9,7 +7,10 @@ input[type='checkbox']:checked ~ label #incomplete-unchecked { display: none; }
 .work {
   width: 75%;
   max-width: 50em;
-  margin: 0 auto 0 auto;
+  min-height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -$header-height;
 
   #work-title {
     text-align: center;
@@ -35,6 +36,7 @@ input[type='checkbox']:checked ~ label #incomplete-unchecked { display: none; }
     color: #808080;
   }
 
+  #work-tags { padding-bottom: $header-height; }
   #work-incomplete { text-align: center; }
   span#work-options, #work-options a, #work-options a:hover, #work-options a:visited { color: #206a11; }
 }

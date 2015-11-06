@@ -9,6 +9,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def recent_announcements
+    @recent_announcements  ||= Announcement.all.order('created_at DESC').limit(10)
+  end
+  helper_method :recent_announcements
+
   # Checks for a current user or redirects to the login page
   def authorize
     url = '/login?noauth=1'

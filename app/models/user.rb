@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   # Verifying minimum password length
   validates :password,
     presence: true,
-    length: { minimum: 6, message: 'Password must be minimum %{count} characters.'}
+    length: { minimum: 6, message: 'Password must be minimum %{count} characters.' }
 
   # Verifying maximum length of about section
   validates :about,
