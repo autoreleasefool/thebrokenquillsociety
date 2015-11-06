@@ -17,6 +17,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # Add tags to models
 gem 'acts-as-taggable-on', '~> 3.4'
+# Adds pagination to controllers
+gem 'will_paginate',  '~> 3.0.6'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
