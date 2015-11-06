@@ -334,11 +334,11 @@ header {
   float: right;
   left: 211px;
 
-  -webkit-transition: left $search-anim-time-pos ease;
-  -moz-transition: left $search-anim-time-pos ease;
-  -ms-transition: left $search-anim-time-pos ease;
-  -o-transition: left $search-anim-time-pos ease;
-  transition: left $search-anim-time-pos ease;
+  -webkit-transition: left $default-anim-time ease;
+  -moz-transition: left $default-anim-time ease;
+  -ms-transition: left $default-anim-time ease;
+  -o-transition: left $default-anim-time ease;
+  transition: left $default-anim-time ease;
 }
 
 #search-static {
@@ -375,11 +375,11 @@ header {
 }
 
 .search-container-transition input#search-box {
-  -webkit-transition: background $search-anim-time-bg ease;
-  -moz-transition: background $search-anim-time-bg ease;
-  -ms-transition: background $search-anim-time-bg ease;
-  -o-transition: background $search-anim-time-bg ease;
-  transition: background $search-anim-time-bg ease;
+  -webkit-transition: background $default-anim-time ease;
+  -moz-transition: background $default-anim-time ease;
+  -ms-transition: background $default-anim-time ease;
+  -o-transition: background $default-anim-time ease;
+  transition: background $default-anim-time ease;
 }
 
 .search-container input#search-box::webkit-input-placeholder { color: #65737e; }

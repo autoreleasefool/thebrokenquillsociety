@@ -40,3 +40,16 @@ input[type='checkbox']:checked ~ label #incomplete-unchecked { display: none; }
   #work-incomplete { text-align: center; }
   span#work-options, #work-options a, #work-options a:hover, #work-options a:visited { color: #206a11; }
 }
+
+#goto-comments {
+  right: 10px + $sidebar-width;
+  bottom: 10px;
+  position: fixed;
+  opacity: 1;
+
+  -webkit-transition: opacity $default-anim-time ease;
+  -moz-transition: opacity $default-anim-time ease;
+  -ms-transition: opacity $default-anim-time ease;
+  -o-transition: opacity $default-anim-time ease;
+  transition: opacity $default-anim-time ease;
+}

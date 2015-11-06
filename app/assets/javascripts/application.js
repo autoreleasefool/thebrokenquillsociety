@@ -21,12 +21,29 @@ workTitleCounterError = false;
 userNameCounterError = false;
 userAboutCounterError = false;
 
+(function($) {
+    $.fn.goTo = function() {
+        $('html, body').animate({
+            scrollTop: $(this).offset().top + 'px'
+        }, 800);
+        return this; // for chaining...
+    }
+})(jQuery);
+
 $('document').ready(function() {
   if (window.location.pathname.indexOf('search') > -1) {
     // TODO: decide whether or not to remove transition on searching page
     // If not removed, every time search page is loaded, the search box fades to white with auto focus
     //$('#search-container').removeClass('search-container-transition');
     $('#search-box').focus();
+  }
+
+  if ($('#goto-comments').length) {
+    $('#goto-comments').click(
+      function() {
+        $('#comments').goTo();
+      }
+    );
   }
 
   $('#nav').hover(

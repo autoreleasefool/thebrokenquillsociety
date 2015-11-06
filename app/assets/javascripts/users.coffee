@@ -1,11 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
 userNameCounterError = false;
 userAboutCounterError = false;
 
+# On document ready
 $ ->
+
   # Tracks the number of characters in an input field for the user
   if $('#user-name-count').length
     userName = $('#user_name')
