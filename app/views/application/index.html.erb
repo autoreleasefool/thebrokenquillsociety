@@ -1,11 +1,29 @@
-<% @recent_works.each do |work| %>
-  <p><%= link_to work.title, work %></p>
-  <p><%= work.created_at.strftime('%B, %d, %Y') %></p>
-<% end %>
+<div class='index'>
+  <div id='banner'>
+    <div class='banner-inner'>
+      <h1><%= UntitledCWC::Application::WEBSITE_NAME %></h1>
+      <h2>Creative Writing at uOttawa</h2>
+    </div>
+  </div>
 
-<hr />
+  <div id='recent-works'>
+    <h2 class='title'>Recent submissions</h2>
 
-<% @recent_users.each do |user| %>
-  <p><%= link_to user.name, user %></p>
-  <p><%= user.created_at.strftime('%B, %d, %Y') %></p>
-<% end %>
+    <% @recent_works.each do |work| %>
+      <h3 class='title'><%= link_to work.title, work %></h3>
+      <p class='author'>
+        <strong>
+          <% if work.user %>
+            <%= link_to work.user.name, users_path(work.user) %>
+          <% else %>
+            <span class='time'>[Deleted]</span>
+          <% end %>
+        </strong> <span class='time'> - <%= time_ago_in_words(work.created_at) %> ago</span>
+      </p>
+
+      <% if work != @recent_works.last %>
+        <hr />
+      <% end %>
+    <% end %>
+  </div>
+</div>

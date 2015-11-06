@@ -17,8 +17,7 @@ class ApplicationController < ActionController::Base
 
   # Lists most recent works and users
   def index
-    @recent_works = Work.all.order('created_at DESC')
-    @recent_users = User.all.order('created_at DESC')
+    @recent_works = Work.all.order('created_at DESC').limit(10)
   end
 
 end
