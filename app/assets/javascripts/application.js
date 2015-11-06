@@ -31,7 +31,7 @@ $('document').ready(function() {
       search.style.left = 0;
     }, function() {
       var search = document.getElementById('search-slider');
-      search.style.left = '210px';
+      search.style.left = '211px';
     });
 
   $('#search-box').keyup(
