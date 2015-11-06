@@ -11,8 +11,10 @@
   <%= f.input :name,
         required: true,
         label: 'Username',
+        wrapper_html: { class: 'remove-bottom-margin' },
         input_html: { class: 'flat-input' },
         label_html: { class: 'input-label' } %>
+  <p id='user-name-counter' class='counter'><span id='user-name-count'>0</span> / 50</p>
   <% if @user_errors && @user_errors[:name] %>
     <div class='alert alert-danger'><%= @user_errors[:name] %></div>
   <% end %>
@@ -59,8 +61,10 @@
         required: true,
         :as => :text,
         label: 'Tell us about yourself',
+        wrapper_html: { class: 'remove-bottom-margin' },
         input_html: { class: 'flat-input tall-area' },
         label_html: { class: 'input-label' } %>
+  <p id='user-about-counter' class='counter'><span id='user-about-count'>0</span> / 1000</p>
   <% if @user_errors && @user_errors[:about] %>
     <div class='alert alert-danger'><%= @user_errors[:about] %></div>
   <% end %>

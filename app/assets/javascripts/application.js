@@ -17,6 +17,10 @@
 //= require jquery.turbolinks
 //= require_tree .
 
+workTitleCounterError = false;
+userNameCounterError = false;
+userAboutCounterError = false;
+
 $('document').ready(function() {
   if (window.location.pathname.indexOf('search') > -1) {
     // TODO: decide whether or not to remove transition on searching page
@@ -32,7 +36,8 @@ $('document').ready(function() {
     }, function() {
       var search = document.getElementById('search-slider');
       search.style.left = '211px';
-    });
+    }
+  );
 
   $('#search-box').keyup(
     function(event) {
@@ -40,20 +45,23 @@ $('document').ready(function() {
       if (event.keyCode == 13) {
         $('#btn-search').click();
       }
-    });
+    }
+  );
 
   $('#btn-search').hover(
     function() {
       // When search button is hovered, the cursor is placed in the search box
       $('#search-box').focus();
-    });
+    }
+  );
 
   $('#btn-search').click(
     function() {
       // Uses user input as search query
       var searchText = document.getElementById('search-box').value;
       window.location.href = '/search?q=' + encodeURIComponent(searchText);
-    });
+    }
+  );
 
   // Shows / hides the relevant nav hint on hover
   $('#profile-svg').hover(
@@ -61,35 +69,41 @@ $('document').ready(function() {
       $('#profile-hint').addClass('nav-hint-visible');
     }, function() {
       $('#profile-hint').removeClass('nav-hint-visible');
-    });
+    }
+  );
   $('#inbox-svg').hover(
     function() {
       $('#inbox-hint').addClass('nav-hint-visible');
     }, function() {
       $('#inbox-hint').removeClass('nav-hint-visible');
-    });
+    }
+  );
   $('#work-svg').hover(
     function() {
       $('#work-hint').addClass('nav-hint-visible');
     }, function() {
       $('#work-hint').removeClass('nav-hint-visible');
-    });
+    }
+  );
   $('#fave-svg').hover(
     function() {
       $('#fave-hint').addClass('nav-hint-visible');
     }, function() {
       $('#fave-hint').removeClass('nav-hint-visible');
-    });
+    }
+  );
   $('#new-svg').hover(
     function() {
       $('#new-hint').addClass('nav-hint-visible');
     }, function() {
       $('#new-hint').removeClass('nav-hint-visible');
-    });
+    }
+  );
   $('#logout-svg').hover(
     function() {
       $('#logout-hint').addClass('nav-hint-visible');
     }, function() {
       $('#logout-hint').removeClass('nav-hint-visible');
-    });
+    }
+  );
 });

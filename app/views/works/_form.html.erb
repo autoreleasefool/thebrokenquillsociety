@@ -5,8 +5,10 @@
         required: true,
         error: false,
         label: 'Title',
+        wrapper_html: { class: 'remove-bottom-margin' },
         input_html: { class: 'flat-input' },
         label_html: { class: 'input-label' } %>
+  <p id='work-title-counter' class='counter'><span id='work-title-count'>0</span> / 255</p>
   <% if @work_errors && @work_errors[:title] %>
     <div class='alert alert-danger'><%= @work_errors[:title] %></div>
   <% end %>

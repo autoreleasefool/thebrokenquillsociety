@@ -10,7 +10,7 @@ $header-height:60px;
 $hint-margin:4px;
 
 // Sidebar
-$sidebar-width:300px;
+$sidebar-width:350px;
 $content-padding:10px;
 
 // Theme colors
@@ -85,6 +85,11 @@ hr {
   border-left: 1px solid #eee;
   padding: 0 10px $header-height 10px;
 
+  .title {
+    text-align: center;
+    text-decoration: underline;
+  }
+
   #sidebar-inner {
     width: 100%;
     height: 100%;
@@ -118,17 +123,18 @@ hr {
 
 // Form
 
-.has-error .control-label {
-  color: inherit;
+.remove-bottom-margin { margin-bottom: 0 !important; }
+
+.counter {
+  size: 10pt;
+  color: #808080;
 }
 
-input[type='checkbox'] {
-    display: none;
-}
+.counter-error { color: #aa4442 !important; }
+.has-error .control-label { color: inherit; }
 
-.checkbox label {
-  padding-left: 0;
-}
+input[type='checkbox'] { display: none; }
+.checkbox label { padding-left: 0; }
 
 .checkbox-label {
   padding-left: 8px;
