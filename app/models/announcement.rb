@@ -11,6 +11,6 @@ class Announcement < ActiveRecord::Base
   # Verifying announcement exists
   validates :body,
     presence: { message: 'You cannot submit a blank announcement.' },
-    length: { maximum: 200, too_long: 'Body can be a maximum %{count} characters.' }
+    length: { maximum: 255, too_long: 'Body can be a maximum %{count} characters.' }
 
 end

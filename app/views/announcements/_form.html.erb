@@ -1,0 +1,32 @@
+<%= simple_form_for @announcement, html: { class: 'form' } do |f| %>
+
+  <%= f.input :title,
+        :as => :string,
+        required: true,
+        error: false,
+        label: 'Title',
+        wrapper_html: { class: 'remove-bottom-margin' },
+        input_html: { class: 'flat-input' },
+        label_html: { class: 'input-label' } %>
+  <p id='announcement-title-counter' class='counter'><span id='announcement-title-count'>0</span> / 255</p>
+  <% if @announcement_errors && @announcement_errors[:title] %>
+    <div class='alert alert-danger'><%= @announcement_errors[:title] %></div>
+  <% end %>
+
+  <%= f.input :body,
+        :as => :text,
+        required: true,
+        error: false,
+        label: 'Body',
+        input_html: { class: 'flat-input tall-area' },
+        label_html: { class: 'input-label' } %>
+  <p id='announcement-body-counter' class='counter'><span id='announcement-body-count'>0</span> / 255</p>
+  <% if @announcement_errors && @announcement_errors[:body] %>
+    <div class='alert alert-danger'><%= @announcement_errors[:body] %></div>
+  <% end %>
+
+  <div class='form-submit'>
+    <%= f.submit 'Create announcement', :class => 'btn btn-lg btn-theme' %>
+  </div>
+
+<% end %>

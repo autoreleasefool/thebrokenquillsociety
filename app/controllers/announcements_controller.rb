@@ -7,7 +7,7 @@ class AnnouncementsController < ApplicationController
 
   # Form to create a new announcement
   def new
-    @announcment = Announcement.new
+    @announcement = Announcement.new
   end
 
   # Creates a new announcement entry
@@ -15,7 +15,7 @@ class AnnouncementsController < ApplicationController
     @announcement = Announcement.new(announcement_params)
     @announcement.user = current_user
 
-    if @announcement.work
+    if @announcement.save
       redirect_to @announcement
     else
       @announcement_errors = {}
