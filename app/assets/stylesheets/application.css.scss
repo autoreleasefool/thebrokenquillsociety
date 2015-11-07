@@ -56,6 +56,24 @@ hr {
   border-color: $primary-color-dark;
 }
 
+// Error handling
+
+#flash-error {
+  position: fixed;
+  top: $header-height + 10px;
+  left: 50%;
+  margin-left: -$sidebar-width / 2;
+  transform: translateX(-50%);
+}
+
+#flash-success {
+  position: fixed;
+  top: $header-height + 10px;
+  left: 50%;
+  margin-left: -$sidebar-width / 2;
+  transform: translateX(-50%);
+}
+
 // Index banner
 
 .index {

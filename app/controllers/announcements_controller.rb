@@ -37,6 +37,10 @@ class AnnouncementsController < ApplicationController
     if @announcement.update(announcement_params)
       redirect_to @announcement
     else
+      @announcement_errors = {}
+      @announcement.errors.each do |attr, msg|
+        @announcement_errors[attr] = msg
+      end
       render 'edit'
     end
   end

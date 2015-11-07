@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to root_path
     else
-      @login_error = 1
+      flash[:error] = 'Your email or password is incorrect.'
       render 'new'
     end
   end
@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
   # Closes a session when the user logs out
   def destroy
     log_out if logged_in?
+    flash[:success] = 'You have been successfully logged out.'
     redirect_to root_path
   end
 

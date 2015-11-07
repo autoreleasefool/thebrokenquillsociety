@@ -14,7 +14,8 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to work_path(@work)
     else
-      redirect_to controller: 'works', action: 'show', id: params[:work_id], error: '1'
+      flash[:error] = 'Your comment could not be saved.'
+      redirect_to controller: 'works', action: 'show', id: params[:work_id]
     end
   end
 

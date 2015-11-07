@@ -40,23 +40,26 @@ module SessionsHelper
   def logged_in_user
     unless logged_in?
       store_location
-      redirect_to login_path, noauth: '1'
+      flash[:error] = 'You must be logged in to perform this action.'
+      redirect_to login_path
     end
   end
 
   # Ensures a valid user is logged in (current user or admin)
-  def correct_user
-    @user = User.find(params[:id])
-    unless current_user?(@user) || current_user.admin?
+  def correct_user?(user)
+    unless current_user?(user) || current_user.is_admin?
       store_location
-      redirect_to login_path, noauth: '2'
+      flash[:error] = 'You are not authorized to perform this action.'
+      redirect_to login_path
     end
   end
 
   # Checks if the current user is an admin
   def admin_user
-    unless current_user.admin?
-      redirect_to login_path, noauth: '3'
+    unless current_user.is_admin?
+      store_location
+      flash[:error] = 'You must be an admin to perform this action.'
+      redirect_to login_path
     end
   end
 

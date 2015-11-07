@@ -8,16 +8,6 @@
 
 <%= simple_form_for :session, url: login_path, html: { class: 'form horizontal-form' }, wrapper: :horizontal_form do |f| %>
 
-  <!-- Errors -->
-  <% if params[:noauth] %>
-    <div class='alert alert-danger'>You must be logged in to perform that action.</div>
-  <% end %>
-
-  <% if @login_error %>
-    <div class='alert alert-danger'>Your email or password is incorrect.</div>
-  <% end %>
-  <!-- end errors -->
-
   <%= f.input :email,
         required: true,
         label: 'Email',

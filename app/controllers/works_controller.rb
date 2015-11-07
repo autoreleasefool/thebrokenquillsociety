@@ -3,9 +3,7 @@ class WorksController < ApplicationController
   # Only allow logged in users to access certain pages
   before_action :logged_in_user, only: [:new, :create, :edit, :update]
   # Only allow the original user or admin to perform certain actions
-  before_action :correct_user, only: [:edit, :update]
-  # Only allow the admin to perform certain actions
-  before_action :admin_user, only: :destroy
+  before_action :check_work_user, only: [:edit, :update, :destroy]
 
   # Displays the contents of a single work
   def show
@@ -57,30 +55,25 @@ class WorksController < ApplicationController
   def update
     @work = Work.find(params[:id])
 
-    # TODO: add check for admin status
-    # TODO: show successful update
-    if current_user == @work.user
-      if @work.update(work_params)
-        redirect_to @work
-      else
-        render 'edit'
-      end
+    if @work.update(work_params)
+      flash[:success] = 'The work was successfully edited.'
+      redirect_to @work
     else
-      @work_not_owner = true
+      @work_errors = {}
+      @work.errors.each do |attr, msg|
+        @work_errors[attr] = msg
+      end
+      render 'edit'
     end
   end
 
   # Deletes a single work
   def destroy
     @work = Work.find(params[:id])
-
-    # TODO: redirect to same page and show errors
-    # TODO: add check for admin status
-    # TODO: show successful delete
-    if current_user == @work.user
-      @work.destroy
+    unless @work.destroy
+      flash[:error] = 'The work could not be deleted.'
     end
-    redirect_to root_path
+    redirect_back_or root_path
   end
 
   private
@@ -88,6 +81,16 @@ class WorksController < ApplicationController
   # Parameters required/allowed to create a work entry
   def work_params
     params.require(:work).permit(:title, :body, :tag_list, :incomplete)
+  end
+
+  # Confirms the user is the owner of the work or an admin
+  def check_work_user
+    owner = Work.find(params[:id]).user
+    unless owner == current_user || current_user.is_admin?
+      store_location
+      flash[:error] = 'You are not authorized to perform this action.'
+      redirect_to login_path
+    end
   end
 
 end

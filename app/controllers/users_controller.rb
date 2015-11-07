@@ -43,6 +43,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  # Updates a user's account information
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -59,7 +60,10 @@ class UsersController < ApplicationController
 
   # Deletes a single user entry
   def destroy
-    User.find(params[:id]).destroy
+    user = User.find(params[:id])
+    name = user.name
+    user.destroy
+    flash[:success] = name.to_s() + ' has been successfully deleted.'
     redirect_back_or root_path
   end
 
