@@ -26,6 +26,7 @@ class UsersController < ApplicationController
   # Persists a new user to the database
   def create
     @user = User.new(user_params)
+    @user.is_admin = false
     if @user.save
       log_in @user
       redirect_back_or root_path
@@ -47,7 +48,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      # TODO: show success
+      flash[:success] = 'User\'s profile was updated.'
       redirect_to @user
     else
       @user_errors = {}
@@ -63,7 +64,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     name = user.name
     user.destroy
-    flash[:success] = name.to_s() + ' has been successfully deleted.'
+    flash[:success] = name + ' has been successfully deleted.'
     redirect_back_or root_path
   end
 

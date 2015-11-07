@@ -3,7 +3,7 @@
   <!-- TODO: show the options to admins as well -->
   <h2 id='work-author'>Written by
     <%= link_to @work.user.name, users_path(@work.user) %>
-    <% if current_user == @work.user %>
+    <% if current_user == @work.user || current_user.is_admin? %>
       <span id='work-options'>&nbsp;(<%= link_to 'edit', edit_work_path(@work) %> - <%= link_to 'delete', work_path(@work), method: :delete, data: { confirm: 'Are you sure you want to delete this work? It cannot be recovered.' } %>)
       </span>
     <% end %>
