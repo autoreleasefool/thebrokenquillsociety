@@ -14,7 +14,7 @@
       <p class='author'>
         <strong>
           <% if work.user %>
-            <%= link_to work.user.name, users_path(work.user) %>
+            <%= link_to work.user.name, user_path(work.user) %>
           <% else %>
             <span class='time'>[Deleted]</span>
           <% end %>
