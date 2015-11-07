@@ -6,10 +6,12 @@
   </div>
 </div>
 
-<%= simple_form_for :user, url: users_path, html: { class: 'form' } do |f| %>
+<%= simple_form_for @user, url: users_path, html: { class: 'form' } do |f| %>
 
   <%= f.input :name,
+        :as => :string,
         required: true,
+        error: false,
         label: 'Username',
         wrapper_html: { class: 'remove-bottom-margin' },
         input_html: { class: 'flat-input' },
@@ -21,6 +23,7 @@
 
   <%= f.input :password,
         required: true,
+        error: false,
         label: 'Password',
         input_html: { class: 'flat-input' },
         label_html: { class: 'input-label' } %>
@@ -30,6 +33,7 @@
 
   <%= f.input :password_confirmation,
         required: true,
+        error: false,
         label: 'Confirm password',
         input_html: { class: 'flat-input' },
         label_html: { class: 'input-label' } %>
@@ -38,7 +42,9 @@
   <% end %>
 
   <%= f.input :email,
+        :as => :string,
         required: true,
+        error: false,
         label: 'Email',
         placeholder: 'xyz@uottawa.ca',
         input_html: { class: 'flat-input' },
@@ -49,6 +55,7 @@
 
   <%= f.input :tag_list,
         required: true,
+        error: false,
         label: 'What do you like to write?',
         placeholder: 'Genres, novels, poetry, etc.',
         input_html: { class: 'flat-input' },
@@ -58,8 +65,9 @@
   <% end %>
 
   <%= f.input :about,
-        required: true,
         :as => :text,
+        required: true,
+        error: false,
         label: 'Tell us about yourself',
         wrapper_html: { class: 'remove-bottom-margin' },
         input_html: { class: 'flat-input tall-area' },

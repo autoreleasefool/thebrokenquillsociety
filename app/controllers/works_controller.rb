@@ -1,6 +1,16 @@
 class WorksController < ApplicationController
 
-  before_filter :authorize, :except => [:index, :search, :show]
+  # Only allow logged in users to access certain pages
+  before_action :logged_in_user, only: [:new, :create, :edit, :update]
+  # Only allow the original user or admin to perform certain actions
+  before_action :correct_user, only: [:edit, :update]
+  # Only allow the admin to perform certain actions
+  before_action :admin_user, only: :destroy
+
+  # Displays the contents of a single work
+  def show
+    @work = Work.find(params[:id])
+  end
 
   # Displays the user's search results
   def search
@@ -17,25 +27,16 @@ class WorksController < ApplicationController
     end
   end
 
-  # Displays the contents of a single work
-  def show
-    @work = Work.find(params[:id])
-  end
-
   # Form to submit a new work
   def new
     @work = Work.new
-  end
-
-  # Form to edit a previously submitted work
-  def edit
-    @work = Work.find(params[:id])
   end
 
   # Creates a new work entry
   def create
     @work = Work.new(work_params)
     @work.user = current_user
+
     if @work.save
       redirect_to @work
     else
@@ -47,22 +48,38 @@ class WorksController < ApplicationController
     end
   end
 
+  # Form to edit a previously submitted work
+  def edit
+    @work = Work.find(params[:id])
+  end
+
   # Updates a previously created work entry
   def update
     @work = Work.find(params[:id])
 
-    if @work.update(params[:work].permit(:title, :body, :tag_list, :incomplete))
-      redirect_to @work
+    # TODO: add check for admin status
+    # TODO: show successful update
+    if current_user == @work.user
+      if @work.update(work_params)
+        redirect_to @work
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      @work_not_owner = true
     end
   end
 
   # Deletes a single work
   def destroy
     @work = Work.find(params[:id])
-    @work.destroy
 
+    # TODO: redirect to same page and show errors
+    # TODO: add check for admin status
+    # TODO: show successful delete
+    if current_user == @work.user
+      @work.destroy
+    end
     redirect_to root_path
   end
 

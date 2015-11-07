@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   # Enabling password encryption
   has_secure_password
 
+  # Save emails in lowercase
+  before_save { self.email = email.downcase }
+
   # Associations
   has_many :works, dependent: :destroy
   has_many :comments, dependent: :nullify
@@ -15,7 +18,7 @@ class User < ActiveRecord::Base
   validates :name,
     presence: true,
     uniqueness: true,
-    length: { in: 2..50 },
+    length: { in: 2..50, too_short: 'Username must be a minimum %{count} characters.', too_long: 'Username can be a maximum %{count} characters.' },
     format: { with: /\A[a-z0-9-]+\z/i, message: 'Username can only contain numbers, letters, and hyphens.' }
 
   # Verifying valid email
@@ -28,7 +31,7 @@ class User < ActiveRecord::Base
   # Verifying minimum password length
   validates :password,
     presence: true,
-    length: { minimum: 6, message: 'Password must be minimum %{count} characters.' }
+    length: { minimum: 6, message: 'Password must be a minimum %{count} characters.' }
 
   # Verifying maximum length of about section
   validates :about,

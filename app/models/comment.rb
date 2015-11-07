@@ -6,6 +6,7 @@ class Comment < ActiveRecord::Base
 
   # Verifying that a body was provided for the comment
   validates :body,
-    presence: { message: 'You cannot submit a blank comment.' }
+    presence: { message: 'You cannot submit a blank comment.' },
+    length: { maximum: 1000, too_long: 'Comment can be a maximum %{count} characters.' }
 
 end

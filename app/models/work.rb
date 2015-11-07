@@ -10,7 +10,7 @@ class Work < ActiveRecord::Base
   # Verifying minimum length of the title
   validates :title,
     presence: { message: 'Your work must have a title.' },
-    length: { maximum: 255, too_long: 'Your title can be a maximum %{count} characters' }
+    length: { maximum: 255, too_long: 'Title can be a maximum %{count} characters.' }
 
   # Verifying that a body was provided
   validates :body,

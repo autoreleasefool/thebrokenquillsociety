@@ -7,7 +7,7 @@ $ ->
   # Tracks the number of characters in an input field for the user
   if $('#user-name-count').length
     userName = $('#user_name')
-    userNameCount = $('user-name-count')
+    userNameCount = $('#user-name-count')
 
     userNameCount.html userName.val().length
     userName.keyup ->
@@ -18,7 +18,7 @@ $ ->
         userNameCounterError = true
       else if userNameCounterError
         $('#user-name-counter').removeClass 'counter-error'
-        userNameCounterError = false;
+        userNameCounterError = false
 
   # Tracks the number of characters in an input field for the user
   if $('#user-about-count').length

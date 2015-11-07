@@ -6,13 +6,12 @@ class SessionsController < ApplicationController
 
   # Creates a new user session
   def create
-    user = User.find_by_email(params[:session][:email])
+    user = User.find_by(email: params[:session][:email].downcase)
 
     # If the user exists and the password entered is valid
     if user && user.authenticate(params[:session][:password])
-      # Save the user id inside the browser cookie
-      session[:user_id] = user.id
-      redirect_to '/'
+      log_in user
+      redirect_to root_path
     else
       @login_error = 1
       render 'new'
@@ -21,8 +20,8 @@ class SessionsController < ApplicationController
 
   # Closes a session when the user logs out
   def destroy
-    session[:user_id] = nil
-    redirect_to '/login'
+    log_out if logged_in?
+    redirect_to root_path
   end
 
 end

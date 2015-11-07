@@ -9,8 +9,10 @@
     <%= f.input :body,
           required: true,
           label: 'Comment',
+          wrapper_html: { class: 'remove-bottom-margin' },
           input_html: { class: 'flat-input tall-area' },
           label_html: { class: 'input-label' } %>
+    <p id='comment-body-counter' class='counter'><span id='comment-body-count'>0</span> / 1000</p>
     <% if params[:error] %>
       <div class='alert alert-danger'>There was an error submitting your comment.</div>
     <% end %>
