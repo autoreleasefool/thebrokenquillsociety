@@ -54,6 +54,7 @@ class UsersController < ApplicationController
         @user_errors[attr] = msg
       end
       render 'edit'
+    end
   end
 
   # Deletes a single user entry

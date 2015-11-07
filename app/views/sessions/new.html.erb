@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<%= simple_form_for :session, url: login_path, html: { class: 'form' } do |f| %>
+<%= simple_form_for :session, url: login_path, html: { class: 'form horizontal-form' }, wrapper: :horizontal_form do |f| %>
 
   <!-- Errors -->
   <% if params[:noauth] %>
