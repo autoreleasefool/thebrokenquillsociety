@@ -81,7 +81,7 @@ $('document').ready(function() {
   );
 
   // Shows / hides the relevant nav hint on hover
-  $('#profile-svg').hover(
+  $('#profile-link').hover(
     function() {
       $('#profile-hint').addClass('nav-hint-visible');
     }, function() {
