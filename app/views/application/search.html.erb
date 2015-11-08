@@ -18,7 +18,7 @@
         <h3 class='title'><%= link_to work.title, work %></h3>
         <p class='author'>
           <strong><%= link_to work.user.name, user_path(work.user) %></strong>
-          <span class='time'> - <%= work.created_at.strftime('%B, %d, %Y') %></span>
+          <span class='time'> - <%= work.created_at.strftime('%B %-d, %Y') %></span>
         </p>
         <p class='excerpt'>
           <%= work.body[0..255] %>...
@@ -39,7 +39,7 @@
 
   <div id='user-results'>
     <% if params[:q] && params[:q].length > 0 %>
-      <h4 class='title'>Users who like writing <span class='wrap'>"<%= params[:q] %>"</span></h4>
+      <h4 class='title'>Users who like writing about <span class='wrap'>"<%= params[:q] %>"</span></h4>
     <% else %>
       <h4 class='title'>Most recent users</h4>
     <% end %>
