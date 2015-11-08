@@ -16,7 +16,7 @@ class AnnouncementsController < ApplicationController
     @announcement.user = current_user
 
     if @announcement.save
-      redirect_to @announcement
+      redirect_to root_path
     else
       @announcement_errors = {}
       @announcement.errors.each do |attr, msg|
@@ -28,14 +28,14 @@ class AnnouncementsController < ApplicationController
 
   # Form to update an announcement
   def edit
-    @announcment = Announcement.find(params[:id])
+    @announcement = Announcement.find(params[:id])
   end
 
   # Updates the entry for an announcement
   def update
     @announcement = Announcement.find(params[:id])
     if @announcement.update(announcement_params)
-      redirect_to @announcement
+      redirect_to root_path
     else
       @announcement_errors = {}
       @announcement.errors.each do |attr, msg|
@@ -57,7 +57,7 @@ class AnnouncementsController < ApplicationController
 
   # Parameters required/allowed to create an announcement
   def announcement_params
-    params.require(:announcement).permit(:title, :body)
+    params.require(:announcement).permit(:title, :body, :link)
   end
 
 end

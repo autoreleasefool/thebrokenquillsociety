@@ -1,9 +1,8 @@
 <div id='sidebar-inner'>
   <h3 class='title'>Announcements</h3>
   <div id='announcements'>
-    <% recent_announcements.each do |announcement| %>
-      <h4><%= announcement.title %></h4>
-      <p><%= simple_format announcement.body %></p>
+    <% if recent_announcements && recent_announcements.count > 0 %>
+      <%= render :partial => recent_announcements %>
     <% end %>
   </div>
   <div id='sidebar-links'>

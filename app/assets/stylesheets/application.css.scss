@@ -37,6 +37,14 @@ hr {
   text-decoration: underline;
 }
 
+.wrap {
+   white-space: pre-wrap;      /* CSS3 */
+   white-space: -moz-pre-wrap; /* Firefox */
+   white-space: -pre-wrap;     /* Opera <7 */
+   white-space: -o-pre-wrap;   /* Opera 7 */
+   word-wrap: break-word;      /* IE */
+}
+
 .btn-theme {
   color: #000;
   background-color: $primary-color;
@@ -132,7 +140,6 @@ hr {
   right: 0;
   top: $header-height;
   position: fixed;
-  //background-color: #eee;
   border-left: 2px solid #eee;
   padding: 0 10px $header-height 10px;
 
@@ -152,6 +159,7 @@ hr {
     position: absolute;
     bottom: 0;
     padding-bottom: 10px;
+    background-color: #fff;
 
     hr {
       margin-bottom: 10px;

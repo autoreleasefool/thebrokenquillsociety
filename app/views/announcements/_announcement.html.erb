@@ -1,0 +1,10 @@
+<% if announcement.link.length > 0 %>
+  <h4 class='wrap'><%= link_to announcement.title, announcement.link, target: '_blank' %></h4>
+<% else %>
+  <h4 class='wrap'><%= announcement.title %></h4>
+<% end %>
+<% if current_user && current_user.is_admin? %>
+  <p><%= link_to 'Edit', edit_announcement_path(announcement) %> | <%= link_to 'Delete', announcement_path(announcement), method: :delete, data: { confirm: 'Are you sure you want to delete this announcement? It cannot be recovered.' } %></p>
+<% end %>
+<p class='wrap'><%= announcement.body %></p>
+<hr />

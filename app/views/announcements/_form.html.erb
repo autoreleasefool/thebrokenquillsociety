@@ -25,8 +25,16 @@
     <div class='alert alert-danger'><%= @announcement_errors[:body] %></div>
   <% end %>
 
+  <%= f.input :link,
+        :as => :string,
+        required: false,
+        error: false,
+        label: 'URL',
+        input_html: { class: 'flat-input tall-area' },
+        label_html: { class: 'input-label' } %>
+
   <div class='form-submit'>
-    <%= f.submit 'Create announcement', :class => 'btn btn-lg btn-theme' %>
+    <%= f.submit 'Submit', :class => 'btn btn-lg btn-theme' %>
   </div>
 
 <% end %>
