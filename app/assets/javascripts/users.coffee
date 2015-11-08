@@ -13,7 +13,7 @@ $ ->
     userName.keyup ->
       charCount = userName.val().length
       userNameCount.html charCount
-      if charCount > 50
+      if charCount > 32
         $('#user-name-counter').addClass 'counter-error'
         userNameCounterError = true
       else if userNameCounterError

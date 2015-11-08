@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   validates :name,
     presence: true,
     uniqueness: true,
-    length: { in: 2..50, too_short: 'Username must be a minimum %{count} characters.', too_long: 'Username can be a maximum %{count} characters.' },
+    length: { in: 2..32, too_short: 'Username must be a minimum %{count} characters.', too_long: 'Username can be a maximum %{count} characters.' },
     format: { with: /\A[a-z0-9-]+\z/i, message: 'Username can only contain numbers, letters, and hyphens.' }
 
   # Verifying valid email
