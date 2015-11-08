@@ -38,7 +38,7 @@ input[type='checkbox']:checked ~ label #incomplete-unchecked { display: none; }
 
   #work-tags { padding-bottom: $header-height; }
   #work-incomplete { text-align: center; }
-  span#work-options, #work-options a, #work-options a:hover, #work-options a:visited { color: #206a11; }
+  span#work-options, #work-options a, #work-options a:hover, #work-options a:visited { color: $secondary-color; }
 }
 
 #goto-comments {
