@@ -36,9 +36,8 @@ hr {
   background-color: #eee;
 }
 
-.underlined {
-  text-decoration: underline;
-}
+.underlined { text-decoration: underline; }
+.centered { text-align: center; }
 
 .wrap {
    white-space: pre-wrap;      /* CSS3 */
@@ -111,6 +110,11 @@ hr {
       color: #999;
       background-color: #999;
     }
+  }
+
+  .pagination {
+    margin-top: 5px;
+    margin-bottom: 2px;
   }
 }
 

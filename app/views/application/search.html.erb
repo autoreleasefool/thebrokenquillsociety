@@ -7,6 +7,10 @@
 
   <hr class='thick' />
 
+  <div class='centered'>
+    <%= will_paginate @work_search_results %>
+  </div>
+
   <div id='work-results'>
     <% if params[:q] && params[:q].length > 0 %>
       <h3 class='title'>Works matching <span class='wrap'>"<%= params[:q] %>"</span></h3>
@@ -33,7 +37,9 @@
     <% end %>
   </div>
 
-  <%= will_paginate @work_search_results %>
+  <div class='centered'>
+    <%= will_paginate @work_search_results %>
+  </div>
 
   <hr class='thick' />
 

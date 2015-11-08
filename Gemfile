@@ -19,6 +19,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'acts-as-taggable-on', '~> 3.4'
 # Adds pagination to controllers
 gem 'will_paginate',  '~> 3.0.6'
+# Pagination formatting
+gem 'bootstrap-will_paginate', '0.0.10'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
