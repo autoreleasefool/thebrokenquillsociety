@@ -12,13 +12,7 @@
     <nav id='nav'>
       <div class='nav-wrapper'>
         <!-- link to user profile -->
-        <%= link_to user_path(current_user), id: 'profile-svg' do %>
-          <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-              <g transform='matrix(1.5,0,0,1.5,-6,-6)'>
-                  <path d='M12,12C14.21,12 16,10.21 16,8C16,5.79 14.21,4 12,4C9.79,4 8,5.79 8,8C8,10.21 9.79,12 12,12ZM12,14C9.33,14 4,15.34 4,18L4,20L20,20L20,18C20,15.34 14.67,14 12,14Z' />
-              </g>
-          </svg>
-        <% end %>
+        <h2><%= link_to current_user.name, user_path(current_user) %></h2>
         <!-- end link to user profile -->
 
         <!-- link to inbox -->
@@ -30,16 +24,6 @@
           </svg>
         </a>
         <!-- end link to inbox -->
-
-        <!-- link to user's works -->
-        <a href='/mine' id='work-svg'>
-          <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-              <g transform='matrix(1.2,0,0,1.2,-2.4,-2.4)'>
-                  <path d='M18,2L6,2C4.9,2 4,2.9 4,4L4,20C4,21.1 4.9,22 6,22L18,22C19.1,22 20,21.1 20,20L20,4C20,2.9 19.1,2 18,2ZM6,4L11,4L11,12L8.5,10.5L6,12L6,4Z' />
-              </g>
-          </svg>
-        </a>
-        <!-- end link to user's works -->
 
         <!-- link to favourite works -->
         <a href='#' id='fave-svg'>

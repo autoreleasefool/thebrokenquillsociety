@@ -333,19 +333,25 @@ header {
     text-align: center;
     line-height: $header-height;
   }
-  h1 {
-    font-family: 'Raleway', sans-serif;
+  h1 { font-family: 'Raleway', sans-serif; }
+  h2 {
+    font-size: 16pt;
+    float: right;
+    line-height: $header-height;
+    margin-right: 18px;
+    a, a:visited {
+      color: #fff;
+      text-decoration: none;
+    }
+    a:hover {
+      color: $primary-color;
+      text-decoration: none;
+    }
   }
 }
 
 .svg-header { fill: #fff; }
 .svg-header:hover { fill: $primary-color; }
-.svg-large {
-  width: 40px + $header-margin;
-  height: 40px;
-  margin: 10px 0 10px 0;
-  padding: 0 $header-margin 0 0;
-}
 .svg-small {
   width: 24px + $header-margin;
   height: 40px;
@@ -399,7 +405,7 @@ header {
 #search-slider {
   position: relative;
   float: right;
-  left: 211px;
+  left: 169px;
 
   -webkit-transition: left $default-anim-time ease;
   -moz-transition: left $default-anim-time ease;
