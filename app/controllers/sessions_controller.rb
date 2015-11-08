@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
 
+  # Only allowed logged out users to access certain pages
+  before_action :logged_out_user, only: [:new, :create]
+
   # Form to let a user login to their account
   def new
   end

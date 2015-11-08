@@ -1,0 +1,56 @@
+<div id='search-results'>
+  <% if params[:q] && params[:q].length > 0 %>
+    <h1 class='title'>Search results for <span class='wrap'>"<%= params[:q] %>"</span></h1>
+  <% else %>
+    <h1 class='title'>All works &amp; users</h1>
+  <% end %>
+
+  <hr class='thick' />
+
+  <div id='work-results'>
+    <% if params[:q] && params[:q].length > 0 %>
+      <h3 class='title'>Works matching <span class='wrap'>"<%= params[:q] %>"</span></h3>
+    <% else %>
+      <h3 class='title'>Most recent works</h3>
+    <% end %>
+    <% if @work_search_results.length > 0 %>
+      <% @work_search_results.each do |work| %>
+        <h3 class='title'><%= link_to work.title, work %></h3>
+        <p class='author'>
+          <strong><%= link_to work.user.name, user_path(work.user) %></strong>
+          <span class='time'> - <%= work.created_at.strftime('%B, %d, %Y') %></span>
+        </p>
+        <p class='excerpt'>
+          <%= work.body[0..255] %>...
+        </p>
+
+        <% if work != @work_search_results.last %>
+          <hr />
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>Sorry, there were no results.</p>
+    <% end %>
+  </div>
+
+  <%= will_paginate @work_search_results %>
+
+  <hr class='thick' />
+
+  <div id='user-results'>
+    <% if params[:q] && params[:q].length > 0 %>
+      <h4 class='title'>Users who like writing <span class='wrap'>"<%= params[:q] %>"</span></h4>
+    <% else %>
+      <h4 class='title'>Most recent users</h4>
+    <% end %>
+    <% if @user_search_results.length > 0 %>
+      <% @user_search_results.each do |user| %>
+        <p><%= link_to user.name, user %></p>
+        <p><%= user.created_at.strftime('%B, %d, %Y') %></p>
+      <% end %>
+    <% else %>
+      <p>Sorry, there were no results.</p>
+    <% end %>
+  </div>
+
+</div>

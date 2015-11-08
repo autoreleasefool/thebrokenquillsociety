@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  # Only allowed logged out users to access certain pages
+  before_action :logged_out_user, only: [:new, :create]
   # Only allow logged in users to access certain pages
   before_action :logged_in_user, only: [:edit, :update]
   # Only allow the original user or admin to perform certain actions

@@ -8,12 +8,15 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
+  span {
+    font-family: 'Montserrat', sans-serif;
+  }
+  &.title {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 
-h1.title, h2.title, h3.title {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
 
 html, body {
   height: 100%;
@@ -80,6 +83,35 @@ hr {
   left: 50%;
   margin-left: -$sidebar-width / 2;
   transform: translateX(-50%);
+}
+
+// Search results
+
+#search-results {
+  width: 75%;
+  max-width: 50em;
+  margin: 0 auto 0 auto;
+
+  h2.title { text-align: center; }
+  h3.title a, h3.title a:hover, h3.title a:visited { color: $primary-color-dark !important; }
+  p {
+    margin: 0;
+    padding-bottom: 10px;
+    &.excerpt {
+      color: #999;
+      font-size: 10pt;
+    }
+  }
+  hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    &.thick {
+      border: none;
+      height: 1px;
+      color: #999;
+      background-color: #999;
+    }
+  }
 }
 
 // Index banner

@@ -36,6 +36,14 @@ module SessionsHelper
   #      Authentication        #
   ##############################
 
+  # Checks if a user is currently logged out
+  def logged_out_user
+    if logged_in?
+      flash[:error] = 'You\'re already logged in.'
+      redirect_to user_path(current_user)
+    end
+  end
+
   # Checks if a user is currently logged in
   def logged_in_user
     unless logged_in?
