@@ -31,13 +31,21 @@ input[type='checkbox']:checked ~ label #incomplete-unchecked { display: none; }
     font-size: 12pt;
   }
 
-  #work-tags, #work-incomplete {
+  #work-info {
+    padding-top: 15px;
+  }
+
+  #work-tags, #work-incomplete, #work-updated {
     font-size: 10pt;
     color: #808080;
   }
 
   #work-tags { padding-bottom: $header-height; }
-  #work-incomplete { text-align: center; }
+  #work-incomplete, #work-updated {
+    text-align: center;
+    margin: 0;
+    padding-top: 5px;
+  }
   span#work-options, #work-options a, #work-options a:hover, #work-options a:visited { color: $secondary-color; }
 }
 

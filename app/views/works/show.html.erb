@@ -1,16 +1,18 @@
 <div class='work'>
   <h1 id='work-title' class='title'><%= @work.title %></h1>
-  <!-- TODO: show the options to admins as well -->
   <h2 id='work-author'>Written by
     <%= link_to @work.user.name, user_path(@work.user) %>
-    <% if current_user == @work.user || current_user.is_admin? %>
+    <% if current_user && (current_user == @work.user || current_user.is_admin?) %>
       <span id='work-options'>&nbsp;(<%= link_to 'edit', edit_work_path(@work) %> - <%= link_to 'delete', work_path(@work), method: :delete, data: { confirm: 'Are you sure you want to delete this work? It cannot be recovered.' } %>)
       </span>
     <% end %>
   </h2>
-  <% if @work.incomplete %>
-    <p id='work-incomplete'>The author has marked this work as incomplete.</p>
-  <% end %>
+  <div id='work-info'>
+    <p id='work-updated'>This work was last updated <%= @work.updated_at.strftime('%B %-d, %Y') %></p>
+    <% if @work.incomplete %>
+      <p id='work-incomplete'>The author has marked this work as incomplete.</p>
+    <% end %>
+  </div>
   <hr />
   <%= simple_format @work.body, id: 'work-body' %>
   <p id='work-tags'><strong>Tags:</strong> <%= @work.tag_list %></p>
