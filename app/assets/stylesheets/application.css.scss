@@ -183,7 +183,7 @@ hr {
   border-left: 2px solid #eee;
   padding: 0 10px $header-height 10px;
 
-  .title {
+  h3.title {
     text-align: center;
     text-decoration: underline;
   }
@@ -194,6 +194,7 @@ hr {
     position: relative;
 
     h4.title {
+      text-align: center;
       padding-top: 0;
     }
   }

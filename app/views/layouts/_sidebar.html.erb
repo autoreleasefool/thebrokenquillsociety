@@ -1,9 +1,11 @@
 <div id='sidebar-inner'>
   <h3 class='title'>Announcements</h3>
   <% if current_user && current_user.is_admin? %>
-    <h4 class='title'><%= link_to 'New Announcement', new_announcement_path %></h4>
+    <h4 id='new-announcement' class='title'><%= link_to 'New Announcement', new_announcement_path %></h4>
   <% end %>
   <div id='announcements'>
+    <p id='all-announcements'><%= link_to 'See all announcements', announcements_path %></p>
+    <hr />
     <% if recent_announcements && recent_announcements.count > 0 %>
       <%= render :partial => recent_announcements %>
     <% end %>

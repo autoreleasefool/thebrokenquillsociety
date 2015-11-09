@@ -4,3 +4,10 @@
   height: 100%;
    a, a:hover, a:visited { color: $secondary-color; }
 }
+
+#all-announcements { text-align: center; }
+#new-announcement {
+  a, a:hover, a:visited {
+    text-decoration: none;
+  }
+}

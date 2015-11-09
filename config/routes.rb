@@ -22,6 +22,5 @@ Rails.application.routes.draw do
 
   # Route to access elements of user's profile
   get '/profile' => 'users#show'
-  get '/mine' => 'users#works'
 
 end
