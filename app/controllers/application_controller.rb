@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  # Updates user last seen before each action
+  before_action :set_last_seen,
+    if: proc { logged_in? && (session[:last_seen].nil? || session[:last_seen] < 15.minutes.ago)}
+
   # Making session helper methods available to all controllers
   include SessionsHelper
 
@@ -29,6 +33,14 @@ class ApplicationController < ActionController::Base
       @work_search_results = Work.all.order('created_at DESC').paginate(page: params[:page], per_page: 10)
       @user_search_results = User.all.order('created_at DESC').paginate(page: params[:page], per_page: 3)
     end
+  end
+
+  private
+
+  # Updates the time the user was last known to perform some action
+  def set_last_seen
+    current_user.update_attribute(:last_seen, Time.now)
+    session[:last_seen] = Time.now
   end
 
 end
