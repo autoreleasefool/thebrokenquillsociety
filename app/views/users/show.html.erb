@@ -1,12 +1,33 @@
-<p>ID: <%= @user.id %></p>
-<p>Name: <%= @user.name %></p>
-<p>Email: <%= @user.email %></p>
-<p>Likes: <%= @user.tag_list %></p>
-<p>About: <%= @user.about %></p>
+<div id='user'>
+  <h1 class='title centered'><%= @user.name %>'s Profile</h1>
+  <% if @user.last_seen %>
+    <p class='last-seen'>They were last seen <%= time_ago_in_words(@user.last_seen) %> ago<p>
+  <% end %>
 
-<hr />
+  <hr class='thick' />
 
-<% @user.works.each do |work| %>
-  <p><%= link_to work.title, work %></p>
-  <p><%= work.created_at.strftime('%B, %d, %Y') %></p>
-<% end %>
+  <h3 class='title'>About <%= @user.name %></h2>
+  <%= simple_format @user.about, class: 'about' %>
+
+  <h3 class='title'>What do they like to write?</h2>
+  <p class='likes'><%= @user.tag_list %></p>
+
+  <hr class='thick' />
+
+  <h3 class='title'>Here's what they've written</h3>
+
+  <% @works.each do |work| %>
+    <h3 class='title'><%= link_to work.title, work %></h3>
+    <p class='time'><%= time_ago_in_words(work.created_at) %> ago</p>
+    <p class='excerpt'>
+      <%= work.body[0..255] %>...
+    </p>
+
+    <% if work != @works.last %>
+      <hr />
+    <% end %>
+  <% end %>
+  <div class='centered'>
+    <%= will_paginate @works %>
+  </div>
+</div>

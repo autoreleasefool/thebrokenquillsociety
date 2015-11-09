@@ -12,12 +12,7 @@ class UsersController < ApplicationController
   # User's profile
   def show
     @user = User.find(params[:id])
-  end
-
-  # User's submitted works
-  def works
-    @user = User.find(params[:id])
-    @user_works = Work.find_by(user_id: @user.id)
+    @works = @user.works.order('created_at DESC').paginate(page: params[:page], per_page: 10)
   end
 
   # Form to create a new user account

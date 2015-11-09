@@ -6,3 +6,37 @@
     text-decoration: underline;
   }
 }
+
+#user {
+  width: 75%;
+  max-width: 50em;
+  margin: 0 auto 0 auto;
+
+  p.about, p.likes {
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: justify;
+    font-size: 12pt;
+  }
+
+  p.last-seen {
+    text-align: center;
+    font-size: 10pt;
+    color: #808080;
+  }
+
+  h3.title a, h3.title a:hover, h3.title a:visited {
+    color: $primary-color-dark !important;
+  }
+  p.excerpt {
+    color: #999;
+    font-size: 10pt;
+  }
+
+  hr.thick {
+    border: none;
+    height: 1px;
+    color: #999;
+    background-color: #999;
+  }
+}
