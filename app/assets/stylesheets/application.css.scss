@@ -237,17 +237,17 @@ hr {
 .counter-error { color: #aa4442 !important; }
 .has-error .control-label { color: inherit; }
 
+p.form-hint {
+  padding-top: 8px;
+  color: #808080;
+}
+
 input[type='checkbox'] { display: none; }
 .checkbox label { padding-left: 0; }
 
 .checkbox-label {
   padding-left: 8px;
   font-size: 12pt;
-}
-
-p.checkbox-hint {
-  padding-top: 8px;
-  color: #636363;
 }
 
 .checkbox label svg {
@@ -315,6 +315,10 @@ textarea.tall-area {
 
 .form-group {
   margin-bottom: 1em;
+}
+
+.with-hint {
+  margin-bottom: 0;
 }
 
 .form-submit {

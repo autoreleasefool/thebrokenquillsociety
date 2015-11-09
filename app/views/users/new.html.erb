@@ -58,8 +58,10 @@
         error: false,
         label: 'What do you like to write?',
         placeholder: 'Genres, novels, poetry, etc.',
+        wrapper_html: { class: 'with-hint' },
         input_html: { class: 'flat-input' },
         label_html: { class: 'input-label' } %>
+  <p class='form-hint'>This should be a list of comma-separated keywords.</p>
   <% if @user_errors && @user_errors[:tag_list] %>
     <div class='alert alert-danger'><%= @user_errors[:tag_list] %></div>
   <% end %>

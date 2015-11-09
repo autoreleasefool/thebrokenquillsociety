@@ -1,6 +1,0 @@
-<h1><%= current_user.name %>'s Works</h1>
-
-<% current_user.works.each do |work| %>
-<p><%= link_to work.title, work %></p>
-<p><%= work.created_at.strftime('%B, %d, %Y') %></p>
-<% end %>

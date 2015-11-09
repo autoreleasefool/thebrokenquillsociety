@@ -30,8 +30,10 @@
         error: false,
         label: 'Tags',
         placeholder: 'Type of work, genres, settings, etc.',
+        wrapper_html: { class: 'with-hint' },
         input_html: { class: 'flat-input' },
         label_html: { class: 'input-label' } %>
+  <p class='form-hint'>This should be a list of comma-separated keywords.</p>
   <% if @work_errors && @work_errors[:tag_list] %>
     <div class='alert alert-danger'><%= @work_errors[:tag_list] %></div>
   <% end %>
@@ -52,7 +54,7 @@
       </svg>
       <span class='checkbox-label'>In progress?</span>
     </label>
-    <p class='checkbox-hint'>Check this box if this isn't a full story or you're going to finish it later.</p>
+    <p class='form-hint'>Check this box if this isn't a full story or you're going to finish it later.</p>
   </div>
 
   <div class='form-submit'>
