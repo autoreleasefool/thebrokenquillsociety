@@ -10,6 +10,14 @@
     <p id='last-seen'>They were last seen <%= time_ago_in_words(@user.last_seen) %> ago<p>
   <% end %>
 
+  <% if @user.nanowrimo_name && @user.nanowrimo_name.length > 0 %>
+    <hr class='thick' />
+    <h3 class='title'>NaNoWriMo Statistics</h3>
+
+    <p id='nano-name'><strong>Username:</strong> <%= @user.nanowrimo_name %></p>
+    <p id='nano-wc'><strong>Wordcount:</strong> <%= @wordcount %></p>
+  <% end %>
+
   <hr class='thick' />
 
   <h3 class='title'>About <%= @user.name %></h2>

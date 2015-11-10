@@ -5,21 +5,21 @@ class UsersController < ApplicationController
   # Only allow logged in users to access certain pages
   before_action :logged_in_user, only: [:edit, :update]
   # Only allow the original user or admin to perform certain actions
-  before_action :check_user, only: [:edit, :update]
-  # Only allow the admin to perform certain actions
-  before_action :admin_user, only: :destroy
+  before_action :check_user, only: [:edit, :update, :delete]
 
-  # Allows the controller to make GET requests
-  # require 'net/http'
+  # Cleaner HTTP requests
+  require 'httparty'
 
   # User's profile
   def show
     @user = User.find(params[:id])
     @works = @user.works.order('created_at DESC').paginate(page: params[:page], per_page: 10)
 
-    # url = URI.parse('http://nanowrimo.org/wordcount_api/wc/jroque')
-    # request = Net::HTTP::Get.new(url)
-    # response = Net::HTTP.start(ursl.host, url.port){ |http| http.request(request) }
+    if @user.nanowrimo_name && @user.nanowrimo_name.length > 0
+      response = HTTParty.get('http://nanowrimo.org/wordcount_api/wc/' + @user.nanowrimo_name)
+      user_info = response.parsed_response
+      @wordcount = user_info['wc']['user_wordcount']
+    end
 
   end
 
@@ -79,12 +79,12 @@ class UsersController < ApplicationController
 
   # Parameters required/allowed to create a user entry
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :tag_list, :about)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :tag_list, :about, :nanowrimo_name)
   end
 
   # Parameters required/allowed to update a user entry
   def user_params_update
-    params.require(:user).permit(:name, :tag_list, :about)
+    params.require(:user).permit(:name, :tag_list, :about, :nanowrimo_name)
   end
 
   # Checks to ensure a valid user is logged in before actions are taken

@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 
+  # Allows GET requests
+  require 'net/http'
+
   # Enabling password encryption
   has_secure_password
 
@@ -13,6 +16,12 @@ class User < ActiveRecord::Base
 
   # Tagging
   acts_as_taggable
+
+  # Checks for valid nanowrimo name
+  # validate do |user|
+  #   user.check_nanowrimo_name
+  # end
+  validate :check_nanowrimo_name
 
   # Verifying valid username
   validates :name,
@@ -43,5 +52,17 @@ class User < ActiveRecord::Base
   validates :about,
     presence: true,
     length: { maximum: 1000, message: 'About can be a maximum %{count} characters.' }
+
+  # If a nanowrimo username was provided, checks to make sure it returns a valid account
+  def check_nanowrimo_name
+    if self.nanowrimo_name && self.nanowrimo_name.length > 0
+      url = URI.parse('http://nanowrimo.org/wordcount_api/wc/' + self.nanowrimo_name)
+      request = Net::HTTP::Get.new(url)
+      response = Net::HTTP.start(url.host, url.port){ |http| http.request(request) }
+      if response.body.include? 'user does not exist'
+        errors.add(:nanowrimo_name, 'This is not a valid NaNoWriMo username.')
+      end
+    end
+  end
 
 end

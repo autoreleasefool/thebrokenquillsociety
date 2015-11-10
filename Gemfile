@@ -5,8 +5,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.4'
 # Use postgres as the database for Active Record
 gem 'pg', '~> 0.18'
-# Creating forms
-gem 'simple_form'
 # Use Bootstrap SASS for design
 gem 'bootstrap-sass', '~> 3.3.5'
 # Use SCSS for stylesheets
@@ -15,12 +13,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
-# Add tags to models
-gem 'acts-as-taggable-on', '~> 3.4'
-# Adds pagination to controllers
-gem 'will_paginate',  '~> 3.0.6'
-# Pagination formatting
-gem 'bootstrap-will_paginate', '0.0.10'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -32,6 +24,17 @@ gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+# Creating forms
+gem 'simple_form'
+# Add tags to models
+gem 'acts-as-taggable-on', '~> 3.4'
+# Adds pagination to controllers
+gem 'will_paginate',  '~> 3.0.6'
+# Pagination formatting
+gem 'bootstrap-will_paginate', '0.0.10'
+# Clean HTTP requests
+gem 'httparty'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
