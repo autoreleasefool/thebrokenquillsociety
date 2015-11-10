@@ -4,32 +4,27 @@ A website for the University of Ottawa Creative Writing Club (CWC). Provides a h
 
 ## What it needs
 
-* Home page
+* ~~Home page~~
 * ~~Header~~
 * ~~Sidebar~~
-* Announcements
+* ~~Announcements~~
 * ~~Sign up~~
 * ~~Submission page~~
-* Posts
-* Search
+* ~~Posts~~
+* ~~Search~~
 * ~~Comments~~
 * About / Executive
-* User profiles
-* Edit profiles
+* ~~User profiles~~
+* ~~Edit profiles~~
 
 ## Pages to create
 
-* Home page
-  * Introduction to the website
+* ~~Home page~~
+  * ~~Introduction to the website~~
   * ~~Login~~
   * ~~Sign up~~
-  * Top
-    * Contributors
-    * Number of comments on submission
-  * Most recent
-    * Submissions
-    * Comments
-    * Users
+  * ~~Most recent~~
+    * ~~Submissions~~
   * List of themes for semester
 * ~~Header~~
   * ~~Home page~~
@@ -37,11 +32,10 @@ A website for the University of Ottawa Creative Writing Club (CWC). Provides a h
   * ~~Submit~~
   * ~~Search~~
   * ~~Profile (when available)~~
-* Sidebar
-  * Meeting times & location
-  * Facebook page
-* Announcements
-  * List of recent announcements
+* ~~Sidebar~~
+  * ~~Facebook page~~
+* ~~Announcements~~
+  * ~~List of recent announcements~~
   * Executive posts from Facebook?
 * ~~Sign up~~
   * ~~Username (text field, required)~~
@@ -72,36 +66,33 @@ A website for the University of Ottawa Creative Writing Club (CWC). Provides a h
     * ~~Must be logged in~~
     * ~~Comment text~~
   * ~~Comments~~
-* Search
-  * Search by tags & title
-  * Order alphabetical, by most recent
-  * Search submissions or users
+* ~~Search~~
+  * ~~Search by tags & title~~
+  * ~~Order alphabetical, by most recent~~
+  * ~~Search submissions or users~~
 * About / Executive
   * Executive members
     * Name
     * Position
     * Brief description
     * Link to profile / submissions
-* User profile
-  * Username
-  * About me
-  * What do they like to write?
-  * Last login date
-  * Account creation date
-  * Submissions
-    * Most recent
-    * Most commented
-  * Comments
-    * Most recent
-* Edit profile
-  * Load fields from database
-  * What do you like to write? (text field, not required)
-  * About me (multi line text field, not required)
-  * Change password - Old password, new password, confirm password
-  * Save / Cancel
-  * Usage:
-    * Must be logged in
-    * Opens with user's id in url - must validate against logged in user
+* ~~User profile~~
+  * ~~Username~~
+  * ~~About me~~
+  * ~~What do they like to write?~~
+  * ~~Last login date~~
+  * ~~Account creation date~~
+  * ~~Submissions~~
+    * ~~Most recent~~
+* ~~Edit profile~~
+  * ~~Load fields from database~~
+  * ~~What do you like to write? (text field, not required)~~
+  * ~~About me (multi line text field, not required)~~
+  * ~~Change password - Old password, new password, confirm password~~
+  * ~~Save / Cancel~~
+  * ~~Usage:~~
+    * ~~Must be logged in~~
+    * ~~Opens with user's id in url - must validate against logged in user~~
 
 ## Database
 
@@ -133,3 +124,6 @@ A website for the University of Ottawa Creative Writing Club (CWC). Provides a h
   * ~~Body (string, not null)~~
   * ~~Author id (fk, not null)~~
   * ~~Id (number, not null)~~
+* Favourites
+  * User
+  * Work

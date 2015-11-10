@@ -20,7 +20,6 @@ class UsersController < ApplicationController
       user_info = response.parsed_response
       @wordcount = user_info['wc']['user_wordcount']
     end
-
   end
 
   # Form to create a new user account
