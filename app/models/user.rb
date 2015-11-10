@@ -27,14 +27,14 @@ class User < ActiveRecord::Base
   # Verifying valid username
   validates :name,
     presence: true,
-    uniqueness: true,
+    uniqueness: { message: 'That username is already taken.' },
     length: { in: 2..32, too_short: 'Username must be a minimum %{count} characters.', too_long: 'Username can be a maximum %{count} characters.' },
     format: { with: /\A[a-z0-9-]+\z/i, message: 'Username can only contain numbers, letters, and hyphens.' }
 
   # Verifying valid email
   validates :email,
     presence: true,
-    uniqueness: true,
+    uniqueness: { message: 'That email has already been used.' },
     length: { in: 12..50},
     format: { with: /\A([^@\s]+)@uottawa[.]ca\z/i, message: 'You must use an @uOttawa.ca email.' }
 
