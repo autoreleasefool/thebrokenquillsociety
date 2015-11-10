@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :works, dependent: :destroy
   has_many :comments, dependent: :nullify
   has_many :announcements, dependent: :nullify
+  has_many :favourites, dependent: :destroy
 
   # Tagging
   acts_as_taggable

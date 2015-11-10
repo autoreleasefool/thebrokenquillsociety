@@ -3,6 +3,7 @@ class Work < ActiveRecord::Base
   # Associations
   belongs_to :user
   has_many :comments, dependent: :delete_all
+  has_many :favourites, dependent: :destroy
 
   # Tagging
   acts_as_taggable
