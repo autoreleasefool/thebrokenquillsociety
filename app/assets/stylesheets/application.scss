@@ -311,6 +311,10 @@ textarea.tall-area {
   max-width: 50em;
   padding: .5em 0 .5em 0;
   margin: 0 auto 0 auto;
+
+  input.disabled {
+    color: #999;
+  }
 }
 
 .form-group {
