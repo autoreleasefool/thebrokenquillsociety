@@ -1,0 +1,18 @@
+<div id='favourites'>
+<h1 class='title'>Your favourites</h1>
+
+<% @favourites.each do |fave| %>
+  <h3 class='title'><%= link_to fave.work.title, fave.work %></h3>
+  <p class='time'><%= time_ago_in_words(fave.work.created_at) %> ago</p>
+  <p class='excerpt'>
+    <%= fave.work.body[0..255] %>...
+  </p>
+
+  <% if fave != @favourites.last %>
+    <hr />
+  <% end %>
+<% end %>
+<div class='centered'>
+  <%= will_paginate @favourites %>
+</div>
+</div>
