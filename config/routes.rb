@@ -22,5 +22,8 @@ Rails.application.routes.draw do
 
   # Route to access elements of user's profile
   get '/profile' => 'users#show'
+  get '/faves' => 'users#faves'
+  post '/like' => 'users#add_favourite'
+  post '/unlike' => 'users#remove_favourite'
 
 end

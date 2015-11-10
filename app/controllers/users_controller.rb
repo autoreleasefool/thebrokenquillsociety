@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # Only allowed logged out users to access certain pages
   before_action :logged_out_user, only: [:new, :create]
   # Only allow logged in users to access certain pages
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:edit, :update, :faves, :add_favourite, :remove_favourite]
   # Only allow the original user or admin to perform certain actions
   before_action :check_user, only: [:edit, :update, :delete]
 
@@ -19,6 +19,35 @@ class UsersController < ApplicationController
       response = HTTParty.get('http://nanowrimo.org/wordcount_api/wc/' + @user.nanowrimo_name)
       user_info = response.parsed_response
       @wordcount = user_info['wc']['user_wordcount']
+    end
+  end
+
+  # User's favourited works
+  def faves
+    @favourites = current_user.favourites.order('created_at DESC').paginate(page: params[:page], per_page: 10)
+  end
+
+  # Adds a work to the current user's favourites
+  def add_favourite
+    if params[:work]
+      work = Work.find(params[:work])
+      if Favourite.find_by(user_id: current_user.id, work_id: work.id).nil?
+        fave = Favourite.new
+        fave.user = current_user
+        fave.work = work
+        fave.save
+      end
+      redirect_to work
+    end
+  end
+
+  # Removes a work from the current user's favourites
+  def remove_favourite
+    if params[:work]
+      work = Work.find(params[:work])
+      fave = Favourite.find_by(user_id: current_user.id, work_id: work.id)
+      fave.destroy unless fave.nil?
+      redirect_to work
     end
   end
 

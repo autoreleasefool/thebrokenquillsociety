@@ -12,9 +12,7 @@ input[type='checkbox']:checked ~ label #incomplete-unchecked { display: none; }
   margin-right: auto;
   margin-bottom: -$header-height;
 
-  #work-title {
-    text-align: center;
-  }
+  #work-title { text-align: center; }
 
   #work-author {
     font-size: 12pt;
@@ -31,22 +29,37 @@ input[type='checkbox']:checked ~ label #incomplete-unchecked { display: none; }
     font-size: 12pt;
   }
 
-  #work-info {
-    padding-top: 15px;
-  }
+  #work-info { padding-top: 15px; }
 
-  #work-tags, #work-incomplete, #work-updated {
+  #work-tags, #work-incomplete, #work-updated, #work-faves, #work-fave {
     font-size: 10pt;
     color: #808080;
   }
 
-  #work-tags { padding-bottom: $header-height; }
-  #work-incomplete, #work-updated {
+  #work-tags {
+    clear: left;
+    padding-bottom: $header-height;
+  }
+  #work-incomplete, #work-updated, #work-faves {
     text-align: center;
     margin: 0;
     padding-top: 5px;
   }
   span#work-options, #work-options a, #work-options a:hover, #work-options a:visited { color: $secondary-color; }
+
+  #work-fave {
+    float: left;
+    line-height: 24px;
+    margin-left: 10px;
+  }
+  #btn-favourite {
+    float: left;
+    svg {
+      fill: #ff0000;
+      width: 24px;
+      height: 24px;
+    }
+  }
 }
 
 #goto-comments {

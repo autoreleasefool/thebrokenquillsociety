@@ -20,6 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  user-faves:
+    one: '1 user has favourited this work.'
+    other: '%{count} users have favourited this work.'
   activerecord:
     errors:
       models:
