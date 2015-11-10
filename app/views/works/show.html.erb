@@ -18,7 +18,7 @@
   </div>
   <hr />
   <%= simple_format @work.body, id: 'work-body' %>
-  <% if Favourite.find_by(user_id: current_user.id, work_id: @work.id).nil? %>
+  <% if current_user && Favourite.find_by(user_id: current_user.id, work_id: @work.id).nil? %>
     <%= link_to like_path(work: params[:id]), method: :post, id: 'btn-favourite' do %>
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g transform="matrix(1.2,0,0,1.2,-2.4,-2.61)">
@@ -27,7 +27,7 @@
       </svg>
     <% end %>
     <p id='work-fave'>Like this work? Why not favourite it!</p>
-  <% else %>
+  <% elsif current_user %>
     <%= link_to unlike_path(work: params[:id]), method: :post, id: 'btn-favourite' do %>
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g transform="matrix(1.2,0,0,1.2,-2.4,-2.61)">
