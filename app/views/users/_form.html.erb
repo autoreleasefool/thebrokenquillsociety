@@ -1,0 +1,86 @@
+<%= simple_form_for @user, html: { class: 'form' } do |f| %>
+
+  <%= f.input :name,
+        :as => :string,
+        required: true,
+        error: false,
+        label: 'Username',
+        wrapper_html: { class: 'remove-bottom-margin' },
+        input_html: { class: 'flat-input' },
+        label_html: { class: 'input-label' } %>
+  <p id='user-name-counter' class='counter'><span id='user-name-count'>0</span> / 32</p>
+  <% if @user_errors && @user_errors[:name] %>
+    <div class='alert alert-danger'><%= @user_errors[:name] %></div>
+  <% end %>
+
+  <% unless action_name == 'edit' || action_name == 'update' %>
+    <%= f.input :password,
+          required: true,
+          disabled: (action_name == 'edit'),
+          error: false,
+          label: 'Password',
+          input_html: { class: 'flat-input' },
+          label_html: { class: 'input-label' } %>
+    <% if @user_errors && @user_errors[:password] %>
+      <div class='alert alert-danger'><%= @user_errors[:password] %></div>
+    <% end %>
+
+    <%= f.input :password_confirmation,
+          required: true,
+          disabled: (action_name == 'edit'),
+          error: false,
+          label: 'Confirm password',
+          input_html: { class: 'flat-input' },
+          label_html: { class: 'input-label' } %>
+    <% if @user_errors && @user_errors[:password_confirmation] %>
+      <div class='alert alert-danger'><%= @user_errors[:password_confirmation] %></div>
+    <% end %>
+  <% end %>
+
+  <%= f.input :email,
+        :as => :string,
+        required: true,
+        disabled: (action_name == 'edit'),
+        error: false,
+        label: 'Email',
+        placeholder: 'xyz@uottawa.ca',
+        input_html: { class: 'flat-input' },
+        label_html: { class: 'input-label' } %>
+  <% if @user_errors && @user_errors[:email] %>
+    <div class='alert alert-danger'><%= @user_errors[:email] %></div>
+  <% end %>
+
+  <%= f.input :tag_list,
+        required: true,
+        error: false,
+        label: 'What do you like to write?',
+        placeholder: 'Genres, novels, poetry, etc.',
+        wrapper_html: { class: 'with-hint' },
+        input_html: { class: 'flat-input' },
+        label_html: { class: 'input-label' } %>
+  <p class='form-hint'>This should be a list of comma-separated keywords.</p>
+  <% if @user_errors && @user_errors[:tag_list] %>
+    <div class='alert alert-danger'><%= @user_errors[:tag_list] %></div>
+  <% end %>
+
+  <%= f.input :about,
+        :as => :text,
+        required: true,
+        error: false,
+        label: 'Tell us about yourself',
+        wrapper_html: { class: 'remove-bottom-margin' },
+        input_html: { class: 'flat-input tall-area' },
+        label_html: { class: 'input-label' } %>
+  <p id='user-about-counter' class='counter'><span id='user-about-count'>0</span> / 1000</p>
+  <% if @user_errors && @user_errors[:about] %>
+    <div class='alert alert-danger'><%= @user_errors[:about] %></div>
+  <% end %>
+
+  <div class='form-submit'>
+    <% if action_name == 'edit' || action_name == 'update' %>
+      <%= f.submit 'Update', :class => 'btn btn-lg btn-theme' %>
+    <% else %>
+      <%= f.submit 'Sign up', :class => 'btn btn-lg btn-theme' %>
+    <% end %>
+  </div>
+<% end %>

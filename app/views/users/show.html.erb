@@ -1,7 +1,13 @@
 <div id='user'>
   <h1 class='title centered'><%= @user.name %>'s Profile</h1>
+  <% if current_user && (current_user == @user || current_user.is_admin?) %>
+    <div class='centered'>
+      <span id='user-options'>(<%= link_to 'Edit', edit_user_path(@user) %> - <%= link_to 'Delete', user_path(@user), method: :delete, data: { confirm: 'Are you sure you want to delete this user? This action cannot be undone.' } %>)
+      </span>
+    </div>
+  <% end %>
   <% if @user.last_seen %>
-    <p class='last-seen'>They were last seen <%= time_ago_in_words(@user.last_seen) %> ago<p>
+    <p id='last-seen'>They were last seen <%= time_ago_in_words(@user.last_seen) %> ago<p>
   <% end %>
 
   <hr class='thick' />
