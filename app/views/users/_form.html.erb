@@ -89,7 +89,7 @@
     <div class='alert alert-danger'><%= @user_errors[:about] %></div>
   <% end %>
 
-  <% if current_user.is_admin? %>
+  <% if !current_user.blank? && current_user.is_admin? %>
     <%= f.input :admin_description,
           :as => :text,
           required: false,
