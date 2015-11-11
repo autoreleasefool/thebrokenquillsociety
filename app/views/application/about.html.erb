@@ -1,0 +1,29 @@
+<div id='about' class='centered-content'>
+  <h1 class='title centered'>About <span class='underlined'>Untitled.</span></h1>
+  <p class='body'>Welcome to Creative Writing at the University of Ottawa! We are a Residence club that meets on a weekly basis where members are welcome to express their creativity.<br /><br />Meetings generally follow a structure of two parts. The first is an exercise or lesson on some aspect of writing, to help members expand their horizons and improve their writing. In the second part of the meeting, members have an opportunity to write something based on a prompt, or their own ideas, and then share that writing with the group for feedback and constructive criticism.</p>
+  <p class='plain-link'><%= link_to 'Find us on Facebook', 'https://www.facebook.com/groups/516871465136612', target: '_blank' %></p>
+
+  <hr class='thick' />
+
+  <h2 class='title centered'>Meet the Executive</h2>
+
+  <div id='admins'>
+    <% @admins.each do |user| %>
+      <div class='admin'>
+        <h3 class='title'><%= link_to user.name, user_path(user) %></h3>
+        <% unless user.admin_description.blank? %>
+          <%= simple_format user.admin_description, class: 'body' %>
+        <% else %>
+          <%= simple_format user.about[0..500], class: 'body' %>
+        <% end %>
+        <% unless user.nanowrimo_name.blank? %>
+        <p class='about'><strong>NaNoWriMo:</strong> <%= link_to user.nanowrimo_name, 'http://nanowrimo.org/participants/' + user.nanowrimo_name, target: '_blank' %></p>
+        <% end%>
+
+        <% unless user == @admins.last %>
+         <hr />
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

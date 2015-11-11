@@ -8,8 +8,9 @@ Rails.application.routes.draw do
 
   root 'application#index'
 
-  # Route to search
+  # Application routes
   get '/search' => 'application#search'
+  get '/about' => 'application#about'
 
   # Routes to create a new account
   get '/signup' => 'users#new'

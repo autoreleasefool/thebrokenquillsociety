@@ -35,6 +35,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Displays details about the club, website, and administrators
+  def about
+    @admins = User.where(is_admin: true).order('name')
+  end
+
   private
 
   # Updates the time the user was last known to perform some action

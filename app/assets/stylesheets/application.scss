@@ -37,6 +37,9 @@ hr {
 
 .underlined { text-decoration: underline; }
 .centered { text-align: center; }
+.plain-link {
+  a, a:hover, a:visited { text-decoration: none; }
+}
 
 .centered-content {
   width: 75%;
@@ -89,6 +92,28 @@ hr {
   transform: translateX(-50%);
 }
 
+// About
+
+#about {
+  p.body {
+    margin-top: 10px;
+    text-align: justify;
+    font-size: 12pt;
+  }
+
+  .admin {
+    p.body {
+      margin-top: 0;
+    }
+
+    a, a:hover, a:visited {
+      font-family: inherit;
+      text-decoration: none;
+      color: $primary-color-dark;
+    }
+  }
+}
+
 // Search results
 
 #search-results {
@@ -133,6 +158,18 @@ hr {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+    }
+
+    .about-link {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      a, a:hover, a:visited {
+        color: #000;
+        font-style: italic;
+        font-family: 'Raleway', sans-serif;
+      }
     }
 
     h1 {

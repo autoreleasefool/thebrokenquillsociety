@@ -64,10 +64,13 @@ module SessionsHelper
 
   # Checks if the current user is an admin
   def admin_user
-    unless current_user.is_admin?
+    if current_user.blank?
       store_location
       flash[:error] = 'You must be an admin to perform this action.'
       redirect_to login_path
+    elsif !current_user.is_admin?
+      flash[:error] = 'You must be an admin to perform this action.'
+      redirect_to user_path(current_user)
     end
   end
 

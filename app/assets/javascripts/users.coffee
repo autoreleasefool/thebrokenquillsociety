@@ -1,5 +1,6 @@
 userNameCounterError = false;
 userAboutCounterError = false;
+userAdminDescCounterError = false;
 
 # On document ready
 $ ->
@@ -19,6 +20,22 @@ $ ->
       else if userNameCounterError
         $('#user-name-counter').removeClass 'counter-error'
         userNameCounterError = false
+
+  # Tracks the number of characters in an input field for the user
+  if $('#user-admin-desc-count').length
+    userAdminDesc = $('#user_admin_description')
+    userAdminDescCount = $('#user-admin-desc-count')
+
+    userAdminDescCount.html userAdminDesc.val().length
+    userAdminDesc.keyup ->
+      charCount = userAdminDesc.val().length
+      userAdminDescCount.html charCount
+      if charCount > 500
+        $('#user-admin-desc-counter').addClass 'counter-error'
+        userAdminDescCounterError = true
+      else if userAdminDescCounterError
+        $('#user-admin-desc-counter').removeClass 'counter-error'
+        userAdminDescCounterError = false
 
   # Tracks the number of characters in an input field for the user
   if $('#user-about-count').length

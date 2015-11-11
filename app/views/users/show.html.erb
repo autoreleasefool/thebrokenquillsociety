@@ -14,8 +14,9 @@
     <hr class='thick' />
     <h3 class='title'>NaNoWriMo Statistics</h3>
 
-    <p id='nano-name'><strong>Username:</strong> <%= @user.nanowrimo_name %></p>
-    <p id='nano-wc'><strong>Wordcount:</strong> <%= @wordcount %></p>
+    <p id='nano-info'>
+      <strong>Username:</strong> <%= link_to @user.nanowrimo_name, 'http://nanowrimo.org/participants/' + @user.nanowrimo_name, target: '_blank' %><br />
+      <strong>Wordcount:</strong> <%= @wordcount %></p>
   <% end %>
 
   <hr class='thick' />

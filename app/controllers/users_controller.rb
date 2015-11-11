@@ -107,12 +107,12 @@ class UsersController < ApplicationController
 
   # Parameters required/allowed to create a user entry
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :tag_list, :about, :nanowrimo_name)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :tag_list, :about, :nanowrimo_name, :admin_description)
   end
 
   # Parameters required/allowed to update a user entry
   def user_params_update
-    params.require(:user).permit(:name, :tag_list, :about, :nanowrimo_name)
+    params.require(:user).permit(:name, :tag_list, :about, :nanowrimo_name, :admin_description)
   end
 
   # Checks to ensure a valid user is logged in before actions are taken

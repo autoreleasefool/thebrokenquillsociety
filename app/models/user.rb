@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
     presence: true,
     length: { maximum: 1000, message: 'About can be a maximum %{count} characters.' }
 
+  # Verifying maximum length of admin description section
+  validates :admin_description,
+    length: { maximum: 500, message: 'Admin description can be a maximum %{count} characters.' }
+
   # If a nanowrimo username was provided, checks to make sure it returns a valid account
   def check_nanowrimo_name
     if self.nanowrimo_name && self.nanowrimo_name.length > 0
