@@ -7,7 +7,7 @@
   <% end %>
   <p class='author'>
     <strong>
-      <% if comment.user %>
+      <% unless comment.user.blank? %>
         <%= link_to comment.user.name, users_path(comment.user) %>
       <% else %>
         <span class='time'>[Deleted]</span>

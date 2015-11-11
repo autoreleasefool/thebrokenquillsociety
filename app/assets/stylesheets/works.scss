@@ -43,15 +43,16 @@ input[type='checkbox']:checked ~ label #incomplete-unchecked { display: none; }
   }
   span#work-options, #work-options a, #work-options a:hover, #work-options a:visited { color: $secondary-color; }
 
-  #work-fave {
+  #work-fave, #work-not-fave {
     float: left;
     line-height: 24px;
     margin-left: 10px;
   }
+  #work-fave { color: $like-color; }
   #btn-favourite {
     float: left;
     svg {
-      fill: #ff0000;
+      fill: $like-color;
       width: 24px;
       height: 24px;
     }

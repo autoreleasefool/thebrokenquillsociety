@@ -12,7 +12,7 @@
   </div>
 
   <div id='work-results'>
-    <% if params[:q] && params[:q].length > 0 %>
+    <% unless params[:q].blank? %>
       <h3 class='title'>Works matching <span class='wrap'>"<%= params[:q] %>"</span></h3>
     <% else %>
       <h3 class='title'>Most recent works</h3>
@@ -44,7 +44,7 @@
   <hr class='thick' />
 
   <div id='user-results'>
-    <% if params[:q] && params[:q].length > 0 %>
+    <% unless params[:q].blank? %>
       <h4 class='title'>Users who like writing about <span class='wrap'>"<%= params[:q] %>"</span></h4>
     <% else %>
       <h4 class='title'>Most recent users</h4>

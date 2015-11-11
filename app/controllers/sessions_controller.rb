@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
 
     # If the user exists and the password entered is valid
-    if user && user.authenticate(params[:session][:password])
+    if !user.blank? && user.authenticate(params[:session][:password])
       log_in user
       redirect_to root_path
     else

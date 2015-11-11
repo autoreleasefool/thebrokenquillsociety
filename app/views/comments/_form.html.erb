@@ -4,36 +4,23 @@
 
 <%= simple_form_for ([@work, @work.comments.build]), html: { class: 'form' } do |f| %>
 
-  <% if current_user %>
-
-    <%= f.input :body,
-          required: true,
-          label: 'Comment',
-          wrapper_html: { class: 'remove-bottom-margin' },
-          input_html: { class: 'flat-input tall-area' },
-          label_html: { class: 'input-label' } %>
-    <p id='comment-body-counter' class='counter'><span id='comment-body-count'>0</span> / 1000</p>
-
-    <div class='form-submit'>
-      <%= f.submit 'Save',
-            :class => 'btn btn-lg btn-theme' %>
-    </div>
-
-  <% else %>
-
-    <%= f.input :body,
-          required: true,
-          label: 'Comment',
-          input_html: { class: 'flat-input tall-area' },
-          label_html: { class: 'input-label' },
-          :disabled => true %>
+  <%= f.input :body,
+        required: true,
+        disabled: current_user.blank?,
+        label: 'Comment',
+        wrapper_html: { class: 'remove-bottom-margin' },
+        input_html: { class: 'flat-input tall-area' },
+        label_html: { class: 'input-label' } %>
+  <% if current_user.blank? %>
     <div class='alert alert-warning'>You must be signed in to leave a comment.</div>
-
-    <div class='form-submit'>
-      <%= f.submit 'Save',
-            :class => 'btn btn-lg btn-default',
-            :disabled => true %>
-    </div>
+  <% else %>
+    <p id='comment-body-counter' class='counter'><span id='comment-body-count'>0</span> / 1000</p>
   <% end %>
+
+  <div class='form-submit'>
+    <%= f.submit 'Save',
+          disabled: current_user.blank?,
+          class: 'btn btn-lg btn-theme' %>
+  </div>
 
 <% end %>

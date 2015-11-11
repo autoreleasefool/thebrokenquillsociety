@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @works = @user.works.order('created_at DESC').paginate(page: params[:page], per_page: 10)
 
-    if @user.nanowrimo_name && @user.nanowrimo_name.length > 0
+    unless @user.nanowrimo_name.blank?
       response = HTTParty.get('http://nanowrimo.org/wordcount_api/wc/' + @user.nanowrimo_name)
       user_info = response.parsed_response
       @wordcount = user_info['wc']['user_wordcount']
@@ -29,9 +29,9 @@ class UsersController < ApplicationController
 
   # Adds a work to the current user's favourites
   def add_favourite
-    if params[:work]
+    unless params[:work].blank?
       work = Work.find(params[:work])
-      if Favourite.find_by(user_id: current_user.id, work_id: work.id).nil?
+      if Favourite.find_by(user_id: current_user.id, work_id: work.id).blank?
         fave = Favourite.new
         fave.user = current_user
         fave.work = work
@@ -43,10 +43,10 @@ class UsersController < ApplicationController
 
   # Removes a work from the current user's favourites
   def remove_favourite
-    if params[:work]
+    unless params[:work].blank?
       work = Work.find(params[:work])
       fave = Favourite.find_by(user_id: current_user.id, work_id: work.id)
-      fave.destroy unless fave.nil?
+      fave.destroy unless fave.blank?
       redirect_to work
     end
   end

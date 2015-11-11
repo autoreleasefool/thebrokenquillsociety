@@ -8,7 +8,7 @@
   <% end %>
   <!-- end website title -->
 
-  <% if current_user %>
+  <% unless current_user.blank? %>
     <nav id='nav'>
       <div class='nav-wrapper'>
         <!-- link to user profile -->
@@ -88,7 +88,7 @@
   <% end %>
 
   <!-- begin search box -->
-  <% if current_user %>
+  <% unless current_user.blank? %>
     <div id='search-slider' class='search-wrapper'>
   <% else %>
     <div id='search-static' class='search-wrapper'>

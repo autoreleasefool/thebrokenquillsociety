@@ -2,7 +2,7 @@
   <h1 id='work-title' class='title'><%= @work.title %></h1>
   <h2 id='work-author'>Written by
     <%= link_to @work.user.name, user_path(@work.user) %>
-    <% if current_user && (current_user == @work.user || current_user.is_admin?) %>
+    <% if !current_user.blank? && (current_user == @work.user || current_user.is_admin?) %>
       <span id='work-options'>&nbsp;(<%= link_to 'edit', edit_work_path(@work) %> - <%= link_to 'delete', work_path(@work), method: :delete, data: { confirm: 'Are you sure you want to delete this work? It cannot be recovered.' } %>)
       </span>
     <% end %>
@@ -18,7 +18,7 @@
   </div>
   <hr />
   <%= simple_format @work.body, id: 'work-body' %>
-  <% if current_user && Favourite.find_by(user_id: current_user.id, work_id: @work.id).nil? %>
+  <% if !current_user.blank? && Favourite.find_by(user_id: current_user.id, work_id: @work.id).blank? %>
     <%= link_to like_path(work: params[:id]), method: :post, id: 'btn-favourite' do %>
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g transform="matrix(1.2,0,0,1.2,-2.4,-2.61)">
@@ -26,8 +26,8 @@
           </g>
       </svg>
     <% end %>
-    <p id='work-fave'>Like this work? Why not favourite it!</p>
-  <% elsif current_user %>
+    <p id='work-not-fave'>Like this work? Why not favourite it!</p>
+  <% elsif !current_user.blank? %>
     <%= link_to unlike_path(work: params[:id]), method: :post, id: 'btn-favourite' do %>
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g transform="matrix(1.2,0,0,1.2,-2.4,-2.61)">
@@ -44,7 +44,7 @@
   <div id='comments' class='centered-content'>
     <h2 class='title'><%= pluralize(@work.comments.count, 'comments') %></h2>
     <% if @work.comments.count > 0 %>
-      <%= render :partial => @work.comments %>
+      <%= render partial: @work.comments %>
     <% else %>
       <hr />
     <% end %>
