@@ -38,6 +38,12 @@ hr {
 .underlined { text-decoration: underline; }
 .centered { text-align: center; }
 
+.centered-content {
+  width: 75%;
+  max-width: 50em;
+  margin: 0 auto 0 auto;
+}
+
 .wrap {
    white-space: pre-wrap;      /* CSS3 */
    white-space: -moz-pre-wrap; /* Firefox */
@@ -86,10 +92,6 @@ hr {
 // Search results
 
 #search-results {
-  width: 75%;
-  max-width: 50em;
-  margin: 0 auto 0 auto;
-
   h2.title { text-align: center; }
   h3.title a, h3.title a:hover, h3.title a:visited { color: $primary-color-dark !important; }
   p {
@@ -153,10 +155,6 @@ hr {
   }
 
   #recent-works {
-    width: 75%;
-    max-width: 50em;
-    margin: 0 auto 0 auto;
-
     h2.title { text-align: center; }
     h3.title a, h3.title a:hover, h3.title a:visited {
       color: $primary-color-dark !important;

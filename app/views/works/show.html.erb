@@ -1,4 +1,4 @@
-<div class='work'>
+<div id='work' class='centered-content'>
   <h1 id='work-title' class='title'><%= @work.title %></h1>
   <h2 id='work-author'>Written by
     <%= link_to @work.user.name, user_path(@work.user) %>
@@ -41,7 +41,7 @@
 </div>
 
 <div id='comments-wrapper'>
-  <div id='comments'>
+  <div id='comments' class='centered-content'>
     <h2 class='title'><%= pluralize(@work.comments.count, 'comments') %></h2>
     <% if @work.comments.count > 0 %>
       <%= render :partial => @work.comments %>

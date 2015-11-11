@@ -8,10 +8,6 @@
 }
 
 #favourites {
-  width: 75%;
-  max-width: 50em;
-  margin: 0 auto 0 auto;
-
   h3.title a, h3.title a:hover, h3.title a:visited {
     color: $primary-color-dark !important;
   }
@@ -22,10 +18,6 @@
 }
 
 #user {
-  width: 75%;
-  max-width: 50em;
-  margin: 0 auto 0 auto;
-
   p.about, p.likes {
     padding-left: 20px;
     padding-right: 20px;

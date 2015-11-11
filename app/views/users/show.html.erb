@@ -1,4 +1,4 @@
-<div id='user'>
+<div id='user' class='centered-content'>
   <h1 class='title centered'><%= @user.name %>'s Profile</h1>
   <% if current_user && (current_user == @user || current_user.is_admin?) %>
     <div class='centered'>
