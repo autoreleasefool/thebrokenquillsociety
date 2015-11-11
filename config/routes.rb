@@ -5,12 +5,13 @@ Rails.application.routes.draw do
 
   resources :users
   resources :announcements
+  resources :abouts
 
   root 'application#index'
 
   # Application routes
   get '/search' => 'application#search'
-  get '/about' => 'application#about'
+  get '/about' => 'about#index', as: :about_club
 
   # Routes to create a new account
   get '/signup' => 'users#new'

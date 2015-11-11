@@ -95,10 +95,10 @@
           required: false,
           error: false,
           label: 'You\'re an admin! Tell us your role!',
-          wrapper_html: { class: 'remove-bottom-margin' },
+          wrapper_html: { class: 'with-hint' },
           input_html: { class: 'flat-input tall-area' },
           label_html: { class: 'input-label' } %>
-    <p class='form-hint'>This will appear on the <%= link_to 'about page', about_path %>. If you leave this blank, the first 500 characters of the 'Tell us about yourself' section will appear instead.</p>
+    <p class='form-hint'>This will appear on the <%= link_to 'about page', about_club_path %>. If you leave this blank, the first 500 characters of the 'Tell us about yourself' section will appear instead.</p>
     <p id='user-admin-desc-counter' class='counter'><span id='user-admin-desc-count'>0</span> / 500</p>
     <% if @user_errors && @user_errors[:admin_description] %>
       <div class='alert alert-danger'><%= @user_errors[:admin_description] %></div>

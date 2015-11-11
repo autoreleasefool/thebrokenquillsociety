@@ -1,0 +1,53 @@
+<%= simple_form_for @about, html: { class: 'form' } do |f| %>
+
+  <%= f.input :title,
+        :as => :string,
+        required: true,
+        error: false,
+        label: 'Section title',
+        wrapper_html: { class: 'remove-bottom-margin' },
+        input_html: { class: 'flat-input' },
+        label_html: { class: 'input-label' } %>
+  <p id='about-title-counter' class='counter'><span id='about-title-count'>0</span> / 255</p>
+  <% if @about_errors && @user_errors[:title] %>
+    <div class='alert alert-danger'><%= @about_errors[:title] %></div>
+  <% end %>
+
+  <%= f.input :body,
+        :as => :text,
+        required: true,
+        error: false,
+        label: 'Body',
+        input_html: { class: 'flat-input tall-area' },
+        label_html: { class: 'input-label' } %>
+  <p id='about-body-counter' class='counter'><span id='about-body-count'>0</span> / 1000</p>
+  <% if @about_errors && @about_errors[:body] %>
+    <div class='alert alert-danger'><%= @about_errors[:body] %></div>
+  <% end %>
+
+  <%= f.input :link,
+        :as => :string,
+        required: false,
+        error: false,
+        label: 'URL',
+        input_html: { class: 'flat-input tall-area' },
+        label_html: { class: 'input-label' } %>
+
+  <%= f.input :link_title,
+        :as => :string,
+        required: false,
+        error: false,
+        label: 'URL title',
+        wrapper_html: { class: 'with-hint' },
+        input_html: { class: 'flat-input tall-area' },
+        label_html: { class: 'input-label' } %>
+  <p class='form-hint'>This will appear as a link to your URL, instead of the URL itself.</p>
+  <p id='about-link-title-counter' class='counter'><span id='about-link-title-count'>0</span> / 255</p>
+  <% if @about_errors && @about_errors[:link_title] %>
+    <div class='alert alert-danger'><%= @about_errors[:link_title] %></div>
+  <% end %>
+
+  <div class='form-submit'>
+    <%= f.submit 'Submit', :class => 'btn btn-lg btn-theme' %>
+  </div>
+<% end %>
