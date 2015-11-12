@@ -1,6 +1,9 @@
 <div id='about' class='centered-content'>
   <% @abouts.each do |about| %>
-    <h2 class='title centered'><%= about.title %></h1>
+    <h2 class='title centered'><%= about.title %></h2>
+    <% if !current_user.blank? && current_user.is_admin? %>
+      <p class='about-options'><%= link_to 'Edit', edit_about_path(about) %> | <%= link_to 'Delete', about_path(about), method: :delete, data: { confirm: 'Are you sure you want to delete this section? It cannot be recovered.' } %></p>
+    <% end %>
     <%= simple_format about.body, class: 'body' %>
     <% unless about.link.blank? %>
       <% unless about.link_title.blank? %>
@@ -10,8 +13,16 @@
       <% end %>
     <% end %>
     <p class='aside'>This information was last updated <%= about.updated_at.strftime('%B %-d, %Y') %></p>
-    <hr class='thick' />
+    <% if about != @abouts.last %>
+      <hr class='thick' />
+    <% end %>
   <% end %>
+
+  <% if !current_user.blank? && current_user.is_admin? %>
+    <p id='new-about'><%= link_to 'Add new section', new_about_path %></p>
+  <% end %>
+
+  <hr class='thick' />
 
   <h2 class='title centered'>Meet the Executive</h2>
   <div id='admins'>

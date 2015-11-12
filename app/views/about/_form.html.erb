@@ -9,7 +9,7 @@
         input_html: { class: 'flat-input' },
         label_html: { class: 'input-label' } %>
   <p id='about-title-counter' class='counter'><span id='about-title-count'>0</span> / 255</p>
-  <% if @about_errors && @user_errors[:title] %>
+  <% if @about_errors && @about_errors[:title] %>
     <div class='alert alert-danger'><%= @about_errors[:title] %></div>
   <% end %>
 
