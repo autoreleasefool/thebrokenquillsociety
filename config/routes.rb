@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   root 'application#index'
 
+  # Enabling devise
+  devise_for :users
+
   # Application routes
   get '/search' => 'application#search'
   get '/about' => 'abouts#about', as: :about_club

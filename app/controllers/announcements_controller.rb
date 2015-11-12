@@ -1,9 +1,11 @@
 class AnnouncementsController < ApplicationController
 
+  # Ensure user account has been authenticated
+  before_action :authenticate_user!, except: :index
   # Only allow logged in users to access certain pages
-  before_action :logged_in_user, except: [:index]
+  before_action :logged_in_user, except: :index
   # Only allow the admin to perform certain actions
-  before_action :admin_user, except: [:index]
+  before_action :admin_user, except: :index
 
   def index
     @announcements = Announcement.all.order('created_at DESC').paginate(page: params[:page], per_page: 10)

@@ -18,6 +18,9 @@ class User < ActiveRecord::Base
   # Tagging
   acts_as_taggable
 
+  # Confirming emails
+  devise :confirmable
+
   # Checks for valid nanowrimo name
   # validate do |user|
   #   user.check_nanowrimo_name

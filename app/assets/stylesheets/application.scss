@@ -76,15 +76,7 @@ hr {
 
 // Error handling
 
-#flash-error {
-  position: fixed;
-  top: $header-height + 10px;
-  left: 50%;
-  margin-left: -$sidebar-width / 2;
-  transform: translateX(-50%);
-}
-
-#flash-success {
+#flash-error, #flash-success, #flash-alert, #flash-notice {
   position: fixed;
   top: $header-height + 10px;
   left: 50%;

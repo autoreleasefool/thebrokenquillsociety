@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  # Ensure user account has been authenticated
+  before_action :authenticate_user!, only: [:new, :create]
   # Only allowed logged out users to access certain pages
   before_action :logged_out_user, only: [:new, :create]
 

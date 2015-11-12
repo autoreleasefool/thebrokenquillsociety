@@ -57,6 +57,28 @@
       </div>
       <!-- end errors -->
     <% end %>
+
+    <% if flash[:notice] %>
+      <!-- start notice -->
+      <div id='flash-notice'>
+        <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>Wait!</strong> <%= flash[:notice] %>
+        </div>
+      </div>
+      <!-- end notice -->
+    <% end %>
+
+    <% if flash[:alert] %>
+      <!-- start notice -->
+      <div id='flash-alert'>
+        <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>Wait!</strong> <%= flash[:alert] %>
+        </div>
+      </div>
+      <!-- end notice -->
+    <% end %>
   </div>
 
 </body>
