@@ -1,1 +1,11 @@
-<h1>hey</h1>
+<div class='centered-content'>
+  <h1 class='title centered'>Past Announcements</h1>
+  <p class='body centered'>Here, you can see all of the past announcements made by admins through <span class='underlined'>Untitled.</span></p>
+
+  <div id='announcements'>
+    <hr />
+    <% if @announcements.count > 0 %>
+      <%= render partial: @announcements %>
+    <% end %>
+  </div>
+</div>
