@@ -1,13 +1,13 @@
-class AboutController < ApplicationController
+class AboutsController < ApplicationController
 
   # Only allowed logged in users to perform some actions
-  before_action :logged_in_user, except: :index
+  before_action :logged_in_user, except: :about
   # Only allowed admins to perform some actions
-  before_action :admin_user, except: :index
+  before_action :admin_user, except: :about
 
   # Show the about page
-  def index
-    @abouts = About.all.order('created_at DESC')
+  def about
+    @abouts = About.all.order('created_at')
     @admins = User.where(is_admin: true).order('name')
   end
 
@@ -65,7 +65,7 @@ class AboutController < ApplicationController
   private
 
   def about_params
-    params.require(:about).permit(:title, :body, :link, :aside)
+    params.require(:about).permit(:title, :body, :link, :link_title)
   end
 
 end
