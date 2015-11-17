@@ -1,7 +1,5 @@
 class AboutsController < ApplicationController
 
-  # Ensure user account has been authenticated
-  before_action :authenticate_user!, except: :about
   # Only allowed logged in users to perform some actions
   before_action :logged_in_user, except: :about
   # Only allowed admins to perform some actions

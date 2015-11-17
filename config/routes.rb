@@ -2,9 +2,6 @@ Rails.application.routes.draw do
 
   root 'application#index'
 
-  # Enabling devise
-  devise_for :users
-
   resources :works do
     resources :comments
   end
@@ -31,12 +28,5 @@ Rails.application.routes.draw do
   get '/faves' => 'users#faves'
   post '/like' => 'users#add_favourite'
   post '/unlike' => 'users#remove_favourite'
-
-  devise_for :users, :skip => [:sessions]
-  as :user do
-    get 'sign-in' => 'devise/sessions#new', :as => :new_user_session
-    post 'sign-in' => 'devise/sessions#create', :as => :user_session
-    delete 'sign-out' => 'devise/sessions#destroy', :as => :destroy_user_session
-  end
 
 end
