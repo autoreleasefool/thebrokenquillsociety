@@ -1,7 +1,5 @@
 class WorksController < ApplicationController
 
-  # Ensure user account has been authenticated
-  before_action :authenticate_user!, except: :show
   # Only allow logged in users to access certain pages
   before_action :logged_in_user, only: [:new, :create, :edit, :update]
   # Only allow the original user or admin to perform certain actions

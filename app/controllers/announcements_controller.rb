@@ -1,7 +1,5 @@
 class AnnouncementsController < ApplicationController
 
-  # Ensure user account has been authenticated
-  before_action :authenticate_user!, except: :index
   # Only allow logged in users to access certain pages
   before_action :logged_in_user, except: :index
   # Only allow the admin to perform certain actions
