@@ -60,7 +60,10 @@ class User < ActiveRecord::Base
 
   # If a nanowrimo username was provided, checks to make sure it returns a valid account
   def check_nanowrimo_name
+    self.nanowrimo_name.strip!
     if self.nanowrimo_name && self.nanowrimo_name.length > 0
+      nano_check = self.nanowrimo_name.gsub(/\s/,'-')
+      nano_check.gsub!(/\./,'')
       url = URI.parse('http://nanowrimo.org/wordcount_api/wc/' + self.nanowrimo_name)
       request = Net::HTTP::Get.new(url)
       response = Net::HTTP.start(url.host, url.port){ |http| http.request(request) }

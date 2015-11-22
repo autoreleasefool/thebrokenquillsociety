@@ -16,7 +16,9 @@ class UsersController < ApplicationController
     @works = @user.works.order('created_at DESC').paginate(page: params[:page], per_page: 10)
 
     unless @user.nanowrimo_name.blank?
-      response = HTTParty.get('http://nanowrimo.org/wordcount_api/wc/' + @user.nanowrimo_name)
+      formatted_name = @user.nanowrimo_name.gsub(/\s/,'-')
+      formatted_name.gsub!(/\./,'')
+      response = HTTParty.get('http://nanowrimo.org/wordcount_api/wc/' + formatted_name)
       user_info = response.parsed_response
       @wordcount = user_info['wc']['user_wordcount']
     end
