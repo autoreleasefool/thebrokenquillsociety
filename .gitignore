@@ -36,3 +36,5 @@ bower.json
 
 # Ignore IDE settings
 .idea
+
+public/assets/
