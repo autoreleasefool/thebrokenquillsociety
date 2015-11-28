@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  # Only allowed logged in users to perform some actions
+  before_action :logged_in_user, only: :admin
+  # Only allowed admins to perform some actions
+  before_action :admin_user, only: :admin
+
   # Updates user last seen before each action
   before_action :set_last_seen,
     if: proc { logged_in? && (session[:last_seen].nil? || session[:last_seen] < 15.minutes.ago)}
@@ -33,6 +38,9 @@ class ApplicationController < ActionController::Base
       @work_search_results = Work.all.order('created_at DESC').paginate(page: params[:page], per_page: 10)
       @user_search_results = User.all.order('created_at DESC').paginate(page: params[:page], per_page: 3)
     end
+  end
+
+  def admin
   end
 
   private

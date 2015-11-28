@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   # Application routes
   get '/search' => 'application#search'
   get '/about' => 'abouts#about', as: :about_club
+  get '/admin' => 'application#admin', as: :admin_options
 
   # Routes to create a new account
   get '/signup' => 'users#new'

@@ -156,8 +156,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    warden (1.2.3)
-      rack (>= 1.0)
     web-console (2.2.1)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -190,3 +188,6 @@ DEPENDENCIES
   unicorn
   web-console (~> 2.0)
   will_paginate (~> 3.0.6)
+
+BUNDLED WITH
+   1.10.6
