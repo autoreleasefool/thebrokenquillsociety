@@ -25,9 +25,9 @@ class ApplicationController < ActionController::Base
   def show_admin_options
     unless current_user.blank? || !current_user.is_admin?
       options = AdminOption.find_by user_id: current_user.id
-      @show_admin_options = (options != nil) ? options.options_enabled? : false
+      @show_admin_options = (options != nil) ? options.options_enabled? : true
     else
-      @show_admin_options = false
+      @show_admin_options = true
     end
   end
   helper_method :show_admin_options
