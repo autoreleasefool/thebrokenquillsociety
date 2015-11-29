@@ -1,6 +1,6 @@
 <div id='sidebar-inner'>
   <h3 class='title'>Announcements</h3>
-  <% if !current_user.blank? && current_user.is_admin? %>
+  <% if !current_user.blank? && current_user.is_admin? && show_admin_options %>
     <h4 id='new-announcement' class='title'><%= link_to 'New Announcement', new_announcement_path %></h4>
   <% end %>
   <div id='announcements'>

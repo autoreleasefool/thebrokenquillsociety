@@ -18,7 +18,7 @@
     <hr class='thick' />
   <% end %>
 
-  <% if !current_user.blank? && current_user.is_admin? %>
+  <% if !current_user.blank? && current_user.is_admin? && show_admin_options %>
     <p id='new-about'><%= link_to 'Add new section', new_about_path %></p>
     <hr class='thick' />
   <% end %>
