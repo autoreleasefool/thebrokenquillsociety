@@ -52,7 +52,7 @@ $('document').ready(function() {
       search.style.left = 0;
     }, function() {
       var search = document.getElementById('search-slider');
-      search.style.left = '127px';
+      search.style.left = '169px';
     }
   );
 
@@ -93,6 +93,13 @@ $('document').ready(function() {
       $('#fave-hint').addClass('nav-hint-visible');
     }, function() {
       $('#fave-hint').removeClass('nav-hint-visible');
+    }
+  );
+  $('#admin-profile-svg').hover(
+    function() {
+      $('#admin-profile-hint').addClass('nav-hint-visible');
+    }, function() {
+      $('#admin-profile-hint').removeClass('nav-hint-visible');
     }
   );
   $('#new-svg').hover(
