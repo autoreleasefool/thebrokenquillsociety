@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # Only allowed logged in users to perform some actions
-  before_action :logged_in_user, only: :admin
+  before_action :logged_in_user, only: [:admin, :update_admin_options]
   # Only allowed admins to perform some actions
-  before_action :admin_user, only: :admin
+  before_action :admin_user, only: [:admin, :update_admin_options]
 
   # Updates user last seen before each action
   before_action :set_last_seen,
@@ -15,10 +15,22 @@ class ApplicationController < ActionController::Base
   # Making session helper methods available to all controllers
   include SessionsHelper
 
+  # Gets the 10 most recent announcements for the sidebar
   def recent_announcements
     @recent_announcements  ||= Announcement.all.order('created_at DESC').limit(10)
   end
   helper_method :recent_announcements
+
+  # Indicates whether the admin has chosen to disable admin options
+  def show_admin_options
+    unless current_user.blank? || !current_user.is_admin?
+      options = AdminOption.find_by user_id: current_user.id
+      @show_admin_options = (options != nil) ? options.options_enabled? : false
+    else
+      @show_admin_options = false
+    end
+  end
+  helper_method :show_admin_options
 
   # Lists most recent works and users
   def index
@@ -40,7 +52,33 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Displays page of admin options
   def admin
+    @options = AdminOption.find_by user_id: current_user.id
+    @options = AdminOption.new unless !@options.blank?
+  end
+
+  # Sets the admin's options
+  def update_admin_options
+    @options = AdminOption.find_by user_id: current_user.id
+    if @options.blank?
+      @options = AdminOption.new(admin_option_params)
+      @options.user = current_user
+      success = @options.save
+    else
+      success = @options.update(admin_option_params)
+    end
+
+    if success
+      if @options.options_enabled?
+        flash[:success] = 'Admin options successfully enabled.'
+      else
+        flash[:success] = 'Admin options successfully disabled.'
+      end
+    else
+      flash[:error] = 'Could not update options.'
+    end
+    render 'admin'
   end
 
   private
@@ -49,6 +87,11 @@ class ApplicationController < ActionController::Base
   def set_last_seen
     current_user.update_attribute(:last_seen, Time.now)
     session[:last_seen] = Time.now
+  end
+
+  # Parameters required/allowed to create an admin options entry
+  def admin_option_params
+    params.require(:admin_options).permit(:options_enabled)
   end
 
 end

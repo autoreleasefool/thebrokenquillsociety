@@ -106,6 +106,16 @@ hr {
   }
 }
 
+// Admin options
+
+label #options-enabled-checked { display: none; }
+input[type='checkbox']:checked ~ label #options-enabled-checked { display: inline-block; }
+input[type='checkbox']:checked ~ label #options-enabled-unchecked { display: none; }
+
+.admin-privileges-list {
+  list-style-type: circle;
+}
+
 // Search results
 
 #search-results {

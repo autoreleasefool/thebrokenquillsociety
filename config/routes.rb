@@ -30,4 +30,8 @@ Rails.application.routes.draw do
   post '/like' => 'users#add_favourite'
   post '/unlike' => 'users#remove_favourite'
 
+  # Route to enable/disable admin options
+  post '/update_admin_options' => 'application#update_admin_options'
+  patch '/update_admin_options' => 'application#update_admin_options'
+
 end
