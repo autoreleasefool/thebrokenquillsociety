@@ -1,0 +1,20 @@
+<div class='form-header'>
+  <h1 class='title'>Edit a comment</h1>
+  <p class='body'>This comment was originally posted to <%= link_to @work.title, work_path(@work) %>.</p>
+</div>
+
+<%= simple_form_for ([@work, @comment]), html: { class: 'form' } do |f| %>
+
+  <%= f.input :body,
+        required: true,
+        label: 'Comment',
+        wrapper_html: { class: 'remove-bottom-margin' },
+        input_html: { class: 'flat-input tall-area' },
+        label_html: { class: 'input-label' } %>
+  <p id='comment-body-counter' class='counter'><span id='comment-body-count'>0</span> / 1000</p>
+
+  <div class='form-submit'>
+    <%= f.submit 'Save', class: 'btn btn-lg btn-theme' %>
+  </div>
+
+<% end %>

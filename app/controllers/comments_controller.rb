@@ -30,6 +30,23 @@ class CommentsController < ApplicationController
     redirect_to work_path(Work.find(params[:work_id]))
   end
 
+  # Displays a form to update a comment
+  def edit
+    @work = Work.find(params[:work_id])
+    @comment = Comment.find(params[:id])
+  end
+
+  # Updates a comment entry
+  def update
+    @comment = Comment.find(params[:id])
+    if @comment.update(params[:comment].permit(:body))
+      flash[:success] = 'Your comment was saved'
+    else
+      flash[:error] = 'Your comment could not be saved.'
+    end
+    redirect_to work_path(Work.find(params[:work_id]))
+  end
+
   private
 
   # Confirms the user is the owner of the comment or an admin
