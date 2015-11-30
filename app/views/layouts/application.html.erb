@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= UntitledCWC::Application::WEBSITE_NAME %> | Creative Writing</title>
+  <% unless @title.blank? %>
+    <title><%= @title %> | <%= UntitledCWC::Application::WEBSITE_NAME %></title>
+  <% else %>
+    <title><%= UntitledCWC::Application::WEBSITE_NAME %></title>
+  <% end %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag params[:controller], "data-turbolinks-track" => false %>

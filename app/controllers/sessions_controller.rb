@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
 
   # Form to let a user login to their account
   def new
+    @title = 'Login'
   end
 
   # Creates a new user session
@@ -23,6 +24,7 @@ class SessionsController < ApplicationController
 
   # Closes a session when the user logs out
   def destroy
+    @title = 'Logout'
     log_out if logged_in?
     flash[:success] = 'You have been successfully logged out.'
     redirect_to root_path

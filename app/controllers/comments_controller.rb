@@ -34,6 +34,7 @@ class CommentsController < ApplicationController
   def edit
     @work = Work.find(params[:work_id])
     @comment = Comment.find(params[:id])
+    @title = 'Edit comment on ' + @work.title
   end
 
   # Updates a comment entry

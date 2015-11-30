@@ -9,11 +9,13 @@ class AboutsController < ApplicationController
   def about
     @abouts = About.all.order('created_at')
     @admins = User.where(is_admin: true).order('name')
+    @title = 'About'
   end
 
   # Form to create a new section in the about page
   def new
     @about = About.new
+    @title = 'New Section'
   end
 
   # Creates a new entry in the about model
@@ -34,6 +36,7 @@ class AboutsController < ApplicationController
   # Form to edit an about section
   def edit
     @about = About.find(params[:id])
+    @title = 'Edit ' + @about.title
   end
 
   # Updates an entry in the about model

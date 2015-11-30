@@ -41,6 +41,7 @@ class ApplicationController < ActionController::Base
   def search
     @work_search_results = nil
     @user_search_results = nil
+    @title = 'Search'
 
     if params.has_key?(:q) && params[:q].length > 0
       searchKeys = params[:q].split
@@ -56,6 +57,7 @@ class ApplicationController < ActionController::Base
   def admin
     @options = AdminOption.find_by user_id: current_user.id
     @options = AdminOption.new unless !@options.blank?
+    @title = 'Admin'
   end
 
   # Sets the admin's options

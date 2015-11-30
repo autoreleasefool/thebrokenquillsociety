@@ -7,11 +7,13 @@ class AnnouncementsController < ApplicationController
 
   def index
     @announcements = Announcement.all.order('created_at DESC').paginate(page: params[:page], per_page: 10)
+    @title = 'Announcements'
   end
 
   # Form to create a new announcement
   def new
     @announcement = Announcement.new
+    @title = 'New announcement'
   end
 
   # Creates a new announcement entry
@@ -33,6 +35,7 @@ class AnnouncementsController < ApplicationController
   # Form to update an announcement
   def edit
     @announcement = Announcement.find(params[:id])
+    @title = 'Edit ' + @announcement.title
   end
 
   # Updates the entry for an announcement

@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @works = @user.works.order('created_at DESC').paginate(page: params[:page], per_page: 10)
+    @title = @user.name
 
     unless @user.nanowrimo_name.blank?
       formatted_name = @user.nanowrimo_name.gsub(/\s/,'-')
@@ -27,6 +28,7 @@ class UsersController < ApplicationController
   # User's favourited works
   def faves
     @favourites = current_user.favourites.order('created_at DESC').paginate(page: params[:page], per_page: 10)
+    @title = 'Favourites'
   end
 
   # Adds a work to the current user's favourites
@@ -56,6 +58,7 @@ class UsersController < ApplicationController
   # Form to create a new user account
   def new
     @user = User.new
+    @title = 'Sign up'
   end
 
   # Persists a new user to the database
@@ -77,6 +80,7 @@ class UsersController < ApplicationController
   # Form to update a user's account
   def edit
     @user = User.find(params[:id])
+    @title = 'Edit user ' + @user.name
   end
 
   # Updates a user's account information

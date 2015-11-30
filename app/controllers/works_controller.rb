@@ -8,11 +8,13 @@ class WorksController < ApplicationController
   # Displays the contents of a single work
   def show
     @work = Work.find(params[:id])
+    @title = @work.title
   end
 
   # Form to submit a new work
   def new
     @work = Work.new
+    @title = 'New Work'
   end
 
   # Creates a new work entry
@@ -34,6 +36,7 @@ class WorksController < ApplicationController
   # Form to edit a previously submitted work
   def edit
     @work = Work.find(params[:id])
+    @title = 'Edit ' + @work.title
   end
 
   # Updates a previously created work entry
