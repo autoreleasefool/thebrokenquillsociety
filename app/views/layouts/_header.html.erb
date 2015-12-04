@@ -2,9 +2,9 @@
 
   <!-- begin website title -->
   <% if current_page?(root_path) %>
-    <%= link_to '#' do %><%= image_tag 'logo.png' %><% end %>
+    <%= link_to '#', class: 'logo' do %><%= image_tag 'logo.png' %><% end %>
   <% else %>
-    <%= link_to root_path do %><%= image_tag 'logo.png' %><% end %>
+    <%= link_to root_path, class: 'logo' do %><%= image_tag 'logo.png' %><% end %>
   <% end %>
   <!-- end website title -->
 

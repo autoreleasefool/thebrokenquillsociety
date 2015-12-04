@@ -438,18 +438,8 @@ header {
 }
 
 .logo {
-  padding: 12px 0 1px 0px;
-  margin: 0 0 0 $header-margin;
   float: left;
   display: inline-block;
-  //border-bottom: 2px solid #fff;
-  font-size: 24pt;
-
-  a, a:hover, a:visited {
-    font-family: 'Quicksand', sans-serif;
-    color: #fff;
-    text-decoration: none;
-  }
 }
 
 // Header search box
@@ -514,6 +504,7 @@ header {
 
 .search-container .icon {
   position: absolute;
+  left: 0;
   top: 50%;
   margin-left: 15px;
   margin-top: 10px;
