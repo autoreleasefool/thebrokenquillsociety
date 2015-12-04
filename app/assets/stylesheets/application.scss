@@ -154,6 +154,7 @@ input[type='checkbox']:checked ~ label #options-enabled-unchecked { display: non
     height: 350px;
     background-image: url(asset-path('index-banner.jpeg'));
     background-position: center;
+    background-size: cover;
     position: relative;
 
     .banner-inner {
