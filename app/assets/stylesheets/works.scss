@@ -1,4 +1,5 @@
 @import 'variables';
+$work-tags-padding:$header-height + 20px;
 
 label #incomplete-checked { display: none; }
 input[type='checkbox']:checked ~ label #incomplete-checked { display: inline-block; }
@@ -21,6 +22,10 @@ input[type='checkbox']:checked ~ label #incomplete-unchecked { display: none; }
   }
 
   #work-body {
+	  padding-bottom: 20px;
+  }
+
+  .work-body {
     text-align: justify;
     font-size: 12pt;
   }
@@ -34,7 +39,7 @@ input[type='checkbox']:checked ~ label #incomplete-unchecked { display: none; }
 
   #work-tags {
     clear: left;
-    padding-bottom: $header-height;
+    padding-bottom: $work-tags-padding;
   }
   #work-incomplete, #work-updated, #work-faves {
     text-align: center;
