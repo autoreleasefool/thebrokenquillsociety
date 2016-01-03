@@ -35,6 +35,8 @@ gem 'will_paginate',  '~> 3.0.6'
 gem 'bootstrap-will_paginate', '0.0.10'
 # Clean HTTP requests
 gem 'httparty'
+# User-friendly urls
+gem 'friendly_id', '~> 5.1.0'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
