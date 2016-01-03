@@ -1,4 +1,5 @@
 class Work < ActiveRecord::Base
+extend FriendlyId
 
   # Associations
   belongs_to :user
@@ -7,6 +8,9 @@ class Work < ActiveRecord::Base
 
   # Tagging
   acts_as_taggable
+
+	# Add friendly urls
+	friendly_id :title, use: :slugged
 
   # Verifying minimum length of the title
   validates :title,

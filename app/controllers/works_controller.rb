@@ -7,7 +7,7 @@ class WorksController < ApplicationController
 
   # Displays the contents of a single work
   def show
-    @work = Work.find(params[:id])
+    @work = Work.friendly.find(params[:id])
     @title = @work.title
   end
 
