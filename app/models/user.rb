@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+extend FriendlyId
 
   # Allows GET requests
   require 'net/http'
@@ -18,6 +19,9 @@ class User < ActiveRecord::Base
 
   # Tagging
   acts_as_taggable
+
+  # Add friendly urls
+	friendly_id :name, use: :slugged
 
   # Checks for valid nanowrimo name
   # validate do |user|

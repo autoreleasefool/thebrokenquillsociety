@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   # User's profile
   def show
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     @works = @user.works.order('created_at DESC').paginate(page: params[:page], per_page: 10)
     @title = @user.name
 
@@ -79,13 +79,14 @@ class UsersController < ApplicationController
 
   # Form to update a user's account
   def edit
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     @title = 'Edit user ' + @user.name
   end
 
   # Updates a user's account information
   def update
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
+    @user.slug = nil
     if @user.update(user_params_update)
       flash[:success] = 'User\'s profile was updated.'
       redirect_to @user
@@ -100,7 +101,7 @@ class UsersController < ApplicationController
 
   # Deletes a single user entry
   def destroy
-    user = User.find(params[:id])
+    user = User.friendly.find(params[:id])
     should_log_out_user = (user == current_user)
     name = user.name
     user.destroy
@@ -123,7 +124,7 @@ class UsersController < ApplicationController
 
   # Checks to ensure a valid user is logged in before actions are taken
   def check_user
-    profile_user = User.find(params[:id])
+    profile_user = User.friendly.find(params[:id])
     unless current_user == profile_user || current_user.is_admin?
       store_location
       flash[:error] = 'You are not authorized to perform this action.'

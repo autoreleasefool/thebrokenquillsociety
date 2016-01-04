@@ -16,7 +16,7 @@
   <% unless action_name == 'edit' || action_name == 'update' %>
     <%= f.input :password,
           required: true,
-          disabled: (action_name == 'edit'),
+          disabled: (action_name == 'edit' || action_name == 'update'),
           error: false,
           label: 'Password',
           input_html: { class: 'flat-input' },
@@ -27,7 +27,7 @@
 
     <%= f.input :password_confirmation,
           required: true,
-          disabled: (action_name == 'edit'),
+          disabled: (action_name == 'edit' || action_name == 'update'),
           error: false,
           label: 'Confirm password',
           input_html: { class: 'flat-input' },
@@ -40,7 +40,7 @@
   <%= f.input :email,
         :as => :string,
         required: true,
-        disabled: (action_name == 'edit'),
+        disabled: (action_name == 'edit' || action_name == 'update'),
         error: false,
         label: 'Email',
         placeholder: 'xyz@uottawa.ca',
