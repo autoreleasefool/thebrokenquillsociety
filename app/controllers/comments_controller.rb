@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 
   # Create a new comment entry for the work
   def create
-    @work = Work.find(params[:work_id])
+    @work = Work.friendly.find(params[:work_id])
     @comment = @work.comments.create(params[:comment].permit(:body))
     @comment.user = current_user
 
@@ -27,12 +27,12 @@ class CommentsController < ApplicationController
     else
       flash[:error] = 'The comment could not be deleted.'
     end
-    redirect_to work_path(Work.find(params[:work_id]))
+    redirect_to work_path(Work.friendly.find(params[:work_id]))
   end
 
   # Displays a form to update a comment
   def edit
-    @work = Work.find(params[:work_id])
+    @work = Work.friendly.find(params[:work_id])
     @comment = Comment.find(params[:id])
     @title = 'Edit comment on ' + @work.title
   end
@@ -45,7 +45,7 @@ class CommentsController < ApplicationController
     else
       flash[:error] = 'Your comment could not be saved.'
     end
-    redirect_to work_path(Work.find(params[:work_id]))
+    redirect_to work_path(Work.friendly.find(params[:work_id]))
   end
 
   private

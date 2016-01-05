@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   # Adds a work to the current user's favourites
   def add_favourite
     unless params[:work].blank?
-      work = Work.find(params[:work])
+      work = Work.friendly.find(params[:work])
       if Favourite.find_by(user_id: current_user.id, work_id: work.id).blank?
         fave = Favourite.new
         fave.user = current_user
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   # Removes a work from the current user's favourites
   def remove_favourite
     unless params[:work].blank?
-      work = Work.find(params[:work])
+      work = Work.friendly.find(params[:work])
       fave = Favourite.find_by(user_id: current_user.id, work_id: work.id)
       fave.destroy unless fave.blank?
       redirect_to work

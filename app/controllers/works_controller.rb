@@ -35,13 +35,14 @@ class WorksController < ApplicationController
 
   # Form to edit a previously submitted work
   def edit
-    @work = Work.find(params[:id])
+    @work = Work.friendly.find(params[:id])
     @title = 'Edit ' + @work.title
   end
 
   # Updates a previously created work entry
   def update
-    @work = Work.find(params[:id])
+    @work = Work.friendly.find(params[:id])
+    @work.slug = nil
 
     if @work.update(work_params)
       flash[:success] = 'The work was successfully edited.'
@@ -57,7 +58,7 @@ class WorksController < ApplicationController
 
   # Deletes a single work
   def destroy
-    @work = Work.find(params[:id])
+    @work = Work.friendly.find(params[:id])
     unless @work.destroy
       flash[:error] = 'The work could not be deleted.'
     end
@@ -73,7 +74,7 @@ class WorksController < ApplicationController
 
   # Confirms the user is the owner of the work or an admin
   def check_work_user
-    owner = Work.find(params[:id]).user
+    owner = Work.friendly.find(params[:id]).user
     unless owner == current_user || current_user.is_admin?
       store_location
       flash[:error] = 'You are not authorized to perform this action.'
