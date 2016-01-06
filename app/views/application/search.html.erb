@@ -51,12 +51,17 @@
     <% end %>
     <% if @user_search_results.length > 0 %>
       <% @user_search_results.each do |user| %>
-        <p><%= link_to user.name, user %></p>
-        <p><%= user.created_at.strftime('%B, %d, %Y') %></p>
+        <div class='user'>
+          <p><%= link_to user.name, user %></p>
+          <p>Joined <%= user.created_at.strftime('%B %d, %Y') %></p>
+        </div>
+
+        <% if user != @user_search_results.last %>
+          <hr />
+        <% end %>
       <% end %>
     <% else %>
       <p>Sorry, there were no results.</p>
     <% end %>
   </div>
-
 </div>
