@@ -1,0 +1,14 @@
+@import 'variables';
+
+#error {
+  display: flex;
+  align-items: center;
+  height: calc(100vh - #{$header-height});
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.error-img {
+  max-width: 100%;
+  height: auto;
+}

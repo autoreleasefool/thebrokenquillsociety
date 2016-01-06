@@ -34,4 +34,9 @@ Rails.application.routes.draw do
   post '/update_admin_options' => 'application#update_admin_options'
   patch '/update_admin_options' => 'application#update_admin_options'
 
+  # Error pages
+  %w( 404 422 500 ).each do |code|
+    get code, :to => "errors#show", :code => code
+  end
+
 end
