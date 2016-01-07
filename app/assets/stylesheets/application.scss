@@ -275,6 +275,11 @@ input[type='checkbox']:checked ~ label #options-enabled-unchecked { display: non
   background: #fff;
 }
 
+#content-error {
+  top: $header-height;
+  background: #fff;
+}
+
 // Form
 
 .remove-bottom-margin { margin-bottom: 0 !important; }

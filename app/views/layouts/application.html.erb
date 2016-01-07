@@ -48,14 +48,20 @@
 
   <div id='main'>
 
-    <!-- start sidebar -->
-    <div id='sidebar'>
-      <%= render 'layouts/sidebar' %>
-    </div>
-    <!-- end sidebar -->
+    <% unless params[:controller] == 'errors' %>
+      <!-- start sidebar -->
+      <div id='sidebar'>
+        <%= render 'layouts/sidebar' %>
+      </div>
+      <!-- end sidebar -->
+    <% end %>
 
     <!-- start content -->
-    <div id='content'>
+    <% if params[:controller] == 'errors' %>
+      <div id='content-error'>
+    <% else %>
+      <div id='content'>
+    <% end %>
       <%= yield %>
     </div>
     <!-- end content -->
