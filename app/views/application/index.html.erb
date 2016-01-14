@@ -24,7 +24,8 @@
         </strong> <span class='time'> - <%= time_ago_in_words(work.created_at) %> ago</span>
       </p>
       <p class='excerpt'>
-        <%= work.body[0..255] %>...
+        <h1><%= length_of_preview(work.body) %></h1>
+        <%= simple_format work.body[0..length_of_preview(work.body)].strip() + '...' %>
       </p>
 
       <% if work != @recent_works.last %>
