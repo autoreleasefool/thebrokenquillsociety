@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109044949) do
+ActiveRecord::Schema.define(version: 20160117080245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,14 +81,16 @@ ActiveRecord::Schema.define(version: 20160109044949) do
 
   create_table "notifications", force: :cascade do |t|
     t.text     "body"
-    t.integer  "type"
+    t.integer  "category"
     t.text     "link"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean  "unread"
+    t.integer  "notifier"
   end
 
+  add_index "notifications", ["notifier"], name: "index_notifications_on_notifier", using: :btree
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
@@ -116,13 +118,14 @@ ActiveRecord::Schema.define(version: 20160109044949) do
     t.text     "email"
     t.string   "password_digest"
     t.text     "about"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.boolean  "is_admin"
     t.datetime "last_seen"
     t.text     "nanowrimo_name"
     t.text     "admin_description"
     t.string   "slug"
+    t.integer  "unread_notifications"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
