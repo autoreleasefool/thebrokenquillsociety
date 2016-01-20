@@ -39,7 +39,11 @@ class UsersController < ApplicationController
         fave = Favourite.new
         fave.user = current_user
         fave.work = work
-        fave.save
+
+        if fave.save
+          # Update the creator of the work that somebody has favourited it
+          send_new_favourite_notification(work)
+        end
       end
       redirect_to work
     end

@@ -1,2 +1,35 @@
 class NotificationsController < ApplicationController
+
+  # User must be logged in to perform any actions with notifications
+  before_action :logged_in_user
+
+  # Shows the notifications of a user
+  def show
+    # Title of the webpage
+    @title = 'Notifications'
+
+    # Getting all of the user's notifications, then those that are unread
+    @all_notifications = Notification.where(["user_id = :id", { id: current_user.id }]).order(created_at: :desc)
+    @notification_content = {}
+    @unread_notifications = Array.new
+
+    @all_notifications.each do |notification|
+      if notification.unread?
+        # Mark all of the unread notifications as read, since they have now been opened
+        @unread_notifications << notification
+        notification.unread = false
+        notification.save
+      end
+
+      # Get the pieces of the body of the notification
+      if notification.body
+        @notification_content[notification.id] = notification.body.split(/\n/)
+      end
+
+    end
+
+    # Clear the number of unread notifications for the user
+    current_user.update_attribute(:unread_notifications, 0)
+  end
+
 end

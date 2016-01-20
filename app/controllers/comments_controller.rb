@@ -12,6 +12,9 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
+      # Update the author of the work that a new comment was made
+      send_new_comment_notification(@work)
+
       flash[:success] = 'Your comment was saved'
     else
       flash[:error] = 'Your comment could not be saved.'

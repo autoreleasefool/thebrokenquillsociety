@@ -15,6 +15,7 @@ extend FriendlyId
   has_many :comments, dependent: :nullify
   has_many :announcements, dependent: :nullify
   has_many :favourites, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   has_one :admin_options, dependent: :destroy
 
   # Tagging
@@ -24,9 +25,6 @@ extend FriendlyId
 	friendly_id :name, use: :slugged
 
   # Checks for valid nanowrimo name
-  # validate do |user|
-  #   user.check_nanowrimo_name
-  # end
   validate :check_nanowrimo_name
 
   # Verifying valid username

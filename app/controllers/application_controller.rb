@@ -21,6 +21,62 @@ class ApplicationController < ActionController::Base
   end
   helper_method :recent_announcements
 
+  def increment_user_unread_notifications(user)
+    if user.unread_notifications
+      user.update_attribute(:unread_notifications, user.unread_notifications + 1)
+    else
+      user.update_attribute(:unread_notifications, 1)
+    end
+  end
+
+  # Send a notification when a user makes a comment
+  def send_new_comment_notification(work)
+    # Content of the notification
+    content = "#{current_user.name}\n#{work.title}"
+    link = "#{work.id}"
+
+    # Create and save the notification
+    notification = work.user.notifications.create(:body => content, :category => 1, :link => link, :unread => true)
+    notification.notifier = current_user
+    notification.save
+
+    # Increment the number of notifications the user should have waiting
+    increment_user_unread_notifications(work.user)
+  end
+
+  # Send a notification when a user favourites a work
+  def send_new_favourite_notification(work)
+    # Content of the notification
+    content = "#{current_user.name}\n#{work.title}"
+    link = "#{work.id}"
+
+    # Create and save the notification
+    notification = work.user.notifications.create(:body => content, :category => 2, :link => link, :unread => true)
+    notification.notifier = current_user
+    notification.save
+
+    # Increment the number of notifications the user should have waiting
+    increment_user_unread_notifications(work.user)
+  end
+
+  # Send notifications when a user updates a work
+  def send_new_update_notifications(work)
+    # Content of the notifications
+    body = "#{current_user.name}\n#{work.title}"
+    link = "#{work.id}"
+
+    # Send a notification to all of the users who have favourited the work
+    work.favourites.each do |favourite|
+      # Create and save the notification
+      notification = favourite.user.notifications.create(:body => body, :category => 3, :link => link, :unread => true)
+      notification.notifier = current_user
+      notification.save
+
+      # Increment the number of notifications the user should have waiting
+      increment_user_unread_notifications(favourite.user)
+    end
+  end
+
   # Indicates whether the admin has chosen to disable admin options
   def show_admin_options
     unless current_user.blank? || !current_user.is_admin?
