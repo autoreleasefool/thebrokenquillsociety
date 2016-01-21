@@ -30,6 +30,25 @@ userAboutCounterError = false;
     }
 })(jQuery);
 
+adjustTextAreaFormatting = function(textArea, format) {
+  if (format == 'bold') {
+    startFormat = '<b>'
+    endFormat = '</b>'
+  } else if (format == 'italic') {
+    startFormat = '<i>'
+    endFormat = '</i>'
+  }
+
+  cursorStart = textArea.prop('selectionStart')
+  cursorEnd = textArea.prop('selectionEnd')
+  body = textArea.val()
+  if (cursorStart == cursorEnd) {
+    textArea.val(body.substr(0, cursorStart) + startFormat + endFormat + body.substr(workBodyCursorStart))
+  } else {
+    textArea.val(body.substr(0, cursorStart) + startFormat + body.substr(cursorStart, cursorEnd - cursorStart) + endFormat + body.substr(cursorEnd))
+  }
+}
+
 $('document').ready(function() {
   if (window.location.pathname.indexOf('search') > -1) {
     // TODO: decide whether or not to remove transition on searching page

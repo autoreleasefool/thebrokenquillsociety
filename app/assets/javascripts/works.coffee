@@ -16,6 +16,11 @@ isScrolledIntoView = (elem) ->
 
   ((elemBottom >= docViewTop) && (elemTop <= docViewBottom))
 
+@boldWork = ->
+  adjustTextAreaFormatting($('textarea#work_body'), 'bold')
+
+@italicizeWork = ->
+  adjustTextAreaFormatting($('textarea#work_body'), 'italic')
 
 # On document ready
 $ ->
