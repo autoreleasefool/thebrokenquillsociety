@@ -2,6 +2,22 @@ userNameCounterError = false;
 userAboutCounterError = false;
 userAdminDescCounterError = false;
 
+# Adds bold tags around a selection in the user about's input
+@boldUserAbout = ->
+  adjustTextAreaFormatting($('textarea#user_about'), 'bold')
+
+# Adds italics tags around a selection in the user about's input
+@italicizeUserAbout = ->
+  adjustTextAreaFormatting($('textarea#user_about'), 'italic')
+
+# Adds bold tags around a selection in the user admin description's input
+@boldUserAdminDesc = ->
+  adjustTextAreaFormatting($('textarea#user_admin_description'), 'bold')
+
+# Adds italics tags around a selection in the user admin description's input
+@italicizeUserAdminDesc = ->
+  adjustTextAreaFormatting($('textarea#user_admin_description'), 'italic')
+
 # On document ready
 $ ->
 

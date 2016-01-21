@@ -85,6 +85,10 @@
         input_html: { class: 'flat-input tall-area' },
         label_html: { class: 'input-label' } %>
   <p id='user-about-counter' class='counter'><span id='user-about-count'>0</span> / 1000</p>
+  <div class='btn-group format-btns' role='group'>
+    <button type='button' class='btn btn-default' onclick='boldUserAbout()'><strong>Bold</strong></button>
+    <button type='button' class='btn btn-default' onclick='italicizeUserAbout()'><span class='italicized'>Italicize</span></button>
+  </div>
   <% if @user_errors && @user_errors[:about] %>
     <div class='alert alert-danger'><%= @user_errors[:about] %></div>
   <% end %>
@@ -98,6 +102,10 @@
           wrapper_html: { class: 'with-hint' },
           input_html: { class: 'flat-input tall-area' },
           label_html: { class: 'input-label' } %>
+    <div class='btn-group format-btns' role='group'>
+      <button type='button' class='btn btn-default' onclick='boldUserAdminDesc()'><strong>Bold</strong></button>
+      <button type='button' class='btn btn-default' onclick='italicizeUserAdminDesc()'><span class='italicized'>Italicize</span></button>
+    </div>
     <p class='form-hint'>This will appear on the <%= link_to 'about page', about_club_path %>. If you leave this blank, the first 500 characters of the 'Tell us about yourself' section will appear instead.</p>
     <p id='user-admin-desc-counter' class='counter'><span id='user-admin-desc-count'>0</span> / 500</p>
     <% if @user_errors && @user_errors[:admin_description] %>
