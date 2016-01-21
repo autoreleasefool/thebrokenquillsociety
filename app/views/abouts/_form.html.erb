@@ -21,6 +21,10 @@
         input_html: { class: 'flat-input tall-area' },
         label_html: { class: 'input-label' } %>
   <p id='about-body-counter' class='counter'><span id='about-body-count'>0</span> / 1000</p>
+  <div class='btn-group format-btns' role='group'>
+    <button type='button' class='btn btn-default' onclick='boldAbout()'><strong>Bold</strong></button>
+    <button type='button' class='btn btn-default' onclick='italicizeAbout()'><span class='italicized'>Italicize</span></button>
+  </div>
   <% if @about_errors && @about_errors[:body] %>
     <div class='alert alert-danger'><%= @about_errors[:body] %></div>
   <% end %>

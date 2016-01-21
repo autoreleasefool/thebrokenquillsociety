@@ -16,9 +16,11 @@ isScrolledIntoView = (elem) ->
 
   ((elemBottom >= docViewTop) && (elemTop <= docViewBottom))
 
+# Adds bold tags around a selection in the work body's input
 @boldWork = ->
   adjustTextAreaFormatting($('textarea#work_body'), 'bold')
 
+# Adds italics tags around a selection in the work body's input
 @italicizeWork = ->
   adjustTextAreaFormatting($('textarea#work_body'), 'italic')
 

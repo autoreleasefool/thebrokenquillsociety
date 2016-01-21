@@ -30,7 +30,9 @@ userAboutCounterError = false;
     }
 })(jQuery);
 
+// Adds formatting tags to a text area's input
 adjustTextAreaFormatting = function(textArea, format) {
+  // Determining the tags to be added
   if (format == 'bold') {
     startFormat = '<b>'
     endFormat = '</b>'
@@ -39,12 +41,16 @@ adjustTextAreaFormatting = function(textArea, format) {
     endFormat = '</i>'
   }
 
+  // Getting the location of the cursor/selected text in the textarea
   cursorStart = textArea.prop('selectionStart')
   cursorEnd = textArea.prop('selectionEnd')
   body = textArea.val()
+
   if (cursorStart == cursorEnd) {
-    textArea.val(body.substr(0, cursorStart) + startFormat + endFormat + body.substr(workBodyCursorStart))
+    // If no text is selected, just add the tags next to each other
+    textArea.val(body.substr(0, cursorStart) + startFormat + endFormat + body.substr(cursorStart))
   } else {
+    // If text is selected, wrap the selection in the tags
     textArea.val(body.substr(0, cursorStart) + startFormat + body.substr(cursorStart, cursorEnd - cursorStart) + endFormat + body.substr(cursorEnd))
   }
 }

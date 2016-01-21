@@ -75,6 +75,10 @@ hr {
   border-color: $primary-color-dark;
 }
 
+.format-btns {
+  padding-bottom: 10px;
+}
+
 // Error handling
 
 #flash-error, #flash-success, #flash-alert, #flash-notice {

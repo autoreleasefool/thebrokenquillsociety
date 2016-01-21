@@ -2,6 +2,14 @@ aboutTitleCounterError = false;
 aboutBodyCounterError = false;
 aboutLinkTitleCounterError = false;
 
+# Adds bold tags around a selection in the about body's input
+@boldAbout = ->
+  adjustTextAreaFormatting($('textarea#about_body'), 'bold')
+
+# Adds italics tags around a selection in the about body's input
+@italicizeAbout = ->
+  adjustTextAreaFormatting($('textarea#about_body'), 'italic')
+
 # On document ready
 $ ->
 
