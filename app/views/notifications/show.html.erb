@@ -1,0 +1,46 @@
+<div id='notif' class='centered-content'>
+  <h1 class='title'><%= @title %></h1>
+  <div id='notifications' class='list-group'>
+    <% @all_notifications.each do |notification| %>
+        <% if notification.category == 1 %>
+          <!-- Comment notification -->
+          <!-- <a class='list-group-item' href="/works/<%= notification.link %>#comments"> -->
+          <div class='list-group-item'>
+            <div class='notification-icon'>
+              <svg class='svg-notification' viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                  <g transform="matrix(1.2,0,0,1.2,-2.4,-0.6)">
+                      <path d="M21.99,8C21.99,7.28 21.62,6.65 21.05,6.3L12,1L2.95,6.3C2.38,6.65 2,7.28 2,8L2,18C2,19.1 2.9,20 4,20L20,20C21.1,20 22,19.1 22,18L21.99,8ZM12,13L3.74,7.84L12,3L20.26,7.84L12,13Z" />
+                  </g>
+              </svg>
+            </div>
+            <div class='notification-body'>
+              <p>
+                <%= @notification_content[notification.id][0] %> made a comment on your work, "<%= @notification_content[notification.id][1] %>"
+              </p>
+            </div>
+          </div>
+          <!-- </a> -->
+        <% elsif notification.category == 2 %>
+          <!-- Favourite notification -->
+          <a class='list-group-item' href="/works/<%= notification.link %>">
+            <p class='list-group-item-text'>
+              <%= @notification_content[notification.id][0] %> has favourited one of your works, "<%= @notification_content[notification.id][1] %>"
+            </p>
+          </a>
+        <% elsif notification.category == 3 %>
+          <!-- Update notification -->
+          <a class='list-group-item' href="/works/<%= notification.link %>">
+            <p class='list-group-item-text'>
+              <%= @notification_content[notification.id][0] %> has updated a work that you favourited! Check it out: "<%= @notification_content[notification.id][1] %>"
+            </p>
+          </a>
+        <% else %>
+          <!-- Other notifications -->
+          <a class='list-group-item' href="<%= notification.link %>">
+            <p class='list-group-item-text'><%= notification.body %></p>
+          </a>
+        <% end %>
+
+    <% end %>
+  </div>
+</div>

@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get '/faves' => 'users#faves'
   post '/like' => 'users#add_favourite'
   post '/unlike' => 'users#remove_favourite'
+  get '/notifications' => 'notifications#show'
 
   # Route to enable/disable admin options
   post '/update_admin_options' => 'application#update_admin_options'
