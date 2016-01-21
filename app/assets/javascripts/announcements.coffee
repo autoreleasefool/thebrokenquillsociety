@@ -1,6 +1,14 @@
 announcementTitleCounterError = false;
 announcementBodyCounterError = false;
 
+# Adds bold tags around a selection in the announcement body's input
+@boldAnnouncement = ->
+  adjustTextAreaFormatting($('textarea#announcement_body'), 'bold')
+
+# Adds italics tags around a selection in the announcement body's input
+@italicizeAnnouncement = ->
+  adjustTextAreaFormatting($('textarea#announcement_body'), 'italic')
+
 # On document ready
 $ ->
 
