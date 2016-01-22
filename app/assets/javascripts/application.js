@@ -77,7 +77,7 @@ $('document').ready(function() {
       search.style.left = 0;
     }, function() {
       var search = document.getElementById('search-slider');
-      search.style.left = '169px';
+      search.style.left = '211px';
     }
   );
 
@@ -111,6 +111,27 @@ $('document').ready(function() {
       $('#profile-hint').addClass('nav-hint-visible');
     }, function() {
       $('#profile-hint').removeClass('nav-hint-visible');
+    }
+  );
+  $('#inbox-svg').hover(
+    function() {
+      $('#inbox-hint').addClass('nav-hint-visible');
+    }, function() {
+      $('#inbox-hint').removeClass('nav-hint-visible');
+    }
+  );
+  $('#inbox-badge').hover(
+    function() {
+      $('#inbox-hint').addClass('nav-hint-visible');
+    }, function() {
+      $('#inbox-hint').removeClass('nav-hint-visible');
+    }
+  );
+  $('#work-svg').hover(
+    function() {
+      $('#work-hint').addClass('nav-hint-visible');
+    }, function() {
+      $('#work-hint').removeClass('nav-hint-visible');
     }
   );
   $('#fave-svg').hover(
