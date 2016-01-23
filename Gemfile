@@ -37,6 +37,8 @@ gem 'will_paginate',  '~> 3.0.6'
 gem 'bootstrap-will_paginate', '0.0.10'
 # Clean HTTP requests
 gem 'httparty'
+# Clean up input for models
+gem "auto_strip_attributes", "~> 2.0"
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
