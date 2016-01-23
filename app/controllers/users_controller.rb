@@ -67,6 +67,25 @@ class UsersController < ApplicationController
 
   # Persists a new user to the database
   def create
+    unless params[:user][:name].blank?
+      Rails.logger.debug "Name: " + params[:user][:name] if Rails.logger.debug?
+    end
+    unless params[:user][:email].blank?
+      Rails.logger.debug "Email: " + params[:user][:email] if Rails.logger.debug?
+    end
+    unless params[:user][:tag_list].blank?
+      Rails.logger.debug "Tags: " + params[:user][:tag_list] if Rails.logger.debug?
+    end
+    unless params[:user][:about].blank?
+      Rails.logger.debug "About: " + params[:user][:about] if Rails.logger.debug?
+    end
+    unless params[:user][:nanowrimo_name].blank?
+      Rails.logger.debug "NaNoWriMo: " + params[:user][:nanowrimo_name] if Rails.logger.debug?
+    end
+    unless params[:user][:admin_description].blank?
+      Rails.logger.debug "Admin: " + params[:user][:admin_description] if Rails.logger.debug?
+    end
+
     @user = User.new(user_params)
     @user.is_admin = false
     if @user.save
@@ -75,6 +94,7 @@ class UsersController < ApplicationController
     else
       @user_errors = {}
       @user.errors.each do |attr, msg|
+        Rails.logger.debug 'Attr: ' + attr.to_s + ' Msg: ' + msg if Rails.logger.debug?
         @user_errors[attr] = msg
       end
       render 'new'

@@ -4,6 +4,9 @@ extend FriendlyId
   # Allows GET requests
   require 'net/http'
 
+  # Strip leading and trailing whitespace from attributes
+  auto_strip_attributes :name, :email, :about, :admin_description
+
   # Enabling password encryption
   has_secure_password
 

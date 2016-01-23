@@ -3,6 +3,9 @@ class Announcement < ActiveRecord::Base
   # Associations
   belongs_to :user
 
+  # Strip leading and trailing whitespace from attributes
+  auto_strip_attributes :title, :body
+
   # Save emails in lowercase
   before_save { prefix_link }
 

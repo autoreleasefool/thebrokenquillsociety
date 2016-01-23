@@ -6,6 +6,9 @@ extend FriendlyId
   has_many :comments, dependent: :delete_all
   has_many :favourites, dependent: :destroy
 
+  # Strip leading and trailing whitespace from attributes
+  auto_strip_attributes :title, :body
+
   # Tagging
   acts_as_taggable
 
