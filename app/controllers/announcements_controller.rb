@@ -5,6 +5,7 @@ class AnnouncementsController < ApplicationController
   # Only allow the admin to perform certain actions
   before_action :admin_user, except: :index
 
+  # Page to show all old announcements
   def index
     @announcements = Announcement.all.order('created_at DESC').paginate(page: params[:page], per_page: 10)
     @title = 'Announcements'

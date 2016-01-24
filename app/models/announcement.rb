@@ -19,6 +19,7 @@ class Announcement < ActiveRecord::Base
     presence: { message: 'You cannot submit a blank announcement.' },
     length: { maximum: 255, too_long: 'Body can be a maximum %{count} characters.' }
 
+  # Adds http:// to a link if it is missing
   def prefix_link
     if self.link && self.link.length > 0
       unless self.link.starts_with?('http')

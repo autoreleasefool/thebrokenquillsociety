@@ -22,12 +22,12 @@ userNameCounterError = false;
 userAboutCounterError = false;
 
 (function($) {
-    $.fn.goTo = function() {
-        $('html, body').animate({
-            scrollTop: $(this).offset().top + 'px'
-        }, 800);
-        return this; // for chaining...
-    }
+  $.fn.goTo = function() {
+    $('html, body').animate({
+      scrollTop: $(this).offset().top + 'px'
+    }, 800);
+    return this; // for chaining...
+  }
 })(jQuery);
 
 // Adds formatting tags to a text area's input

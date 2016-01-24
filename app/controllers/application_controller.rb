@@ -21,6 +21,8 @@ class ApplicationController < ActionController::Base
   end
   helper_method :recent_announcements
 
+  # Increments the number of unread notifications the user has, or sets the count to 1
+  # if they previously had no unread notifications
   def increment_user_unread_notifications(user)
     if user.unread_notifications
       user.update_attribute(:unread_notifications, user.unread_notifications + 1)
