@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: uo-cwc_development
+  database: thebrokenquillsociety_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: uo-cwc_test
+  database: thebrokenquillsociety_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: uo-cwc_production
+  database: thebrokenquillsociety_production
   username: uo-cwc
   password: <%= ENV['UO-CWC_DATABASE_PASSWORD'] %>
