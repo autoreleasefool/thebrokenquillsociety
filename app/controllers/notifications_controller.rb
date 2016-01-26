@@ -11,12 +11,14 @@ class NotificationsController < ApplicationController
     # Getting all of the user's notifications, then those that are unread
     @all_notifications = Notification.where(["user_id = :id", { id: current_user.id }]).order(created_at: :desc)
     @notification_content = {}
-    @unread_notifications = Array.new
+    @unread_notification_ids = []
 
     @all_notifications.each do |notification|
+      puts "id: " + notification.id.to_s
       if notification.unread?
+        puts "unread: " + notification.id.to_s
         # Mark all of the unread notifications as read, since they have now been opened
-        @unread_notifications << notification
+        @unread_notification_ids << notification.id
         notification.unread = false
         notification.save
       end

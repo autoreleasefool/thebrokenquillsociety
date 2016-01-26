@@ -21,10 +21,15 @@
   }
   td.notification-body {
     vertical-align: middle;
+    padding-left: 0;
   }
   .table > tbody > tr > th {
     vertical-align: middle;
   }
+  .table tbody tr > th.info { background-color: #ddffe4 !important; }
+  .table tbody tr > td.info { background-color: #ddffe4 !important; }
+  .table-hover tbody tr:hover > th.info { background-color: #c3ffcf !important; }
+  .table-hover tbody tr:hover > td.info { background-color: #c3ffcf !important; }
 }
 
 .clickable-row {
@@ -35,5 +40,6 @@
   vertical-align: middle;
   height: 24px;
   width: 24px;
+  margin-left: 8px;
   fill: $primary-color-dark;
 }
