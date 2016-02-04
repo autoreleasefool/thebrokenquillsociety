@@ -129,10 +129,6 @@ input[type='checkbox']:checked ~ label #options-enabled-unchecked { display: non
   p {
     margin: 0;
     padding-bottom: 10px;
-    &.excerpt {
-      color: #999;
-      font-size: 10pt;
-    }
   }
   hr {
     margin-top: 10px;
@@ -143,6 +139,10 @@ input[type='checkbox']:checked ~ label #options-enabled-unchecked { display: non
       color: #999;
       background-color: #999;
     }
+  }
+  .excerpt p {
+    color: $excerpt-text-color;
+    font-size: 10pt;
   }
 
   .pagination {
@@ -216,8 +216,8 @@ input[type='checkbox']:checked ~ label #options-enabled-unchecked { display: non
     h3.title a, h3.title a:hover, h3.title a:visited {
       color: $primary-color-dark !important;
     }
-    p.excerpt {
-      color: #999;
+    .excerpt p {
+      color: $excerpt-text-color;
       font-size: 10pt;
     }
   }

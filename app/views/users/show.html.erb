@@ -34,9 +34,9 @@
   <% @works.each do |work| %>
     <h3 class='title'><%= link_to work.title, work %></h3>
     <p class='time'><%= time_ago_in_words(work.created_at) %> ago</p>
-    <p class='excerpt'>
-      <%= work.body[0..255] %>...
-    </p>
+    <div class='excerpt'>
+      <%= simple_format work.body[0..length_of_preview(work.body)].strip() + '...' %>
+    </div>
 
     <% if work != @works.last %>
       <hr />
