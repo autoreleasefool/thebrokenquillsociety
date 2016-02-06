@@ -19,6 +19,17 @@ class WorksController < ApplicationController
 
   # Creates a new work entry
   def create
+    if params[:work] && params[:work][:tag_list] && params[:work][:title]
+      # Add the work's title to the list of tags
+      params[:work][:tag_list].downcase!
+      separated_title = params[:work][:title].downcase.split(/\s+/)
+      separated_title.each do |tag|
+        unless params[:work][:tag_list].include? tag
+          params[:work][:tag_list] = params[:work][:tag_list] + ', ' + tag
+        end
+      end
+    end
+
     @work = Work.new(work_params)
     @work.user = current_user
 
@@ -41,6 +52,17 @@ class WorksController < ApplicationController
 
   # Updates a previously created work entry
   def update
+    if params[:work] && params[:work][:tag_list] && params[:work][:title]
+      # Add the work's title to the list of tags
+      params[:work][:tag_list].downcase!
+      separated_title = params[:work][:title].downcase.split(/\s+/)
+      separated_title.each do |tag|
+        unless params[:work][:tag_list].include? tag
+          params[:work][:tag_list] = params[:work][:tag_list] + ', ' + tag
+        end
+      end
+    end
+
     @work = Work.friendly.find(params[:id])
     @work.slug = nil
 

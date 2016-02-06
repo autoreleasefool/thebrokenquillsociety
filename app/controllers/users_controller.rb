@@ -86,8 +86,17 @@ class UsersController < ApplicationController
       Rails.logger.debug "Admin: " + params[:user][:admin_description] if Rails.logger.debug?
     end
 
+    if params[:user] && params[:user][:tag_list] && params[:user][:name]
+      # Add the user's name to the list of tags
+      params[:user][:tag_list].downcase!
+      unless params[:user][:tag_list].include? params[:user][:name].downcase
+        params[:user][:tag_list] = params[:user][:tag_list] + ', ' + params[:user][:name].downcase
+      end
+    end
+
     @user = User.new(user_params)
     @user.is_admin = false
+
     if @user.save
       log_in @user
       redirect_back_or root_path
@@ -109,8 +118,17 @@ class UsersController < ApplicationController
 
   # Updates a user's account information
   def update
+    if params[:user] && params[:user][:tag_list] && params[:user][:name]
+      # Add the user's name to the list of tags
+      params[:user][:tag_list].downcase!
+      unless params[:user][:tag_list].include? params[:user][:name].downcase
+        params[:user][:tag_list] = params[:user][:tag_list] + ', ' + params[:user][:name].downcase
+      end
+    end
+
     @user = User.friendly.find(params[:id])
     @user.slug = nil
+
     if @user.update(user_params_update)
       flash[:success] = 'User\'s profile was updated.'
       redirect_to @user
