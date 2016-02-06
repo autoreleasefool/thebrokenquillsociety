@@ -69,7 +69,7 @@
         label: 'What do you like to write?',
         placeholder: 'Genres, novels, poetry, etc.',
         wrapper_html: { class: 'with-hint' },
-        input_html: { class: 'flat-input' },
+        input_html: { class: 'flat-input', value: (@user.tag_list.blank? ? '' : @user.tag_list.to_s) },
         label_html: { class: 'input-label' } %>
   <p class='form-hint'>This should be a list of comma-separated keywords.</p>
   <% if @user_errors && @user_errors[:tag_list] %>

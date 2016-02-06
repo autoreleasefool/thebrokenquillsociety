@@ -35,7 +35,7 @@
         label: 'Tags',
         placeholder: 'Type of work, genres, settings, etc.',
         wrapper_html: { class: 'with-hint' },
-        input_html: { class: 'flat-input' },
+        input_html: { class: 'flat-input', value: (@work.tag_list.blank? ? '' : @work.tag_list.to_s) },
         label_html: { class: 'input-label' } %>
   <p class='form-hint'>This should be a list of comma-separated keywords.</p>
   <% if @work_errors && @work_errors[:tag_list] %>
