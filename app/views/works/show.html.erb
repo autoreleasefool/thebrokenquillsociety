@@ -42,9 +42,23 @@
   <p id='work-tags'><strong>Tags:</strong> <%= @work.tag_list %></p>
 </div>
 
+<% if !current_user.blank? && current_user.is_admin? && show_admin_options %>
+  <div id='history'>
+    <h3>Edit History (only admins see this)</h3>
+    <% @work.histories.reverse.each do |history| %>
+      <p class='history-item'>
+        Edited by <%= link_to history.user.name, user_path(history.user) %> on <%= history.created_at.strftime('%Y-%m-%d %H:%M:%S %z') %>
+      </p>
+    <% end %>
+    <p class='history-item'>
+      Created by <%= link_to @work.user.name, user_path(@work.user) %> on <%= @work.created_at.strftime('%Y-%m-%d %H:%M:%S %z') %>
+    </p>
+  </div>
+<% end %>
+
 <div id='comments-wrapper'>
   <div id='comments' class='centered-content'>
-    <h2 class='title'><%= pluralize(@work.comments.count, 'comments') %></h2>
+    <h2 class='title'><%= pluralize(@work.comments.count, 'comment') %></h2>
     <% if @work.comments.count > 0 %>
       <%= render partial: @work.comments %>
     <% else %>

@@ -69,6 +69,7 @@ class WorksController < ApplicationController
     if @work.update(work_params)
       # Inform users who favourited the work that is has been updated
       send_new_update_notifications(@work)
+      record_edit_history(@work, current_user)
 
       flash[:success] = 'The work was successfully edited.'
       redirect_to @work
