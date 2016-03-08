@@ -3,9 +3,17 @@
 
   <% @favourites.each do |fave| %>
     <h3 class='title'><%= link_to fave.work.title, fave.work %></h3>
-    <p class='time'><%= time_ago_in_words(fave.work.created_at) %> ago</p>
+    <p class='author'>
+      <strong>
+        <% unless fave.work.user.blank? %>
+          <%= link_to fave.work.user.name, user_path(fave.work.user) %>
+        <% else %>
+          <span class='time'>[Deleted]</span>
+        <% end %>
+      </strong> <span class='time'> - <%= time_ago_in_words(fave.work.created_at) %> ago</span>
+    </p>
     <p class='excerpt'>
-      <%= fave.work.body[0..255] %>...
+      <%= simple_format fave.work.body[0..length_of_preview(fave.work.body)].strip() + '...' %>
     </p>
 
     <% if fave != @favourites.last %>
