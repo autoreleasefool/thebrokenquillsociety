@@ -11,4 +11,4 @@
 #################################################
 
 export current_date=`date +"%Y%m%d_%H%M%N"`
-pg_dump -F c -v -U rails -h localhost uo-cwc_production -f ~rails/uo-cwc/backup/${current_date}.sql
+pg_dump -F c -v -U rails -h localhost thebrokenquillsociety_production -f ~rails/thebrokenquillsociety/backup/${current_date}.sql
