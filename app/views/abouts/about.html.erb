@@ -1,4 +1,4 @@
-<div id='about' class='centered-content'>
+<div id='about' class='centered-content<%= mobile_modifier %>'>
   <% @abouts.each do |about| %>
     <h2 class='title centered'><%= about.title %></h2>
     <% if !current_user.blank? && current_user.is_admin? %>

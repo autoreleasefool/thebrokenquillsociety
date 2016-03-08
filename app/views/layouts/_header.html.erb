@@ -1,11 +1,7 @@
 <header id='header'>
 
   <!-- begin website title -->
-  <% if current_page?(root_path) %>
-    <%= link_to '#', class: 'logo' do %><%= image_tag 'logo.png' %><% end %>
-  <% else %>
-    <%= link_to root_path, class: 'logo' do %><%= image_tag 'logo.png' %><% end %>
-  <% end %>
+  <%= link_to get_home_link, class: 'logo' do %><%= image_tag 'logo.png' %><% end %>
   <!-- end website title -->
 
   <% unless current_user.blank? %>
@@ -25,9 +21,9 @@
           <% end %>
         <% else %>
           <%= link_to user_path(current_user), id: 'admin-profile-svg' do %>
-		  <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-		  	<path d='M12,12c3.315,0 6,-2.685 6,-6c0,-3.315 -2.685,-6 -6,-6c-3.315,0 -6,2.685 -6,6c0,3.315 2.685,6 6,6ZM12,15c-4.005,0 -12,2.01 -12,6l0,3l24,0l0,-3c0,-3.99 -7.995,-6 -12,-6Z' />
-		  </svg>
+            <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+              <path d='M12,12c3.315,0 6,-2.685 6,-6c0,-3.315 -2.685,-6 -6,-6c-3.315,0 -6,2.685 -6,6c0,3.315 2.685,6 6,6ZM12,15c-4.005,0 -12,2.01 -12,6l0,3l24,0l0,-3c0,-3.99 -7.995,-6 -12,-6Z' />
+              </svg>
           <% end %>
         <% end %>
         <!-- end link to profile -->

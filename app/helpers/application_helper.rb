@@ -18,4 +18,22 @@ module ApplicationHelper
     end
   end
 
+  # Returns the link that should be used as the "home" link
+  def get_home_link()
+    if current_page?(root_path)
+      return '#'
+    else
+      return root_path
+    end
+  end
+
+  # Returns a string which can be appended to ids to request a mobile version on mobile devices
+  def mobile_modifier()
+    if browser.device.mobile?
+      return '-mobile'
+    else
+      return ''
+    end
+  end
+
 end

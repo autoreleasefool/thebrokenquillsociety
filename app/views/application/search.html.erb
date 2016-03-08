@@ -1,4 +1,4 @@
-<div id='search-results' class='centered-content'>
+<div id='search-results' class='centered-content<%= mobile_modifier %>'>
   <% if params[:q] && params[:q].length > 0 %>
     <h1 class='title'>Search results for <span class='wrap'>"<%= params[:q] %>"</span></h1>
   <% else %>

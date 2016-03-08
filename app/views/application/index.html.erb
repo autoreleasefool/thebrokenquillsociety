@@ -1,15 +1,21 @@
 <div class='index'>
-  <div id='banner'>
+  <div id='banner<%= mobile_modifier %>'>
     <div class='banner-inner'>
-      <h1><%= UntitledCWC::Application::WEBSITE_NAME %></h1>
-      <h2>Creative Writing at uOttawa</h2>
+      <% unless browser.device.mobile? %>
+        <h1><%= UntitledCWC::Application::WEBSITE_NAME %></h1>
+        <h2>Creative Writing at uOttawa</h2>
+      <% else %>
+        <h1><%= UntitledCWC::Application::WEBSITE_NAME %></h1>
+      <% end %>
     </div>
-    <div class='about-link'>
-      <h4 class='title centered plain-link'><%= link_to 'Learn more', '/about' %></h4>
-    </div>
+    <% unless browser.device.mobile? %>
+      <div class='about-link'>
+        <h4 class='title centered plain-link'><%= link_to 'Learn more', '/about' %></h4>
+      </div>
+    <% end %>
   </div>
 
-  <div id='recent-works' class='centered-content'>
+  <div id='recent-works' class='centered-content<%= mobile_modifier %>'>
     <h2 class='title'>Recent submissions</h2>
 
     <% @recent_works.each do |work| %>

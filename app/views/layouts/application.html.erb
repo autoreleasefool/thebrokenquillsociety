@@ -18,6 +18,7 @@
 
   <!-- meta tags -->
   <meta name="theme-color" content="#99ff99">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <%= csrf_meta_tags %>
 
   <!-- favicon -->
@@ -43,12 +44,13 @@
 <body>
 
   <!-- start header -->
-  <%= render 'layouts/header' %>
+  <!-- TODO: add if browser.device.mobile? -->
+    <%= render 'layouts/mobileheader' %>
   <!-- end header -->
 
   <div id='main'>
 
-    <% unless params[:controller] == 'errors' %>
+    <% unless params[:controller] == 'errors' || browser.device.mobile? %>
       <!-- start sidebar -->
       <div id='sidebar'>
         <%= render 'layouts/sidebar' %>
@@ -57,7 +59,9 @@
     <% end %>
 
     <!-- start content -->
-    <% if params[:controller] == 'errors' %>
+    <% if browser.device.mobile? %>
+      <div id='content-mobile'>
+    <% elsif params[:controller] == 'errors' %>
       <div id='content-error'>
     <% else %>
       <div id='content'>
@@ -68,7 +72,7 @@
 
     <% if flash[:error] %>
       <!-- start errors -->
-      <div id='flash-error'>
+      <div id='flash-error<%= mobile_modifier %>'>
         <div class="alert alert-danger alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <strong>Error!</strong> <%= flash[:error] %>
@@ -79,7 +83,7 @@
 
     <% if flash[:success] %>
       <!-- start errors -->
-      <div id='flash-success'>
+      <div id='flash-success<%= mobile_modifier %>'>
         <div class="alert alert-success alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <strong>Success!</strong> <%= flash[:success] %>
@@ -90,7 +94,7 @@
 
     <% if flash[:notice] %>
       <!-- start notice -->
-      <div id='flash-notice'>
+      <div id='flash-notice<%= mobile_modifier %>'>
         <div class="alert alert-warning alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <strong>Wait!</strong> <%= flash[:notice] %>
@@ -101,7 +105,7 @@
 
     <% if flash[:alert] %>
       <!-- start notice -->
-      <div id='flash-alert'>
+      <div id='flash-alert<%= mobile_modifier %>'>
         <div class="alert alert-warning alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <strong>Wait!</strong> <%= flash[:alert] %>
