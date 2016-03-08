@@ -55,4 +55,6 @@
   </div>
 </div>
 
-<button class='btn btn-lg btn-theme' id='goto-comments'>See comments</button>
+<% if @work.comments.count > 0 %>
+  <button class='btn btn-lg btn-theme' id='goto-comments'>See comments</button>
+<% end %>

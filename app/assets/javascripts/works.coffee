@@ -46,7 +46,7 @@ $ ->
   # Hides a button when the comments are in view
   comments = $('#comments')
   gotoComments = $('#goto-comments')
-  if comments.length
+  if comments.length and gotoComments.length
 
     # Method to run when the user has scrolled
     hasScrolled = ->
