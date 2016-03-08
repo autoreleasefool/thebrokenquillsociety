@@ -4,6 +4,7 @@ extend FriendlyId
   # Associations
   belongs_to :user
   has_many :comments, dependent: :delete_all
+  has_many :histories, dependent: :delete_all
   has_many :favourites, dependent: :destroy
 
   # Strip leading and trailing whitespace from attributes

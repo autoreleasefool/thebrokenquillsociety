@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160117080245) do
+ActiveRecord::Schema.define(version: 20160308042759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,16 @@ ActiveRecord::Schema.define(version: 20160117080245) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "histories", force: :cascade do |t|
+    t.integer  "work_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "histories", ["user_id"], name: "index_histories_on_user_id", using: :btree
+  add_index "histories", ["work_id"], name: "index_histories_on_work_id", using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.text     "body"
@@ -149,6 +159,8 @@ ActiveRecord::Schema.define(version: 20160117080245) do
   add_foreign_key "comments", "works"
   add_foreign_key "favourites", "users"
   add_foreign_key "favourites", "works"
+  add_foreign_key "histories", "users"
+  add_foreign_key "histories", "works"
   add_foreign_key "notifications", "users"
   add_foreign_key "works", "users"
 end

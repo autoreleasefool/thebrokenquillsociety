@@ -79,6 +79,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Creates a record of times when items are edited and by who.
+  def record_edit_history(edited_item, editing_user)
+    if edited_item.is_a?(Work)
+      record_work_edit_history(edited_item, editing_user)
+    end
+  end
+
+  # Creates a record of times when a work was edited, and by who.
+  def record_work_edit_history(work, user)
+    history = work.histories.create()
+    history.user = user
+    history.save
+  end
+
   # Indicates whether the admin has chosen to disable admin options
   def show_admin_options
     unless current_user.blank? || !current_user.is_admin?

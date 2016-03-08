@@ -16,6 +16,7 @@ extend FriendlyId
   # Associations
   has_many :works, dependent: :destroy
   has_many :comments, dependent: :nullify
+  has_many :histories, dependent: :nullify
   has_many :announcements, dependent: :nullify
   has_many :favourites, dependent: :destroy
   has_many :notifications, dependent: :destroy
