@@ -44,8 +44,11 @@
 <body>
 
   <!-- start header -->
-  <!-- TODO: add if browser.device.mobile? -->
+  <% if browser.device.mobile? %>
     <%= render 'layouts/mobileheader' %>
+  <% else %>
+    <%= render 'layouts/header' %>
+  <% end %>
   <!-- end header -->
 
   <div id='main'>

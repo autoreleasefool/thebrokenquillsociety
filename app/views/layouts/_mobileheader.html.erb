@@ -56,13 +56,20 @@
   <% unless current_user.blank? %>
     <!-- link to menu -->
     <div class='mobile-header-icon'>
-      <a href='#'>
+      <div onclick='showMobileMenu()' id='dropbtn'>
         <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
           <g transform='matrix(1.33333,0,0,1.33333,-4,-4)'>
               <path d='M3,18L21,18L21,16L3,16L3,18ZM3,13L21,13L21,11L3,11L3,13ZM3,6L3,8L21,8L21,6L3,6Z' />
           </g>
         </svg>
-      </a>
+      </div>
+      <div id='mobile-dropdown' class='dropdown-content'>
+        <a href='<%= user_path(current_user)%>'>Profile</a>
+        <a href='/faves'>Favourites</a>
+        <a href='/works/new'>New</a>
+        <% if current_user.is_admin? %><a href='/admin'>Admin</a><% end %>
+        <a href='/logout'>Logout</a>
+      </div>
     </div>
     <!-- end link to menu -->
   <% else %>

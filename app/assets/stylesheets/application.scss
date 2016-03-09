@@ -101,6 +101,27 @@ hr {
   transform: translateX(-50%);
 }
 
+// Dropdown
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: $header-height;
+  right: 0;
+  background-color: $header-background-light;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+  a {
+    color: $primary-color;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+}
+
+.show {display:block;}
+
 // About
 
 #about {
@@ -497,7 +518,7 @@ textarea.tall-area {
   z-index: 1000;
   width: 100%;
   height: $header-height;
-  background-color: #1a1a1a;
+  background-color: $header-background;
   position: fixed;
   top: 0;
   left: 0;
@@ -618,7 +639,7 @@ textarea.tall-area {
     outline: none;
     border: none;
     float: left;
-    color: #1a1a1a;
+    color: $header-background;
     padding-left: 45px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -650,7 +671,7 @@ textarea.tall-area {
     outline: none;
     border: none;
     float: left;
-    color: #1a1a1a;
+    color: $header-background;
     padding-left: 45px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;

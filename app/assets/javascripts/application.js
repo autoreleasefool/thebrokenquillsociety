@@ -28,6 +28,14 @@ userAboutCounterError = false;
   }
 })(jQuery);
 
+// Show mobile dropdown menu on click
+showMobileMenu = function() {
+  mobileDropdown = document.getElementById('mobile-dropdown');
+  if (mobileDropdown !== null) {
+    document.getElementById('mobile-dropdown').classList.toggle('show');
+  }
+}
+
 // Adds formatting tags to a text area's input
 adjustTextAreaFormatting = function(textArea, format) {
   // Determining the tags to be added
@@ -68,6 +76,20 @@ $('document').ready(function() {
       }
     );
   }
+
+  $(window).click(function(event) {
+    // Close the dropdown menu if the user clicks outside of it
+    if (!(event.target.id == 'dropbtn' || $(event.target).parents("#dropbtn").size())) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  })
 
   $('#nav').hover(
     function() {

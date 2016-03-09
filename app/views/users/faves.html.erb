@@ -1,4 +1,4 @@
-<div id='favourites' class='centered-content<%= mobile_modifier %>'>
+<div id='favourites<%= mobile_modifier %>' class='centered-content<%= mobile_modifier %>'>
   <h1 class='title'>Your favourites</h1>
 
   <% @favourites.each do |fave| %>
@@ -20,7 +20,7 @@
       <hr />
     <% end %>
   <% end %>
-  <div class='centered'>
+  <div class='centered' id='favourite-paginate'>
     <%= will_paginate @favourites %>
   </div>
 </div>

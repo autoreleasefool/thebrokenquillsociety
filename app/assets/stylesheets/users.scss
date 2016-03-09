@@ -7,7 +7,16 @@
   }
 }
 
-#favourites {
+#favourites-mobile {
+  min-height: 100vh;
+  margin-bottom: -$header-height;
+
+  #favourite-paginate {
+    margin-bottom: $header-height;
+  }
+}
+
+#favourites, #favourites-mobile {
   h3.title a, h3.title a:hover, h3.title a:visited {
     color: $primary-color-dark !important;
   }
