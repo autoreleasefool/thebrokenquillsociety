@@ -13,6 +13,7 @@
 
 //= require jquery
 //= require jquery_ujs
+//= require jquery.are-you-sure
 //= require_tree .
 
 workTitleCounterError = false;
@@ -76,6 +77,10 @@ $('document').ready(function() {
       }
     );
   }
+
+  $('#are-you-sure-form').areYouSure({
+    message: 'If you leave now, your changes will be lost. Are you sure?'
+  });
 
   $(window).click(function(event) {
     // Close the dropdown menu if the user clicks outside of it

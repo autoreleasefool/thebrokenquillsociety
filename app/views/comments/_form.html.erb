@@ -2,7 +2,7 @@
   <h1 class='title'>Leave a comment</h1>
 </div>
 
-<%= simple_form_for ([@work, @work.comments.build]), html: { class: 'form' } do |f| %>
+<%= simple_form_for ([@work, @work.comments.build]), html: { class: 'form', id: 'are-you-sure-form' } do |f| %>
 
   <%= f.input :body,
         required: true,
