@@ -1,4 +1,14 @@
-<div id='search-results' class='centered-content<%= mobile_modifier %>'>
+<% if browser.device.mobile? %>
+  <div id='mobile-search-bar' class='search-wrapper-mobile'>
+    <div class='search-container-mobile search-container-transition'>
+      <span id='search-icon' class='icon'><i class='fa fa-search'></i></span>
+      <%= text_field_tag :q, params[:q], onfocus: 'this.value = this.value', id: 'search-box', placeholder: 'Search works, users...' %>
+    </div>
+    <div id='btn-search'></div>
+  </div>
+<% end %>
+
+<div id='search-results<%= mobile_modifier %>' class='centered-content<%= mobile_modifier %>'>
   <% if params[:q] && params[:q].length > 0 %>
     <h1 class='title'>Search results for <span class='wrap'>"<%= params[:q] %>"</span></h1>
   <% else %>

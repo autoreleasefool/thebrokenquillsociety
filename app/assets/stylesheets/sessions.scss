@@ -1,9 +1,20 @@
+@import 'variables';
+
+#login {
+  min-height: 100vh;
+  margin-bottom: -$header-height;
+}
+
+#login-form {
+  margin-bottom: $header-height;
+}
+
 .horizontal-form {
   input {
     margin-bottom: 20px;
     vertical-align: middle;
   }
-  
+
   label {
     margin-top: 4px;
     text-align: right;

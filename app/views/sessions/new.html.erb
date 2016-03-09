@@ -1,27 +1,31 @@
-<div class='form-header'>
-  <h1 class='title'>Login</h1>
-  <div class='body'>
-    <p>In order to submit your work to <span class='underlined'><%= UntitledCWC::Application::WEBSITE_NAME %></span>, you'll have to be a member of the University of Ottawa Creative Writing Club.</p>
-    <p>You can visit our <span class='about'><a href='/about'>about</a></span> page to learn more about participating, or sign up with your @uOttawa.ca email below.</p>
+<div id='login'>
+  <div class='form-header'>
+    <h1 class='title'>Login</h1>
+    <div class='body'>
+      <p>In order to submit your work to <span class='underlined'><%= UntitledCWC::Application::WEBSITE_NAME %></span>, you'll have to be a member of the University of Ottawa Creative Writing Club.</p>
+      <p>You can visit our <span class='about'><a href='/about'>about</a></span> page to learn more about participating, or sign up with your @uOttawa.ca email below.</p>
+    </div>
+  </div>
+
+  <div id='login-form'>
+    <%= simple_form_for :session, url: login_path, html: { class: 'form horizontal-form' }, wrapper: :horizontal_form do |f| %>
+
+      <%= f.input :email,
+            required: true,
+            label: 'Email',
+            input_html: { class: 'flat-input' },
+            label_html: { class: 'input-label' } %>
+
+      <%= f.input :password,
+            required: true,
+            label: 'Password',
+            input_html: { class: 'flat-input' },
+            label_html: { class: 'input-label' } %>
+
+      <div class='form-submit'>
+        <%= f.submit 'Login', :class => 'btn btn-lg btn-theme' %>
+      </div>
+
+    <% end %>
   </div>
 </div>
-
-<%= simple_form_for :session, url: login_path, html: { class: 'form horizontal-form' }, wrapper: :horizontal_form do |f| %>
-
-  <%= f.input :email,
-        required: true,
-        label: 'Email',
-        input_html: { class: 'flat-input' },
-        label_html: { class: 'input-label' } %>
-
-  <%= f.input :password,
-        required: true,
-        label: 'Password',
-        input_html: { class: 'flat-input' },
-        label_html: { class: 'input-label' } %>
-
-  <div class='form-submit'>
-    <%= f.submit 'Login', :class => 'btn btn-lg btn-theme' %>
-  </div>
-
-<% end %>

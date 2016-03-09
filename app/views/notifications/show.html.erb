@@ -1,6 +1,6 @@
 <div id='notifications' class='centered-content<%= mobile_modifier %>'>
   <h1 class='title'><%= @title %></h1>
-  <table class='table table-hover'>
+  <table id='notifications-table' class='table table-hover'>
     <tbody>
       <% @all_notifications.each do |notification| %>
         <% if notification.category == 1 %>

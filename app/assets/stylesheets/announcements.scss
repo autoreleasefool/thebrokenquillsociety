@@ -1,7 +1,16 @@
 @import 'variables';
 
-#announcements {
-  height: 100%;
+#announcements-container-mobile {
+  min-height: 100vh;
+  margin-bottom: -$header-height;
+}
+
+#announcements-mobile {
+  margin-bottom: $header-height;
+}
+
+#announcements, #announcements-mobile {
+
   a, a:hover, a:visited { color: $secondary-color; }
 }
 

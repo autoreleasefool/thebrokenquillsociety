@@ -59,6 +59,7 @@
     <% end %>
 
     <!-- start content -->
+    <!-- TODO: add if browser.device.mobile? -->
     <% if browser.device.mobile? %>
       <div id='content-mobile'>
     <% elsif params[:controller] == 'errors' %>
@@ -114,6 +115,10 @@
       <!-- end notice -->
     <% end %>
   </div>
+
+  <% if browser.device.mobile? %>
+    <%= render 'layouts/footer' %>
+  <% end %>
 
 </body>
 </html>
