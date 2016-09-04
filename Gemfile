@@ -30,7 +30,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Creating forms
 gem 'simple_form'
 # Add tags to models
-gem 'acts-as-taggable-on', '~> 3.4'
+gem 'acts-as-taggable-on', '~> 4.0'
 # Adds pagination to controllers
 gem 'will_paginate',  '~> 3.0.6'
 # Pagination formatting
