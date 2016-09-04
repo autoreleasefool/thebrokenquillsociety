@@ -40,7 +40,7 @@ gem 'httparty'
 # User-friendly urls
 gem 'friendly_id', '~> 5.1.0'
 # Clean up input for models
-gem 'auto_strip_attributes', '~> 2.0'
+gem 'auto_strip_attributes', '~> 2.1'
 # Get information about the browser
 gem 'browser'
 
