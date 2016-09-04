@@ -10,7 +10,7 @@ Follow the guidelines below to contribute to this project.
 git clone https://github.com/joseph-roque/thebrokenquillsociety.git
 cd thebrokenquillsociety
 bundle install
-rake db:create db:migrate acts_as_taggable_on_engine:install:migrations
+rails db:create db:migrate acts_as_taggable_on_engine:install:migrations
 ```
 
 2. Make your changes
