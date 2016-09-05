@@ -32,7 +32,7 @@ gem 'simple_form'
 # Add tags to models
 gem 'acts-as-taggable-on', '~> 4.0'
 # Adds pagination to controllers
-gem 'will_paginate',  '~> 3.1.0'
+gem 'will_paginate', github: 'jonatack/will_paginate'
 # Pagination formatting
 gem 'bootstrap-will_paginate', '0.0.10'
 # Clean HTTP requests
