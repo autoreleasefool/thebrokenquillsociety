@@ -5,6 +5,10 @@ label #incomplete-checked { display: none; }
 input[type='checkbox']:checked ~ label #incomplete-checked { display: inline-block; }
 input[type='checkbox']:checked ~ label #incomplete-unchecked { display: none; }
 
+label #is-private-checked { display: none; }
+input[type='checkbox']:checked ~ label #is-private-checked { display: inline-block; }
+input[type='checkbox']:checked ~ label #is-private-unchecked { display: none; }
+
 #work {
   min-height: 100vh;
   margin-bottom: -$header-height;

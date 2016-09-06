@@ -95,7 +95,7 @@ class WorksController < ApplicationController
 
   # Parameters required/allowed to create a work entry
   def work_params
-    params.require(:work).permit(:title, :body, :tag_list, :incomplete)
+    params.require(:work).permit(:title, :body, :tag_list, :incomplete, :is_private)
   end
 
   # Confirms the user is the owner of the work or an admin
