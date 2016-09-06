@@ -36,7 +36,7 @@ input[type='checkbox']:checked ~ label #is-private-unchecked { display: none; }
 
   #work-info { padding-top: 15px; }
 
-  #work-tags, #work-incomplete, #work-updated, #work-faves, #work-fave {
+  #work-tags, #work-incomplete, #work-updated, #work-faves, #work-fave, #work-is-private {
     font-size: 10pt;
     color: #808080;
   }
@@ -45,7 +45,7 @@ input[type='checkbox']:checked ~ label #is-private-unchecked { display: none; }
     clear: left;
     padding-bottom: $work-tags-padding;
   }
-  #work-incomplete, #work-updated, #work-faves {
+  #work-incomplete, #work-updated, #work-faves, #work-is-private {
     text-align: center;
     margin: 0;
     padding-top: 5px;

@@ -8,6 +8,9 @@
     <% end %>
   </h2>
   <div id='work-info'>
+    <% if @work.is_private %>
+      <p id='work-is-private'><strong>Please note!</strong> The author has marked this work as private, so you should think about that before sharing the link with anybody.</p>
+    <% end %>
     <p id='work-updated'>This work was last updated <%= @work.updated_at.strftime('%B %-d, %Y') %></p>
     <% if @work.incomplete %>
       <p id='work-incomplete'>The author has marked this work as incomplete.</p>
