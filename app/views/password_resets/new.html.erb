@@ -1,2 +1,24 @@
-<h1>PasswordResets#new</h1>
-<p>Find me in app/views/password_resets/new.html.erb</p>
+<div id='forgot-password'>
+  <div class='form-header'>
+    <h1 class='title'>Forgot Password</h1>
+    <div class='body'>
+      <p>If you've forgotten the password for your account, enter your email here and we'll email you a password reset link.</p>
+    </div>
+  </div>
+
+  <div id='forgot-password-form'>
+    <%= simple_form_for :password_reset, url: password_resets_path, html: { class: 'form horizontal-form' }, wrapper: :horizontal_form do |f| %>
+
+      <%= f.input :email,
+            required: true,
+            label: 'Email',
+            input_html: { class: 'flat-input' },
+            label_html: { class: 'input-label' } %>
+
+      <div class='form-submit'>
+        <%= f.submit 'Submit', :class => 'btn btn-lg btn-theme' %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
