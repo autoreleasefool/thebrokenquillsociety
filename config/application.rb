@@ -28,5 +28,6 @@ module UntitledCWC
 
     # Application constants
     WEBSITE_NAME = "The Broken Quill Society"
+    WEBSITE_URL = "http://thebrokenquillsociety.com"
   end
 end
