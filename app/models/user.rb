@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 extend FriendlyId
 
+  attr_accessor :remember_token, :activation_token, :reset_token
+
   # Allows GET requests
   require 'net/http'
 
@@ -65,6 +67,17 @@ extend FriendlyId
   validates :admin_description,
     length: { maximum: 500, message: 'Admin description can be a maximum %{count} characters.' }
 
+  # Returns the hash digest of the given string.
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+  # Returns a random token.
+  def User.new_token
+    SecureRandom.urlsafe_base64
+  end
+
   # If a nanowrimo username was provided, checks to make sure it returns a valid account
   def check_nanowrimo_name
     self.nanowrimo_name.strip!
@@ -78,6 +91,18 @@ extend FriendlyId
         errors.add(:nanowrimo_name, 'This is not a valid NaNoWriMo username.')
       end
     end
+  end
+
+  # Sets the password reset attributes.
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest,  User.digest(reset_token))
+    update_attribute(:reset_sent_at, Time.zone.now)
+  end
+
+  # Sends password reset email.
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
   end
 
 end
