@@ -36,6 +36,27 @@ setElementVisible = (elem, visible) ->
 # On document ready
 $ ->
 
+  # Get the amount of the story read
+  $.get('/current_user_id', (user) ->
+    userId = user.id
+    workTitle = $('#work-title').text()
+    progress = Cookies.getJSON('user' + userId + '-work' + workTitle)
+    if progress
+      d = $(document).height();
+      c = $(window).height();
+      window.scrollTo(0, progress.pct * (d - c))
+  );
+
+  # Every 5 seconds, save the user's progress
+  setInterval (->
+    $.get('/current_user_id', (user) ->
+      userId = user.id
+      workTitle = $('#work-title').text()
+      Cookies.set('user' + userId + '-work' + workTitle, { pct: getScrollPercent() }, { expires: 365 })
+    );
+    return
+  ), 5000
+
   # Tracks the number of characters in an input field for the user
   if $('#work-title-count').length
     workTitle = $('#work_title')
