@@ -1,4 +1,5 @@
 class UserMailer < ApplicationMailer
+  default from: "no-reply@thebrokenquillsociety.com"
 
   def password_reset(user)
     @user = user
