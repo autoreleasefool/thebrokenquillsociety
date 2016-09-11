@@ -25,9 +25,9 @@ module SessionsHelper
   # Gets the ID of the current user, or -1 if no user is logged in
   def current_user_id
     if session[:user_id]
-      render json: {id: session[:user_id]}
+      return session[:user_id]
     else
-      render json: {id: -1}
+      return -1
     end
   end
 
