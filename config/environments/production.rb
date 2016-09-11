@@ -87,8 +87,9 @@ Rails.application.configure do
     from: 'no-reply@' + UntitledCWC::Application::WEBSITE_DOMAIN
   }
   config.action_mailer.smtp_settings = {
-    address: '127.0.1.1',
+    address: 'localhost',
     port: 25,
-    domain: UntitledCWC::Application::WEBSITE_DOMAIN
+    domain: UntitledCWC::Application::WEBSITE_DOMAIN,
+    openssl_verify_mode: 'none'
   }
 end
