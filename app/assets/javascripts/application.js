@@ -29,6 +29,13 @@ userAboutCounterError = false;
   }
 })(jQuery);
 
+getScrollPercent = function() {
+  s = $(window).scrollTop();
+  d = $(document).height();
+  c = $(window).height();
+  return Math.min(Math.max((s / (d - c)), 0), 1);
+}
+
 // Show mobile dropdown menu on click
 showMobileMenu = function() {
   mobileDropdown = document.getElementById('mobile-dropdown');

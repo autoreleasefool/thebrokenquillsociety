@@ -92,3 +92,18 @@ input[type='checkbox']:checked ~ label #is-private-unchecked { display: none; }
   -o-transition: opacity $default-anim-time ease;
   transition: opacity $default-anim-time ease;
 }
+
+#work-reading-progress {
+  position: fixed;
+  top: $header-height;
+  height: 4px;
+  width: 0;
+  background-color: $primary-color-dark;
+  box-shadow: 0px 0px 5px $primary-color-dark;
+
+  -webkit-transition: width $default-anim-time ease;
+  -moz-transition: width $default-anim-time ease;
+  -ms-transition: width $default-anim-time ease;
+  -o-transition: width $default-anim-time ease;
+  transition: width $default-anim-time ease;
+}

@@ -16,6 +16,15 @@ isScrolledIntoView = (elem) ->
 
   ((elemBottom >= docViewTop) && (elemTop <= docViewBottom))
 
+# Hides or shows an element
+setElementVisible = (elem, visible) ->
+  if visible
+    elem.css 'opacity', 1
+    elem.css 'cursor', 'pointer'
+  else
+    elem.css 'opacity', 0
+    elem.css 'cursor', 'default'
+
 # Adds bold tags around a selection in the work body's input
 @boldWork = ->
   adjustTextAreaFormatting($('textarea#work_body'), 'bold')
@@ -46,6 +55,7 @@ $ ->
   # Hides a button when the comments are in view
   comments = $('#comments')
   gotoComments = $('#goto-comments')
+  progressBar = $('#work-reading-progress')
   if comments.length and gotoComments.length
 
     # Method to run when the user has scrolled
@@ -54,13 +64,10 @@ $ ->
       # Make sure they scroll more than the threshold
       if Math.abs(lastScrollTop - scrollTop) <= minimumScrollThreshold
         return
-      # If they scrolled down,
-      if isScrolledIntoView comments
-        gotoComments.css 'opacity', 0
-        gotoComments.css 'cursor', 'default'
-      else
-        gotoComments.css 'opacity', 1
-        gotoComments.css 'cursor', 'pointer'
+
+      setElementVisible(gotoComments, !isScrolledIntoView(comments))
+      progressBar.css 'width', (getScrollPercent() * $(window).width() + 'px')
+
       lastScrollTop = scrollTop
       return
 
