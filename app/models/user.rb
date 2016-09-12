@@ -24,6 +24,12 @@ extend FriendlyId
   has_many :notifications, dependent: :destroy
   has_one :admin_options, dependent: :destroy
 
+  # Enable following users
+  has_and_belongs_to_many(:users,
+    :join_table => "user_follows",
+    :foreign_key => "user_a_id",
+    :association_foreign_key => "user_b_id")
+
   # Tagging
   acts_as_taggable
 
