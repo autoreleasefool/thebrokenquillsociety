@@ -45,6 +45,19 @@
               <span class='italicized'><%= @notification_content[notification.id][0] %></span> has updated '<%= @notification_content[notification.id][1] %>', a work that you've favourited. Go see what they've changed!
             </td>
           </tr>
+        <% elsif notification.category == 4 %>
+          <!-- New work notification -->
+          <tr class='clickable-row' data-url='/works/<%= notification.link %>'>
+            <th class='<%= 'info' if @unread_notification_ids.include? notification.id %>'>
+              <svg class='svg-notification' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg'>
+                  <path d='M0 0h24v24H0z' fill='none' />
+                  <path d='M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-10 5h-2v-2h2v2zm0-4h-2V7h2v6z'/>
+              </svg>
+            </th>
+            <td class='notification-body <%= 'info' if @unread_notification_ids.include? notification.id %>'>
+              <span class='italicized'><%= @notification_content[notification.id][0] %></span> has written a new work, entitled '<%= @notification_content[notification.id][1] %>'. Why not go check it out?
+            </td>
+          </tr>
         <% else %>
           <!-- Other notifications -->
           <tr class='clickable-row' data-url='<%= notification.link %>'>

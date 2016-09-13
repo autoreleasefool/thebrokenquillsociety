@@ -34,6 +34,7 @@ class WorksController < ApplicationController
     @work.user = current_user
 
     if @work.save
+      send_new_work_notifications(@work) unless @work.is_private
       redirect_to @work
     else
       @work_errors = {}

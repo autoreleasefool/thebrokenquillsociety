@@ -79,6 +79,26 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def send_new_work_notifications(work)
+    # Content of the notifications
+    body = "#{current_user.name}\n#{work.title}"
+    link = "#{work.id}"
+
+    # Send a notification to all users following the poster
+    followers = ActiveRecord::Base.connection.execute("SELECT user_a_id from user_follows join users on users.id = user_follows.user_b_id where user_follows.user_b_id = #{current_user.id}")
+    followers.each do |follower|
+      puts follower.inspect
+      # Create and save the notification
+      follower_user = User.find(follower['user_a_id'])
+      notification = follower_user.notifications.create(:body => body, :category => 4, :link => link, :unread => true)
+      notification.notifier = current_user
+      notification.save
+
+      # Increment the number of notifications the user should have waiting
+      increment_user_unread_notifications(follower_user)
+    end
+  end
+
   # Creates a record of times when items are edited and by who.
   def record_edit_history(edited_item, editing_user)
     if edited_item.is_a?(Work)
