@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # Only allowed logged out users to access certain pages
   before_action :logged_out_user, only: [:new, :create]
   # Only allow logged in users to access certain pages
-  before_action :logged_in_user, only: [:edit, :update, :faves, :add_favourite, :remove_favourite]
+  before_action :logged_in_user, only: [:edit, :update, :faves, :add_favourite, :remove_favourite, :follow, :unfollow]
   # Only allow the original user or admin to perform certain actions
   before_action :check_user, only: [:edit, :update, :delete]
 
@@ -150,6 +150,22 @@ class UsersController < ApplicationController
     flash[:success] = name + ' has been successfully deleted.'
     log_out if should_log_out_user
     redirect_back_or root_path
+  end
+
+  # Follow another user under the current account
+  def follow
+    user = User.friendly.find(params[:user])
+    current_user.follows.push(user)
+    flash[:success] = 'You have started following ' + user.name + '!'
+    redirect_to user
+  end
+
+  # Unfollow another user under the current account
+  def unfollow
+    user = User.friendly.find(params[:user])
+    current_user.follows.delete(user)
+    flash[:success] = 'You are no longer following ' + user.name + '.'
+    redirect_to user
   end
 
   private

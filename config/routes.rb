@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   post '/unlike' => 'users#remove_favourite'
   get '/notifications' => 'notifications#show'
   get '/current_user_id' => "sessions#current_user_id"
+  post '/follow' => 'users#follow'
+  post '/unfollow' => 'users#unfollow'
 
   # Route to enable/disable admin options
   post '/update_admin_options' => 'application#update_admin_options'

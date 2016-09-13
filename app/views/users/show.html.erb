@@ -19,6 +19,16 @@
       <strong>Wordcount:</strong> <%= @wordcount %></p>
   <% end %>
 
+  <% if !current_user.blank? && current_user != @user %>
+    <div class='centered'>
+      <% if current_user.follow_ids.include?(@user.id) %>
+        <%= link_to 'Unfollow', unfollow_path(user: params[:id]), method: :post %>
+      <% else %>
+        <%= link_to 'Follow this user', follow_path(user: params[:id]), method: :post %>
+      <% end %>
+    </div>
+  <% end %>
+
   <hr class='thick' />
 
   <h3 class='title'>About <%= @user.name %></h2>
@@ -30,6 +40,14 @@
   <hr class='thick' />
 
   <h3 class='title'>Here's what they've written</h3>
+
+  <% if !current_user.blank? && current_user != @user %>
+    <% if current_user.follow_ids.include?(@user.id) %>
+      <%= link_to 'Unfollow', unfollow_path(user: params[:id]), method: :post %>
+    <% else %>
+      <%= link_to 'Follow this user', follow_path(user: params[:id]), method: :post %>
+    <% end %>
+  <% end %>
 
   <% @works.each do |work| %>
     <h3 class='title'><%= link_to work.title, work %></h3>
