@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :announcements
   resources :abouts
   resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :novels
 
   # Application routes
   get '/search' => 'application#search'
