@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914233027) do
+ActiveRecord::Schema.define(version: 20160914233405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -160,6 +160,8 @@ ActiveRecord::Schema.define(version: 20160914233027) do
     t.datetime "updated_at", null: false
     t.string   "slug"
     t.boolean  "is_private"
+    t.integer  "novel_id"
+    t.index ["novel_id"], name: "index_works_on_novel_id", using: :btree
     t.index ["user_id"], name: "index_works_on_user_id", using: :btree
   end
 
@@ -172,5 +174,6 @@ ActiveRecord::Schema.define(version: 20160914233027) do
   add_foreign_key "histories", "users"
   add_foreign_key "histories", "works"
   add_foreign_key "notifications", "users"
+  add_foreign_key "works", "novels"
   add_foreign_key "works", "users"
 end
