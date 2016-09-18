@@ -135,6 +135,20 @@ $('document').ready(function() {
       $('#profile-hint').removeClass('nav-hint-visible');
     }
   );
+  $('#new-svg').hover(
+    function() {
+      $('#new-hint').addClass('nav-hint-visible');
+    }, function() {
+      $('#new-hint').removeClass('nav-hint-visible');
+    }
+  );
+  $('#novel-svg').hover(
+    function() {
+      $('#novel-hint').addClass('nav-hint-visible');
+    }, function() {
+      $('#novel-hint').removeClass('nav-hint-visible');
+    }
+  );
   $('#inbox-svg').hover(
     function() {
       $('#inbox-hint').addClass('nav-hint-visible');
@@ -149,13 +163,6 @@ $('document').ready(function() {
       $('#inbox-hint').removeClass('nav-hint-visible');
     }
   );
-  $('#work-svg').hover(
-    function() {
-      $('#work-hint').addClass('nav-hint-visible');
-    }, function() {
-      $('#work-hint').removeClass('nav-hint-visible');
-    }
-  );
   $('#fave-svg').hover(
     function() {
       $('#fave-hint').addClass('nav-hint-visible');
@@ -168,13 +175,6 @@ $('document').ready(function() {
       $('#admin-profile-hint').addClass('nav-hint-visible');
     }, function() {
       $('#admin-profile-hint').removeClass('nav-hint-visible');
-    }
-  );
-  $('#new-svg').hover(
-    function() {
-      $('#new-hint').addClass('nav-hint-visible');
-    }, function() {
-      $('#new-hint').removeClass('nav-hint-visible');
     }
   );
   $('#logout-svg').hover(

@@ -76,6 +76,15 @@
       </a>
       <!-- end link to submit new work -->
 
+      <!-- link to manage novels -->
+      <a href='/novels' id='novel-svg'>
+        <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+            <path d='M0 0h24v24H0z' fill='none' />
+            <path d='M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z'/>
+        </svg>
+      </a>
+      <!-- end link to manage novels -->
+
       <!-- link to inbox -->
       <a href='/notifications' id='inbox-svg'>
         <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
@@ -112,6 +121,34 @@
       </a>
       <!-- end link to logout -->
     </nav>
+
+    <div class='hint-wrapper'>
+      <div id='profile-hint' class='nav-hint alert alert-success' role='alert'>
+        <p>View profile</p>
+      </div>
+      <div id='admin-profile-hint' class='nav-hint alert alert-success' role='alert'>
+        <% if current_user.is_admin? %>
+          <p>Admin options</p>
+        <% else %>
+          <p>View profile</p>
+        <% end %>
+      </div>
+      <div id='new-hint' class='nav-hint alert alert-success' role='alert'>
+        <p>New work</p>
+      </div>
+      <div id='novel-hint' class='nav-hint alert alert-success' role='alert'>
+        <p>Manage novels</p>
+      </div>
+      <div id='inbox-hint' class='nav-hint alert alert-success' role='alert'>
+        <p>Notifications</p>
+      </div>
+      <div id='fave-hint' class='nav-hint alert alert-success' role='alert'>
+        <p>My favourites</p>
+      </div>
+      <div id='logout-hint' class='nav-hint alert alert-success' role='alert'>
+        <p>Logout</p>
+      </div>
+    </div>
 
   <% end %>
 

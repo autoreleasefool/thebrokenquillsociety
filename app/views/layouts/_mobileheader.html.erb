@@ -66,7 +66,8 @@
       <div id='mobile-dropdown' class='dropdown-content'>
         <a href='<%= user_path(current_user)%>'>Profile</a>
         <a href='/faves'>Favourites</a>
-        <a href='/works/new'>New</a>
+        <a href='/works/new'>New work</a>
+        <a href='/novels'>Manage novels</a>
         <% if current_user.is_admin? %><a href='/admin'>Admin</a><% end %>
         <a href='/logout'>Logout</a>
       </div>
