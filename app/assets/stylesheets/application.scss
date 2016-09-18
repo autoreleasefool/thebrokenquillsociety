@@ -23,6 +23,10 @@ html, body {
 
 body {
   background-color: #fff;
+  padding-top: $header-height + $sub-header-height;
+}
+
+#body-mobile {
   padding-top: $header-height;
 }
 
@@ -88,7 +92,7 @@ hr {
 
 #flash-error, #flash-success, #flash-alert, #flash-notice {
   position: fixed;
-  top: $header-height + 10px;
+  top: $header-height + $sub-header-height + 10px;
   left: 50%;
   margin-left: -$sidebar-width / 2;
   transform: translateX(-50%);
@@ -287,10 +291,10 @@ input[type='checkbox']:checked ~ label #options-enabled-unchecked { display: non
   width: $sidebar-width;
   height: 100%;
   right: 0;
-  top: $header-height;
+  top: $header-height + $sub-header-height;
   position: fixed;
   border-left: 2px solid #eee;
-  padding: 0 10px $header-height 10px;
+  padding: 0 10px ($header-height + $sub-header-height) 10px;
 
   h3.title {
     text-align: center;
@@ -335,12 +339,12 @@ input[type='checkbox']:checked ~ label #options-enabled-unchecked { display: non
 
 #content {
   padding-right: $sidebar-width;
-  top: $header-height;
+  top: $header-height + $sub-header-height;
   background: #fff;
 }
 
 #content-error {
-  top: $header-height;
+  top: $header-height + $sub-header-height;
   background: #fff;
 }
 
@@ -517,11 +521,12 @@ textarea.tall-area {
 #header {
   z-index: 1000;
   width: 100%;
-  height: $header-height;
+  height: $header-height + $sub-header-height;
   background-color: $header-background;
   position: fixed;
   top: 0;
   left: 0;
+
   .label-as-badge {
     border-radius: 1em;
     float: right;
@@ -529,33 +534,58 @@ textarea.tall-area {
     margin-right: -30px;
     margin-top: 14px;
   }
-  svg {
-    float: right;
-    text-align: center;
+
+  .logo > .icon {
+    float: left;
+    width: 24px + $header-margin;
+    height: $sub-header-height;
+    margin: 10px 0 0 0;
+    fill: #fff;
+  }
+
+  .logo > .text {
+    float: left;
     line-height: $header-height;
   }
-  h1 { font-family: 'Quicksand', sans-serif; }
+
+  svg {
+    float: left;
+    text-align: center;
+  }
+
+  h1, span { font-family: 'Quicksand', sans-serif; }
+
+  a, a:visited {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $primary-color;
+    text-decoration: none;
+  }
+
   h2 {
     font-size: 16pt;
-    float: right;
-    line-height: $header-height;
+    float: left;
+    line-height: $sub-header-height;
+    margin-left: 18px;
     margin-right: 18px;
-    a, a:visited {
-      color: #fff;
-      text-decoration: none;
-    }
-    a:hover {
-      color: $primary-color;
-      text-decoration: none;
-    }
   }
 
   .svg-small {
     width: 24px + $header-margin;
-    height: 40px;
-    padding: 8px $header-margin 8px 0;
+    height: $sub-header-height;
+    padding: 0;
     margin: 10px 0 10px 0;
   }
+}
+
+#nav {
+  clear: both;
+  width: 100%;
+  height: $sub-header-height;
+  background-color: $header-background-dark;
 }
 
 .svg-header { fill: #fff; }
@@ -572,7 +602,7 @@ textarea.tall-area {
   z-index: 1000;
   position: absolute;
   right: 0;
-  top: $header-height;
+  top: $header-height + $sub-header-height;
 }
 
 .login {
@@ -588,34 +618,18 @@ textarea.tall-area {
   vertical-align: middle;
 }
 
-.logo {
-  float: left;
-  display: inline-block;
-}
-
 // Header search box
 
-#search-slider {
+#search {
   position: relative;
   float: right;
-  left: 211px;
-
-  -webkit-transition: left $default-anim-time ease;
-  -moz-transition: left $default-anim-time ease;
-  -ms-transition: left $default-anim-time ease;
-  -o-transition: left $default-anim-time ease;
-  transition: left $default-anim-time ease;
-}
-
-#search-static {
-  position: relative;
-  float: right;
+  margin-right: 10px;
 }
 
 .search-wrapper {
   width: $search-box-width-std;
   height: 40px;
-  margin: 10px $header-margin 10px 0;
+  margin: 10px 0 10px 0;
   float: right;
 }
 
@@ -692,14 +706,6 @@ textarea.tall-area {
   }
 }
 
-.search-container-transition input#search-box {
-  -webkit-transition: background $default-anim-time ease, border $default-anim-time ease;
-  -moz-transition: background $default-anim-time ease, border $default-anim-time ease;
-  -ms-transition: background $default-anim-time ease, border $default-anim-time ease;
-  -o-transition: background $default-anim-time ease, border $default-anim-time ease;
-  transition: background $default-anim-time ease, border $default-anim-time ease;
-}
-
 .search-container input#search-box::webkit-input-placeholder { color: #65737e; }
 .search-container input#search-box::moz-placeholder { color: #65737e; }
 .search-container input#search-box:moz-placeholder { color: #65737e; }
@@ -719,4 +725,5 @@ textarea.tall-area {
 
 @media screen and (max-width: 720px) {
   .form, .form-header { width: 90%; max-width: 720px; }
+  .logo-hideable { display: none; }
 }

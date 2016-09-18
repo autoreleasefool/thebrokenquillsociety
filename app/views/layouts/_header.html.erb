@@ -1,108 +1,22 @@
 <header id='header'>
 
   <!-- begin website title -->
-  <%= link_to get_home_link, class: 'logo' do %><%= image_tag 'logo.png' %><% end %>
+  <%= link_to get_home_link, class: 'logo' do %>
+    <svg class='icon' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+      <g id='Layer1' transform='matrix(0.24,0,0,0.24,0,0)'>
+          <g id='Point' transform='matrix(1.91667,0.0331376,-0.0331376,1.91667,5.40965,-5.19636)'>
+              <path d='M15.606,51.383L13.708,54.648C13.708,54.648 16.829,27.856 34.968,6.788C18.935,28.68 15.606,51.383 15.606,51.383Z' />
+          </g>
+          <g transform='matrix(1.58476,0.105673,-0.12754,1.9127,27.9645,-9.46743)'>
+              <path d='M8.079,49.218C6.901,48.395 4.31,46.291 3.138,43.042C3.138,43.042 3.682,40.373 5.165,36.299C5.444,36.847 6.994,39.673 10.147,41.629C6.703,38.443 5.839,35.521 5.688,34.907C6.549,32.688 7.664,30.143 9.084,27.436C9.738,28.514 11.221,30.591 13.699,32.134C10.883,38.743 9.133,44.775 8.079,49.218ZM13.7,32.13C11.25,29.858 10.11,27.722 9.605,26.464C10.362,25.073 11.201,23.645 12.126,22.203C12.5,23.337 13.49,25.764 15.633,27.87C14.939,29.309 14.296,30.733 13.7,32.13ZM15.641,27.854C13.571,24.86 12.992,22.364 12.831,21.126C15.321,17.406 18.396,13.626 22.172,10.151C22.429,11.355 22.891,12.792 23.717,14.229C20.459,18.736 17.802,23.374 15.641,27.854ZM9.328,49.526C11.04,42.057 15.93,25.27 27.894,8.934C26.403,10.665 25.015,12.434 23.72,14.224C23.105,12.433 22.84,10.88 22.753,9.625C25.353,7.299 28.275,5.122 31.556,3.206L31.556,3.219C31.205,5.284 30.819,7.309 30.407,9.284C29.377,9.905 28.054,10.54 26.397,11.057C27.875,10.892 29.181,10.491 30.246,10.045C28.56,17.947 26.46,25.046 24.485,30.843C22.855,31.265 19.613,31.816 15.379,31.101C19.198,32.563 23.156,32.107 24.098,31.968C20.943,41.041 18.206,46.642 18.151,46.676C15.205,48.526 10.937,49.292 9.328,49.526Z' />
+          </g>
+      </g>
+    </svg>
+    <h1 class='text'>Broken Quill<span class='logo-hideable'> Society</span></h1>
+  <% end %>
   <!-- end website title -->
 
-  <% unless current_user.blank? %>
-    <nav id='nav'>
-      <div class='nav-wrapper'>
-        <!-- link to user profile -->
-        <h2 id='profile-link'><%= link_to current_user.name, user_path(current_user) %></h2>
-        <!-- end link to user profile -->
-
-        <!-- link to profile -->
-        <% if current_user.is_admin? %>
-          <%= link_to admin_options_path, id: 'admin-profile-svg' do %>
-            <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-              <path d='M0 0h24v24H0z' fill='none'/>
-              <path d='M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z'/>
-            </svg>
-          <% end %>
-        <% else %>
-          <%= link_to user_path(current_user), id: 'admin-profile-svg' do %>
-            <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-              <path d='M12,12c3.315,0 6,-2.685 6,-6c0,-3.315 -2.685,-6 -6,-6c-3.315,0 -6,2.685 -6,6c0,3.315 2.685,6 6,6ZM12,15c-4.005,0 -12,2.01 -12,6l0,3l24,0l0,-3c0,-3.99 -7.995,-6 -12,-6Z' />
-              </svg>
-          <% end %>
-        <% end %>
-        <!-- end link to profile -->
-
-        <!-- link to inbox -->
-        <a href='/notifications' id='inbox-svg'>
-          <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-              <g transform='matrix(1.33333,0,0,1.33333,-4,-4)'>
-                  <path d='M19,3L4.99,3C3.89,3 3.01,3.9 3.01,5L3,19C3,20.1 3.89,21 4.99,21L19,21C20.1,21 21,20.1 21,19L21,5C21,3.9 20.1,3 19,3ZM19,15L15,15C15,16.66 13.66,18 12,18C10.34,18 9,16.66 9,15L4.99,15L4.99,5L19,5L19,15Z' />
-              </g>
-          </svg>
-        </a>
-        <!-- end link to inbox -->
-
-        <% if current_user.unread_notifications && current_user.unread_notifications > 0 %>
-          <a href='/notifications'>
-            <span id='inbox-badge' class='label label-theme label-as-badge'><%= current_user.unread_notifications %></span>
-          </a>
-        <% end %>
-
-        <!-- link to favourite works -->
-        <a href='/faves' id='fave-svg'>
-          <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-              <g transform='matrix(1.2,0,0,1.2,-2.4,-2.61)'>
-                  <path d='M16.5,3C14.76,3 13.09,3.81 12,5.09C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.42 2,8.5C2,12.28 5.4,15.36 10.55,20.04L12,21.35L13.45,20.03C18.6,15.36 22,12.28 22,8.5C22,5.42 19.58,3 16.5,3ZM12.1,18.55L12,18.65L11.9,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,5.99 11.07,7.36L12.94,7.36C13.46,5.99 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55Z' />
-              </g>
-          </svg>
-        </a>
-        <!-- end link to favourite works -->
-
-        <!-- link to submit new work -->
-        <a href='/works/new' id='new-svg'>
-          <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
-              <g transform='matrix(1.71429,0,0,1.71429,-8.57143,-8.57143)'>
-                  <path d='M19,13L13,13L13,19L11,19L11,13L5,13L5,11L11,11L11,5L13,5L13,11L19,11L19,13Z' />
-              </g>
-          </svg>
-        </a>
-        <!-- end link to submit new work -->
-
-        <!-- link to logout -->
-        <a href='/logout' id='logout-svg'>
-          <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' >
-              <g transform='matrix(1.33333,0,0,1.33333,-4,-4)'>
-                  <path d='M13,3L11,3L11,13L13,13L13,3ZM17.83,5.17L16.41,6.59C17.99,7.86 19,9.81 19,12C19,15.87 15.87,19 12,19C8.13,19 5,15.87 5,12C5,9.81 6.01,7.86 7.58,6.58L6.17,5.17C4.23,6.82 3,9.26 3,12C3,16.97 7.03,21 12,21C16.97,21 21,16.97 21,12C21,9.26 19.77,6.82 17.83,5.17Z' />
-              </g>
-          </svg>
-        </a>
-        <!-- end link to logout -->
-
-      </div>
-
-      <div class='hint-wrapper'>
-        <div id='profile-hint' class='nav-hint alert alert-success' role='alert'>
-          <p>View profile</p>
-        </div>
-        <div id='admin-profile-hint' class='nav-hint alert alert-success' role='alert'>
-          <% if current_user.is_admin? %>
-            <p>Admin options</p>
-          <% else %>
-            <p>View profile</p>
-          <% end %>
-        </div>
-        <div id='inbox-hint' class='nav-hint alert alert-success' role='alert'>
-          <p>Notifications</p>
-        </div>
-        <div id='fave-hint' class='nav-hint alert alert-success' role='alert'>
-          <p>My favourites</p>
-        </div>
-        <div id='new-hint' class='nav-hint alert alert-success' role='alert'>
-          <p>New work</p>
-        </div>
-        <div id='logout-hint' class='nav-hint alert alert-success' role='alert'>
-          <p>Logout</p>
-        </div>
-      </div>
-    </nav>
-
-  <% else %>
+  <% if current_user.blank? %>
 
     <!-- Login / sign up button -->
     <div class='btn-group login'>
@@ -121,11 +35,7 @@
   <% end %>
 
   <!-- begin search box -->
-  <% unless current_user.blank? %>
-    <div id='search-slider' class='search-wrapper'>
-  <% else %>
-    <div id='search-static' class='search-wrapper'>
-  <% end %>
+  <div id='search' class='search-wrapper'>
     <div class='search-container search-container-transition'>
       <span id='search-icon' class='icon'><i class='fa fa-search'></i></span>
       <%= text_field_tag :q, params[:q], onfocus: 'this.value = this.value', id: 'search-box', placeholder: 'Search works, users...' %>
@@ -133,6 +43,31 @@
     <div id='btn-search'></div>
   </div>
   <!-- end search box -->
+
+  <% unless current_user.blank? %>
+
+    <nav id='nav'>
+      <%= link_to user_path(current_user) do %><h2 id='profile-link'><%= current_user.name %></h2><% end %>
+
+      <!-- link to profile -->
+      <% if current_user.is_admin? %>
+        <%= link_to admin_options_path, id: 'admin-profile-svg' do %>
+          <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+            <path d='M0 0h24v24H0z' fill='none'/>
+            <path d='M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z'/>
+          </svg>
+        <% end %>
+      <% else %>
+        <%= link_to user_path(current_user), id: 'admin-profile-svg' do %>
+          <svg class='svg-header svg-small' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+            <path d='M12,12c3.315,0 6,-2.685 6,-6c0,-3.315 -2.685,-6 -6,-6c-3.315,0 -6,2.685 -6,6c0,3.315 2.685,6 6,6ZM12,15c-4.005,0 -12,2.01 -12,6l0,3l24,0l0,-3c0,-3.99 -7.995,-6 -12,-6Z' />
+            </svg>
+        <% end %>
+      <% end %>
+      <!-- end link to profile -->
+    </nav>
+
+  <% end %>
 
   <div id='work-reading-progress'>
   </div>

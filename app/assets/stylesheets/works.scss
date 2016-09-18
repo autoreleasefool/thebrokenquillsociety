@@ -1,5 +1,5 @@
 @import 'variables';
-$work-tags-padding:$header-height + 20px;
+$work-tags-padding:($header-height + $sub-header-height) + 20px;
 
 label #incomplete-checked { display: none; }
 input[type='checkbox']:checked ~ label #incomplete-checked { display: inline-block; }
@@ -11,7 +11,7 @@ input[type='checkbox']:checked ~ label #is-private-unchecked { display: none; }
 
 #work {
   min-height: 100vh;
-  margin-bottom: -$header-height;
+  margin-bottom: -($header-height + $sub-header-height);
 
   #work-title { text-align: center; }
 
@@ -95,7 +95,7 @@ input[type='checkbox']:checked ~ label #is-private-unchecked { display: none; }
 
 #work-reading-progress {
   position: fixed;
-  top: $header-height;
+  top: ($header-height + $sub-header-height);
   height: 4px;
   width: 0;
   background-color: $primary-color-dark;

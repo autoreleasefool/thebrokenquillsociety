@@ -103,16 +103,6 @@ $('document').ready(function() {
     }
   })
 
-  $('#nav').hover(
-    function() {
-      var search = document.getElementById('search-slider');
-      search.style.left = 0;
-    }, function() {
-      var search = document.getElementById('search-slider');
-      search.style.left = '211px';
-    }
-  );
-
   $('#search-box').keyup(
     function(event) {
       // Clicks the search button when the user presses enter in the search box

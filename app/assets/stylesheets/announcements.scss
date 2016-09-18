@@ -2,11 +2,11 @@
 
 #announcements-container-mobile {
   min-height: 100vh;
-  margin-bottom: -$header-height;
+  margin-bottom: -($header-height + $sub-header-height);
 }
 
 #announcements-mobile {
-  margin-bottom: $header-height;
+  margin-bottom: -$header-height;
 }
 
 #announcements, #announcements-mobile {

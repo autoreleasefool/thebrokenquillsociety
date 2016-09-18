@@ -2,11 +2,11 @@
 
 #login {
   min-height: 100vh;
-  margin-bottom: -$header-height;
+  margin-bottom: -($header-height + $sub-header-height);
 }
 
 #login-form {
-  margin-bottom: $header-height;
+  margin-bottom: $header-height + $sub-header-height;
 }
 
 .horizontal-form {

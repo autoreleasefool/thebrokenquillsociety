@@ -1,12 +1,12 @@
 @import 'variables';
 
 #notifications-table {
-  margin-bottom: $header-height;
+  margin-bottom: $header-height + $sub-header-height;
 }
 
 #notifications {
   min-height: 100vh;
-  margin-bottom: -$header-height;
+  margin-bottom: -($header-height + $sub-header-height);
 
   h1.title { text-align: center; }
   .list-group {

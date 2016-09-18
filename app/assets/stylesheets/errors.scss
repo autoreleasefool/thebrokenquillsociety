@@ -3,7 +3,7 @@
 #error {
   display: flex;
   align-items: center;
-  height: calc(100vh - #{$header-height});
+  height: calc(100vh - #{$header-height} - #{$sub-header-height});
   max-width: 600px;
   margin: 0 auto;
 }
