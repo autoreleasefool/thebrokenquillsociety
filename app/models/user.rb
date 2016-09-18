@@ -35,7 +35,7 @@ extend FriendlyId
   acts_as_taggable
 
   # Add friendly urls
-	friendly_id :name, use: :slugged
+  friendly_id :name, use: :slugged
 
   # Checks for valid nanowrimo name
   validate :check_nanowrimo_name

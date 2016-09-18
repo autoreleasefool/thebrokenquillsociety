@@ -13,12 +13,12 @@ extend FriendlyId
   # Tagging
   acts_as_taggable
 
-	# Add friendly urls
-	friendly_id :title, use: :slugged
+  # Add friendly urls
+  friendly_id :title, use: :slugged
 
   # Verifying minimum length of the title
   validates :title,
-		uniqueness: { message: 'That title is already taken.' },
+    uniqueness: { message: 'That title is already taken.' },
     presence: { message: 'Your work must have a title.' },
     length: { maximum: 255, too_long: 'Title can be a maximum %{count} characters.' }
 

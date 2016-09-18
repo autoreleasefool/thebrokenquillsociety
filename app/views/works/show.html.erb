@@ -21,7 +21,7 @@
   </div>
   <hr />
   <div id='work-body'>
-  	<%= simple_format @work.body, class: 'work-body' %>
+    <%= simple_format @work.body, class: 'work-body' %>
   </div>
   <% if !current_user.blank? && Favourite.find_by(user_id: current_user.id, work_id: @work.id).blank? %>
     <%= link_to like_path(work: params[:id]), method: :post, id: 'btn-favourite' do %>
