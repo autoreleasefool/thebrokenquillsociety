@@ -581,6 +581,7 @@ textarea.tall-area {
 
   .logout {
     float: right;
+    margin-right: 18px;
   }
 }
 
@@ -627,6 +628,21 @@ textarea.tall-area {
   position: relative;
   float: right;
   margin-right: 10px;
+}
+
+#search-small {
+  float: right;
+  height: $header-height;
+  display: none;
+
+  .svg-search {
+    height: 40px;
+    width: 28px;
+    margin: 10px 18px 10px 10px;
+    fill: #fff;
+  }
+
+  .svg-search:hover { fill: $primary-color; }
 }
 
 .search-wrapper {
@@ -728,5 +744,18 @@ textarea.tall-area {
 
 @media screen and (max-width: 720px) {
   .form, .form-header { width: 90%; max-width: 720px; }
+  .logo-hideable { display: none; }
+}
+
+@media screen and (max-width: 580px) {
+  #search { display: none; }
+  #search-small { display: block; }
+  .logo-hideable { display: inline; }
+  #content { padding-right: $sidebar-width-small; }
+  #sidebar { width: $sidebar-width-small; }
+
+}
+
+@media screen and (max-width: 460px) {
   .logo-hideable { display: none; }
 }
