@@ -80,6 +80,50 @@
     <p class='form-hint'>Check this box if you don't want this work to appear publicly yet. It won't show up on your profile or in any search results, but you can send the link to others if you'd like.</p>
   </div>
 
+  <% user_novels = current_user.novels.map { |novel| [novel.title, novel.id] } %>
+  <% user_novels.insert(0, [ 'Create a new novel...', -1 ]) %>
+  <label class='control-label string required input-label'>Novel</label><br />
+  <%= select('work', 'novel_id', user_novels, { include_blank: true }, onChange: 'novelChanged();' ) %>
+  <p class='form-hint'>You can make this work a part of a novel (it will automatically be added as the last chapter, which you can change later) or you can create a new novel for this work.</p>
+
+  <% puts @novel %>
+
+  <div id='new-novel-form'>
+
+    <%= f.simple_fields_for @work.novel do |nf| %>
+
+      <%= nf.input :title,
+            :as => :string,
+            required: false,
+            error: false,
+            label: 'Novel title',
+            wrapper_html: { class: 'remove-bottom-margin' },
+            input_html: { class: 'flat-input' },
+            label_html: { class: 'input-label' } %>
+      <p id='novel-title-counter' class='counter'><span id='novel-title-count'>0</span> / 255</p>
+      <% if @work_errors && @work_errors[:novel_title] %>
+        <div class='alert alert-danger'><%= @work_errors[:novel_title] %></div>
+      <% end %>
+
+      <%= nf.input :description,
+            :as => :text,
+            required: false,
+            error: false,
+            label: 'Novel description',
+            input_html: { class: 'flat-input tall-area' },
+            label_html: { class: 'input-label' } %>
+      <!-- <div class='btn-group format-btns' role='group'>
+        <button type='button' class='btn btn-default' onclick='boldWork()'><strong>Bold</strong></button>
+        <button type='button' class='btn btn-default' onclick='italicizeWork()'><span class='italicized'>Italicize</span></button>
+      </div> -->
+      <% if @work_errors && @work_errors[:novel_description] %>
+        <div class='alert alert-danger'><%= @work_errors[:novel_description] %></div>
+      <% end %>
+
+    <% end %>
+
+  </div>
+
   <div class='form-submit'>
     <%= f.submit 'Submit', :class => 'btn btn-lg btn-theme' %>
   </div>

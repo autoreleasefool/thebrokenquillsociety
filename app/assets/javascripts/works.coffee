@@ -1,4 +1,5 @@
 workTitleCounterError = false
+novelTitleCounterError = false
 didScroll = false
 lastScrollTop = 0
 minimumScrollThreshold = 5
@@ -33,8 +34,16 @@ setElementVisible = (elem, visible) ->
 @italicizeWork = ->
   adjustTextAreaFormatting($('textarea#work_body'), 'italic')
 
+@novelChanged = ->
+  if ($('#work_novel_id').val() == '-1')
+    $('#new-novel-form').show()
+  else
+    $('#new-novel-form').hide()
+
 # On document ready
 $ ->
+
+  novelChanged()
 
   # Tracks the number of characters in an input field for the user
   if $('#work-title-count').length
@@ -51,6 +60,22 @@ $ ->
       else if workTitleCounterError
         $('#work-title-counter').removeClass 'counter-error'
         workTitleCounterError = false
+
+  # Tracks the number of characters in an input field for the user
+  if $('#novel-title-count').length
+    novelTitle = $('#work_novel_title')
+    novelTitleCount = $('#novel-title-count')
+
+    novelTitleCount.html novelTitle.val().length
+    novelTitle.keyup ->
+      charCount = novelTitle.val().length
+      novelTitleCount.html charCount
+      if charCount > 255
+        $('#novel-title-counter').addClass 'counter-error'
+        novelTitleCounterError = true
+      else if novelTitleCounterError
+        $('#novel-title-counter').removeClass 'counter-error'
+        novelTitleCounterError = false
 
   # Hides a button when the comments are in view
   comments = $('#comments')

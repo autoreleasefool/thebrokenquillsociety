@@ -14,6 +14,8 @@ class WorksController < ApplicationController
   # Form to submit a new work
   def new
     @work = Work.new
+    @novel = Novel.new
+    @work.novel = @novel
     @title = 'New Work'
   end
 
@@ -32,6 +34,8 @@ class WorksController < ApplicationController
 
     @work = Work.new(work_params)
     @work.user = current_user
+
+
 
     if @work.save
       send_new_work_notifications(@work) unless @work.is_private
@@ -96,7 +100,7 @@ class WorksController < ApplicationController
 
   # Parameters required/allowed to create a work entry
   def work_params
-    params.require(:work).permit(:title, :body, :tag_list, :incomplete, :is_private)
+    params.require(:work).permit(:title, :body, :tag_list, :incomplete, :is_private, :novel_id)
   end
 
   # Confirms the user is the owner of the work or an admin
