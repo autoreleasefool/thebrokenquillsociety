@@ -16,6 +16,7 @@ extend FriendlyId
   before_save { self.email = email.downcase }
 
   # Associations
+  has_many :novels, dependent: :destroy
   has_many :works, dependent: :destroy
   has_many :comments, dependent: :nullify
   has_many :histories, dependent: :nullify

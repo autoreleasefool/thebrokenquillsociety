@@ -3,6 +3,7 @@ extend FriendlyId
 
   # Associations
   belongs_to :user
+  belongs_to :novel
   has_many :comments, dependent: :delete_all
   has_many :histories, dependent: :delete_all
   has_many :favourites, dependent: :destroy
