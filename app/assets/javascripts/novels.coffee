@@ -6,13 +6,14 @@ addWorkField = ->
   dropdown = $('select[id^="work-dropdown-"]:last')
   id = parseInt(dropdown.prop('id').match(/\d+/g), 10) + 1
   dropdownClone = dropdown.clone().prop('id', 'work-dropdown-' + id)
+  dropdownClone.attr('name', 'work-dropdown-' + id)
   dropdownClone.on 'change', (e) ->
     updateDisabledFields()
 
   label = $('label[id^="chapter-label-"]:last')
   id = parseInt(label.prop('id').match(/\d+/g), 10) + 1
   labelClone = label.clone().prop('id', 'chapter-label-' + id)
-  labelClone.html('Chapter' + totalWorkFields)
+  labelClone.html('Chapter ' + totalWorkFields)
 
   $('#work-dropdowns').append(labelClone)
   $('#work-dropdowns').append(dropdownClone)

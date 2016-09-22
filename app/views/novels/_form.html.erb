@@ -41,7 +41,7 @@
 
   <div id='work-dropdowns'>
     <label id='chapter-label-1' class='chapter-label'>Chapter 1</label>
-    <select id='work-dropdown-1' class='form-control work-dropdown'>
+    <select id='work-dropdown-1' class='form-control work-dropdown' name='work-dropdown-1'>
       <option value=''></option>
       <% @works.each do |work| %>
         <option value='<%= work.id %>'><%= work.title %></option>

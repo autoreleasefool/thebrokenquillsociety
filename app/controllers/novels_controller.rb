@@ -33,7 +33,26 @@ class NovelsController < ApplicationController
 
     @novel = Novel.new(novel_params)
     @novel.user = current_user
-    @novel.works = # TODO: find works selected for this novel
+
+    workIds = []
+    workIndex = 1
+    loop do
+      workKey = 'work-dropdown-' + workIndex.to_s
+      if params.key?(workKey) && !params[workKey].blank?
+
+        # Get the chapter and add it to the list of work ids, so long as the chapter exists and belongs to the user
+        if chapter = Work.where(id: params[workKey]).first
+          unless chapter.user != current_user
+            workIds << params[workKey]
+            @novel.works << chapter
+          end
+        end
+        workIndex += 1
+      else
+        break
+      end
+    end
+    @novel.chapter_order = workIds.join(',')
 
     if @novel.save
       send_new_novel_notifications(@novel)
@@ -43,6 +62,7 @@ class NovelsController < ApplicationController
       @novel.errors.each do |attr, msg|
         @novel_errors[attr] = msg
       end
+      @works = current_user.works.where(is_private: false).order('title')
       render 'new'
     end
   end
@@ -69,7 +89,27 @@ class NovelsController < ApplicationController
 
     @novel = Novel.friendly.find(params[:id])
     @novel.slug = nil
-    @novel.works = # TODO: find works selected for this novel
+    @novel.works = []
+
+    workIds = []
+    workIndex = 1
+    loop do
+      workKey = 'work-dropdown-' + workIndex.to_s
+      if params.key?(workKey) && !params[workKey].blank?
+
+        # Get the chapter and add it to the list of work ids, so long as the chapter exists and belongs to the user
+        if chapter = Work.where(id: params[workKey]).first
+          unless chapter.user != current_user
+            workIds << params[workKey]
+            @novel.works << chapter
+          end
+        end
+        workIndex += 1
+      else
+        break
+      end
+    end
+    @novel.chapter_order = workIds.join(',')
 
     if @novel.update(novel_params)
       # Inform users who favourited the novel that is has been updated
