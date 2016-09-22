@@ -15,7 +15,6 @@ class WorksController < ApplicationController
   def new
     @work = Work.new
     @novel = Novel.new
-    @work.novel = @novel
     @title = 'New Work'
   end
 
@@ -35,7 +34,11 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
     @work.user = current_user
 
-
+    if !params[:work][:novel_id].blank?
+      @work.novel = Novel.find(params[:work][:novel_id])
+    else
+      @work.novel = nil
+    end
 
     if @work.save
       send_new_work_notifications(@work) unless @work.is_private
@@ -70,6 +73,12 @@ class WorksController < ApplicationController
 
     @work = Work.friendly.find(params[:id])
     @work.slug = nil
+
+    if !params[:work][:novel_id].blank?
+      @work.novel = Novel.find(params[:work][:novel_id])
+    else
+      @work.novel = nil
+    end
 
     if @work.update(work_params)
       # Inform users who favourited the work that is has been updated
