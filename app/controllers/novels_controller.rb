@@ -1,69 +1,116 @@
 class NovelsController < ApplicationController
-  before_action :set_novel, only: [:show, :edit, :update, :destroy]
 
-  # GET /novels
-  def index
-    @novels = Novel.all
-  end
+  # Only allow logged in users to access certain pages
+  before_action :logged_in_user, only: [:new, :create, :edit, :update]
+  # Only allow the original user or admin to perform certain actions
+  before_action :check_novel_user, only: [:edit, :update, :destroy]
 
-  # GET /novels/1
+  # Displays the contents of a single novel
   def show
+    @novel = Novel.friendly.find(params[:id])
+    @title = @novel.title
   end
 
-  # GET /novels/new
+  # Form to submit a new novel
   def new
     @novel = Novel.new
+    @works = current_user.works.where(is_private: false).order('title')
+    @title = 'New Novel'
   end
 
-  # GET /novels/1/edit
-  def edit
-  end
-
-  # POST /novels
+  # Creates a new novel entry
   def create
+    if params[:novel] && params[:novel][:tag_list] && params[:novel][:title]
+      # Add the novel's title to the list of tags
+      params[:novel][:tag_list].downcase!
+      separated_title = params[:novel][:title].downcase.split(/\s+/)
+      separated_title.each do |tag|
+        unless params[:novel][:tag_list].include? tag
+          params[:novel][:tag_list] = params[:novel][:tag_list] + ', ' + tag
+        end
+      end
+    end
+
     @novel = Novel.new(novel_params)
+    @novel.user = current_user
+    @novel.works = # TODO: find works selected for this novel
 
-    respond_to do |format|
-      if @novel.save
-        format.html { redirect_to @novel, notice: 'Novel was successfully created.' }
-        format.json { render :show, status: :created, location: @novel }
-      else
-        format.html { render :new }
-        format.json { render json: @novel.errors, status: :unprocessable_entity }
+    if @novel.save
+      send_new_novel_notifications(@novel)
+      redirect_to @novel
+    else
+      @novel_errors = {}
+      @novel.errors.each do |attr, msg|
+        @novel_errors[attr] = msg
       end
+      render 'new'
     end
   end
 
-  # PATCH/PUT /novels/1
+  # Form to edit a previously submitted novel
+  def edit
+    @novel = Novel.friendly.find(params[:id])
+    @works = current_user.works.where(is_private: false).order('title')
+    @title = 'Edit ' + @novel.title
+  end
+
+  # Updates a previously created novel entry
   def update
-    respond_to do |format|
-      if @novel.update(novel_params)
-        format.html { redirect_to @novel, notice: 'Novel was successfully updated.' }
-        format.json { render :show, status: :ok, location: @novel }
-      else
-        format.html { render :edit }
-        format.json { render json: @novel.errors, status: :unprocessable_entity }
+    if params[:novel] && params[:novel][:tag_list] && params[:novel][:title]
+      # Add the novel's title to the list of tags
+      params[:novel][:tag_list].downcase!
+      separated_title = params[:novel][:title].downcase.split(/\s+/)
+      separated_title.each do |tag|
+        unless params[:novel][:tag_list].include? tag
+          params[:novel][:tag_list] = params[:novel][:tag_list] + ', ' + tag
+        end
       end
+    end
+
+    @novel = Novel.friendly.find(params[:id])
+    @novel.slug = nil
+    @novel.works = # TODO: find works selected for this novel
+
+    if @novel.update(novel_params)
+      # Inform users who favourited the novel that is has been updated
+      # send_new_update_notifications(@novel)
+      # record_edit_history(@novel, current_user)
+
+      flash[:success] = 'The novel was successfully edited.'
+      redirect_to @novel
+    else
+      @novel_errors = {}
+      @novel.errors.each do |attr, msg|
+        @novel_errors[attr] = msg
+      end
+      render 'edit'
     end
   end
 
-  # DELETE /novels/1
+  # Deletes a single novel
   def destroy
-    @novel.destroy
-    respond_to do |format|
-      format.html { redirect_to novels_url, notice: 'Novel was successfully destroyed.' }
-      format.json { head :no_content }
+    @novel = Work.friendly.find(params[:id])
+    unless @novel.destroy
+      flash[:error] = 'The novel could not be deleted.'
     end
+    redirect_back_or root_path
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_novel
-      @novel = Novel.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def novel_params
-      params.fetch(:novel, {})
+  # Parameters required/allowed to create a novel entry
+  def novel_params
+    params.require(:novel).permit(:title, :description, :tag_list)
+  end
+
+  # Confirms the user is the owner of the novel or an admin
+  def check_novel_user
+    owner = Novel.friendly.find(params[:id]).user
+    unless owner == current_user || current_user.is_admin?
+      store_location
+      flash[:error] = 'You are not authorized to perform this action.'
+      redirect_to login_path
     end
+  end
+
 end

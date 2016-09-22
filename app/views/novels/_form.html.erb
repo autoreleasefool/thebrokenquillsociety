@@ -1,10 +1,58 @@
-<%= simple_form_for(@novel) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for @novel, html: { class: 'form', id: 'are-you-sure-form' } do |f| %>
 
-  <div class="form-inputs">
+  <%= f.input :title,
+        :as => :string,
+        required: true,
+        error: false,
+        label: 'Title',
+        wrapper_html: { class: 'remove-bottom-margin' },
+        input_html: { class: 'flat-input' },
+        label_html: { class: 'input-label' } %>
+  <p id='novel-title-counter' class='counter'><span id='novel-title-count'>0</span> / 255</p>
+  <% if @novel_errors && @novel_errors[:title] %>
+    <div class='alert alert-danger'><%= @novel_errors[:title] %></div>
+  <% end %>
+
+  <%= f.input :description,
+        :as => :text,
+        required: true,
+        error: false,
+        label: 'Description',
+        input_html: { class: 'flat-input tall-area' },
+        label_html: { class: 'input-label' } %>
+  <% if @novel_errors && @novel_errors[:description] %>
+    <div class='alert alert-danger'><%= @novel_errors[:description] %></div>
+  <% end %>
+
+  <%= f.input :tag_list,
+        required: true,
+        error: false,
+        label: 'Tags',
+        placeholder: 'Type of novel, genres, settings, etc.',
+        wrapper_html: { class: 'with-hint' },
+        input_html: { class: 'flat-input', value: (@novel.tag_list.blank? ? '' : @novel.tag_list.to_s) },
+        label_html: { class: 'input-label' } %>
+  <p class='form-hint'>This should be a list of comma-separated keywords.</p>
+  <% if @novel_errors && @novel_errors[:tag_list] %>
+    <div class='alert alert-danger'><%= @novel_errors[:tag_list] %></div>
+  <% end %>
+
+  <label class='control-label string required input-label'>Chapters</label>
+
+  <div id='work-dropdowns'>
+    <label id='chapter-label-1' class='chapter-label'>Chapter 1</label>
+    <select id='work-dropdown-1' class='form-control work-dropdown'>
+      <option value=''></option>
+      <% @works.each do |work| %>
+        <option value='<%= work.id %>'><%= work.title %></option>
+      <% end %>
+    </select>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <button id='add-work-btn' class='btn btn-md btn-theme'>Add another chapter</button>
+
+  <div class='form-submit'>
+    <%= f.submit 'Submit', :class => 'btn btn-lg btn-theme' %>
   </div>
+
 <% end %>
