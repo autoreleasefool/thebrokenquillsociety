@@ -1,3 +1,6 @@
+@import 'variables';
+$novel-tags-padding:($header-height + $sub-header-height) + 20px;
+
 #add-work-btn {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -5,4 +8,57 @@
 
 .chapter-label {
   margin-top: 10px;
+}
+
+#novel {
+  min-height: 100vh;
+  margin-bottom: -($header-height + $sub-header-height);
+
+  #novel-title { text-align: center; }
+
+  #novel-author {
+    font-size: 12pt;
+    text-align: center;
+  }
+
+  #novel-author a, #novel-author a:hover, #novel-author a:visited {
+    text-decoration: none;
+    color: $primary-color-dark;
+  }
+
+  .novel-body {
+    text-align: justify;
+    font-size: 12pt;
+  }
+
+  #novel-info { padding-top: 15px; }
+
+  #novel-tags, #novel-updated {
+    font-size: 10pt;
+    color: #808080;
+  }
+
+  #novel-tags {
+    clear: left;
+    padding-bottom: $novel-tags-padding;
+  }
+
+  #novel-updated {
+    text-align: center;
+    margin: 0;
+    padding-top: 5px;
+  }
+
+  #chapters {
+    h2.title { text-align: center; }
+    h3.title a, h3.title a:hover, h3.title a:visited {
+      color: $primary-color-dark !important;
+    }
+    .excerpt p {
+      color: $excerpt-text-color;
+      font-size: 10pt;
+    }
+  }
+
+  span#novel-options, #novel-options a, #novel-options a:hover, #novel-options a:visited { color: $secondary-color; }
 }

@@ -1,1 +1,33 @@
-<h1>This is where the title of the novel would go.</h1>
+<div id='novel' class='centered-content<%= mobile_modifier %>'>
+  <h1 id='novel-title' class='title'><%= @novel.title %></h1>
+  <h2 id='novel-author'>Written by
+    <%= link_to @novel.user.name, user_path(@novel.user) %>
+    <% if !current_user.blank? && (current_user == @novel.user || current_user.is_admin?) && show_admin_options %>
+      <span id='novel-options'>&nbsp;(<%= link_to 'edit', edit_novel_path(@novel) %> - <%= link_to 'delete', novel_path(@novel), method: :delete, data: { confirm: 'Are you sure you want to delete this novel? It cannot be recovered.' } %>)
+      </span>
+    <% end %>
+  </h2>
+  <div id='novel-info'>
+    <p id='novel-updated'>This novel was last updated <%= @novel.updated_at.strftime('%B %-d, %Y') %></p>
+  </div>
+  <hr />
+  <div id='novel-body'>
+    <%= simple_format @novel.description, class: 'novel-body' %>
+  </div>
+  <hr />
+  <div id='chapters'>
+    <% @novel.works.each_with_index do |work, index| %>
+      <h3 class='title'>Chapter <%= index + 1 %>: <%= link_to work.title, work %></h3>
+      <p><%= time_ago_in_words(work.created_at) %> ago</p>
+      <div class='excerpt'>
+        <%= simple_format work.body[0..length_of_preview(work.body)].strip() + '...' %>
+      </div>
+
+      <% if work != @novel.works.last %>
+        <hr />
+      <% end %>
+    <% end %>
+  </div>
+  <hr />
+  <p id='novel-tags'><strong>Tags:</strong> <%= @novel.tag_list %></p>
+</div>
