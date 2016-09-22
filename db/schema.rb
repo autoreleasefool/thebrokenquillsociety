@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921222001) do
+ActiveRecord::Schema.define(version: 20160922031815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,10 +98,11 @@ ActiveRecord::Schema.define(version: 20160921222001) do
   create_table "novels", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "user_id"
     t.string   "slug"
+    t.string   "chapter_order"
     t.index ["user_id"], name: "index_novels_on_user_id", using: :btree
   end
 
@@ -159,12 +160,11 @@ ActiveRecord::Schema.define(version: 20160921222001) do
     t.text     "body"
     t.boolean  "incomplete"
     t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "slug"
     t.boolean  "is_private"
     t.integer  "novel_id"
-    t.integer  "novel_position"
     t.index ["novel_id"], name: "index_works_on_novel_id", using: :btree
     t.index ["user_id"], name: "index_works_on_user_id", using: :btree
   end
