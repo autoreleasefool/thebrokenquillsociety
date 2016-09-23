@@ -555,13 +555,21 @@ textarea.tall-area {
   h1, span { font-family: 'Quicksand', sans-serif; }
 
   a, a:visited {
-    color: #fff;
+    color: #000;
     text-decoration: none;
+
+    &.logo, &.profile {
+      color: #fff;
+    }
   }
 
   a:hover {
     color: $primary-color;
     text-decoration: none;
+  }
+
+  a.dark:hover {
+    color: $primary-color-dark;
   }
 
   h2 {
