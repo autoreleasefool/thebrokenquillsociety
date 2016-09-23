@@ -16,25 +16,47 @@
   </div>
 
   <div id='recent-works' class='centered-content<%= mobile_modifier %>'>
-    <h2 class='title'>Recent submissions</h2>
+    <h2 class='title'>Recent works &amp; novels</h2>
 
-    <% @recent_works.each do |work| %>
-      <h3 class='title'><%= link_to work.title, work %></h3>
-      <p class='author'>
-        <strong>
-          <% unless work.user.blank? %>
-            <%= link_to work.user.name, user_path(work.user) %>
-          <% else %>
-            <span class='time'>[Deleted]</span>
-          <% end %>
-        </strong> <span class='time'> - <%= time_ago_in_words(work.created_at) %> ago</span>
-      </p>
-      <div class='excerpt'>
-        <%= simple_format work.body[0..length_of_preview(work.body)].strip() + '...' %>
-      </div>
+    <% @recent.each do |workOrNovel| %>
+      <% if workOrNovel.is_a? Work %>
+        <% work = workOrNovel %>
+        <h3 class='title'><%= link_to work.title, work %></h3>
+        <p class='author'>
+          <strong>
+            <% unless work.user.blank? %>
+              <%= link_to work.user.name, user_path(work.user) %>
+            <% else %>
+              <span class='time'>[Deleted]</span>
+            <% end %>
+          </strong> <span class='time'> - <%= time_ago_in_words(work.created_at) %> ago</span>
+        </p>
+        <div class='excerpt'>
+          <%= simple_format work.body[0..length_of_preview(work.body)].strip() + '...' %>
+        </div>
 
-      <% if work != @recent_works.last %>
-        <hr />
+        <% if work != @recent.last %>
+          <hr />
+        <% end %>
+      <% else %>
+        <% novel = workOrNovel %>
+        <h3 class='title'><%= link_to novel.title, novel %></h3>
+        <p class='author'>
+          <strong>
+            <% unless novel.user.blank? %>
+              <%= link_to novel.user.name, user_path(novel.user) %>
+            <% else %>
+              <span class='time'>[Deleted]</span>
+            <% end %>
+          </strong> <span class='time'> - <%= time_ago_in_words(novel.created_at) %> ago</span>
+        </p>
+        <div class='excerpt'>
+          <%= simple_format novel.description[0..length_of_preview(novel.description)].strip() + '...' %>
+        </div>
+
+        <% if novel != @recent.last %>
+          <hr />
+        <% end %>
       <% end %>
     <% end %>
   </div>

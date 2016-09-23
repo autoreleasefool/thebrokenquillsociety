@@ -147,7 +147,37 @@ class ApplicationController < ActionController::Base
 
   # Lists most recent works and users
   def index
-    @recent_works = Work.where(is_private: false).order('created_at DESC').limit(10)
+    recent_limit = 10
+
+    @recent_works = Work.where(is_private: false).order('created_at DESC').limit(recent_limit)
+    @recent_novels = Novel.all.order('updated_at DESC').limit(recent_limit)
+    @recent = []
+
+    workIndex = 0
+    novelIndex = 0
+    while @recent.count < recent_limit && workIndex < @recent_works.count && novelIndex < @recent_novels.count do
+      if @recent_works[workIndex].created_at > @recent_novels[novelIndex].updated_at
+        @recent << @recent_works[workIndex]
+        workIndex += 1
+      else
+        @recent << @recent_novels[novelIndex]
+        novelIndex += 1
+      end
+    end
+
+    while @recent.count < recent_limit do
+      if workIndex < @recent_works.count
+        @recent << @recent_works[workIndex]
+        workIndex += 1
+      elsif novelIndex < @recent_novels.count
+        @recent << @recent_novels[novelIndex]
+        novelIndex += 1
+      else
+        break
+      end
+    end
+
+    puts @recent
   end
 
   # Displays the user's search results
