@@ -153,15 +153,18 @@ class ApplicationController < ActionController::Base
   # Displays the user's search results
   def search
     @work_search_results = nil
+    @novel_search_results = nil
     @user_search_results = nil
     @title = 'Search'
 
     if params.has_key?(:q) && params[:q].length > 0
       search_keys = params[:q].split
       @work_search_results = Work.tagged_with(search_keys, :any => true, :order_by_matching_tag_count => true).where(is_private: false).paginate(page: params[:page], per_page: 10)
+      @novel_search_results = Novel.tagged_with(search_keys, :any => true, :order_by_matching_tag_count => true).paginate(page: params[:page], per_page: 3)
       @user_search_results = User.tagged_with(search_keys, :any => true, :order_by_matching_tag_count => true).paginate(page: params[:page], per_page: 3)
     else
       @work_search_results = Work.where(is_private: false).order('created_at DESC').paginate(page: params[:page], per_page: 10)
+      @novel_search_results = Novel.all.order('updated_at DESC').paginate(page: params[:page], per_page: 3)
       @user_search_results = User.all.order('created_at DESC').paginate(page: params[:page], per_page: 3)
     end
   end
