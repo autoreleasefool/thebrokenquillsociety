@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def show
     @user = User.friendly.find(params[:id])
     @works = @user.works.where(is_private: false).order('created_at DESC').paginate(page: params[:page], per_page: 10)
+    @novels = @user.novels.order('updated_at DESC').paginate(page: params[:page], per_page: 10)
     @title = @user.name
 
     unless @user.nanowrimo_name.blank?
