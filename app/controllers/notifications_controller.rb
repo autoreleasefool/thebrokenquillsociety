@@ -14,9 +14,7 @@ class NotificationsController < ApplicationController
     @unread_notification_ids = []
 
     @all_notifications.each do |notification|
-      puts "id: " + notification.id.to_s
       if notification.unread?
-        puts "unread: " + notification.id.to_s
         # Mark all of the unread notifications as read, since they have now been opened
         @unread_notification_ids << notification.id
         notification.unread = false

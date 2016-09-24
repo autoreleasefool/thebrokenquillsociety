@@ -129,7 +129,7 @@ class NovelsController < ApplicationController
 
   # Deletes a single novel
   def destroy
-    @novel = Work.friendly.find(params[:id])
+    @novel = Novel.friendly.find(params[:id])
     unless @novel.destroy
       flash[:error] = 'The novel could not be deleted.'
     end

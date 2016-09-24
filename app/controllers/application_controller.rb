@@ -87,7 +87,6 @@ class ApplicationController < ActionController::Base
     # Send a notification to all users following the poster
     followers = ActiveRecord::Base.connection.execute("SELECT user_a_id from user_follows join users on users.id = user_follows.user_b_id where user_follows.user_b_id = #{current_user.id}")
     followers.each do |follower|
-      puts follower.inspect
       # Create and save the notification
       follower_user = User.find(follower['user_a_id'])
       notification = follower_user.notifications.create(:body => body, :category => 4, :link => link, :unread => true)
@@ -108,7 +107,6 @@ class ApplicationController < ActionController::Base
     # Send a notification to all users following the poster
     followers = ActiveRecord::Base.connection.execute("SELECT user_a_id from user_follows join users on users.id = user_follows.user_b_id where user_follows.user_b_id = #{current_user.id}")
     followers.each do |follower|
-      puts follower.inspect
       # Create and save the notification
       follower_user = User.find(follower['user_a_id'])
       notification = follower_user.notifications.create(:body => body, :category => 5, :link => link, :unread => true)
@@ -176,8 +174,6 @@ class ApplicationController < ActionController::Base
         break
       end
     end
-
-    puts @recent
   end
 
   # Displays the user's search results

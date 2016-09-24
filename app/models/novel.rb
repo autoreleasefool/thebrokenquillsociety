@@ -3,7 +3,7 @@ extend FriendlyId
 
   # Associations
   belongs_to :user
-  has_many :works
+  has_many :works, dependent: :nullify
 
   # Strip leading and trailing whitespace from attributes
   auto_strip_attributes :title, :description
