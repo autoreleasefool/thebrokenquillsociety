@@ -1,7 +1,7 @@
 <div id='work' class='centered-content<%= mobile_modifier %>'>
   <h1 id='work-title' class='title'><%= @work.title %></h1>
   <h2 id='work-author'>Written by
-    <%= link_to @work.user.name, user_path(@work.user) %>
+    <% if @work.is_anonymous %>Anonymous<% else %><%= link_to @work.user.name, user_path(@work.user) %><% end %>
     <% if !current_user.blank? && (current_user == @work.user || current_user.is_admin?) && show_admin_options %>
       <span id='work-options'>&nbsp;(<%= link_to 'edit', edit_work_path(@work) %> - <%= link_to 'delete', work_path(@work), method: :delete, data: { confirm: 'Are you sure you want to delete this work? It cannot be recovered.' } %>)
       </span>
@@ -48,14 +48,18 @@
 <% if !current_user.blank? && current_user.is_admin? && show_admin_options %>
   <div id='history'>
     <h3>Edit History (only admins see this)</h3>
-    <% @work.histories.reverse.each do |history| %>
+    <% if @work.is_anonymous %>
+      <p class='history-item'>Hidden for anonymous works</p>
+    <% else %>
+      <% @work.histories.reverse.each do |history| %>
+        <p class='history-item'>
+          Edited by <%= link_to history.user.name, user_path(history.user) %> on <%= history.created_at.strftime('%Y-%m-%d %H:%M:%S %z') %>
+        </p>
+      <% end %>
       <p class='history-item'>
-        Edited by <%= link_to history.user.name, user_path(history.user) %> on <%= history.created_at.strftime('%Y-%m-%d %H:%M:%S %z') %>
+        Created by <%= link_to @work.user.name, user_path(@work.user) %> on <%= @work.created_at.strftime('%Y-%m-%d %H:%M:%S %z') %>
       </p>
     <% end %>
-    <p class='history-item'>
-      Created by <%= link_to @work.user.name, user_path(@work.user) %> on <%= @work.created_at.strftime('%Y-%m-%d %H:%M:%S %z') %>
-    </p>
   </div>
 <% end %>
 
