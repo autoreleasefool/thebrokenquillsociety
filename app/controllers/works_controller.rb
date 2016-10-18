@@ -41,7 +41,7 @@ class WorksController < ApplicationController
     end
 
     if @work.save
-      send_new_work_notifications(@work) unless @work.is_private
+      send_new_work_notifications(@work) unless @work.is_private or @work.is_anonymous
       redirect_to @work
     else
       @work_errors = {}
@@ -82,7 +82,7 @@ class WorksController < ApplicationController
 
     if @work.update(work_params)
       # Inform users who favourited the work that is has been updated
-      send_new_update_notifications(@work)
+      send_new_update_notifications(@work) unless @work.is_private or @work.is_anonymous
       record_edit_history(@work, current_user)
 
       flash[:success] = 'The work was successfully edited.'
