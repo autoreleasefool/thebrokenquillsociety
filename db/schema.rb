@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922031815) do
+ActiveRecord::Schema.define(version: 20161018021814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -160,11 +160,12 @@ ActiveRecord::Schema.define(version: 20160922031815) do
     t.text     "body"
     t.boolean  "incomplete"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "slug"
     t.boolean  "is_private"
     t.integer  "novel_id"
+    t.boolean  "is_anonymous"
     t.index ["novel_id"], name: "index_works_on_novel_id", using: :btree
     t.index ["user_id"], name: "index_works_on_user_id", using: :btree
   end
