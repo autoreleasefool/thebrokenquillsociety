@@ -14,7 +14,7 @@ class NovelsController < ApplicationController
   # Form to submit a new novel
   def new
     @novel = Novel.new
-    @works = current_user.works.where(is_private: false).order('title')
+    @works = current_user.works.where(is_private: false).where(is_anonymous: false).order('title')
     @title = 'New Novel'
   end
 
