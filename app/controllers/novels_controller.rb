@@ -62,7 +62,7 @@ class NovelsController < ApplicationController
       @novel.errors.each do |attr, msg|
         @novel_errors[attr] = msg
       end
-      @works = current_user.works.where(is_private: false).order('title')
+      @works = current_user.works.where(is_private: false).where(is_anonymous: false).order('title')
       render 'new'
     end
   end
@@ -70,7 +70,7 @@ class NovelsController < ApplicationController
   # Form to edit a previously submitted novel
   def edit
     @novel = Novel.friendly.find(params[:id])
-    @works = current_user.works.where(is_private: false).order('title')
+    @works = current_user.works.where(is_private: false).where(is_anonymous: false).order('title')
     @title = 'Edit ' + @novel.title
   end
 
