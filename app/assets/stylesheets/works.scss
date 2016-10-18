@@ -9,6 +9,10 @@ label #is-private-checked { display: none; }
 input[type='checkbox']:checked ~ label #is-private-checked { display: inline-block; }
 input[type='checkbox']:checked ~ label #is-private-unchecked { display: none; }
 
+label #is-anonymous-checked { display: none; }
+input[type='checkbox']:checked ~ label #is-anonymous-checked { display: inline-block; }
+input[type='checkbox']:checked ~ label #is-anonymous-unchecked { display: none; }
+
 #work {
   min-height: 100vh;
   margin-bottom: -($header-height + $sub-header-height);

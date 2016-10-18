@@ -80,6 +80,25 @@
     <p class='form-hint'>Check this box if you don't want this work to appear publicly yet. It won't show up on your profile or in any search results, but you can send the link to others if you'd like.</p>
   </div>
 
+  <div class='checkbox'>
+    <input type='hidden' value='false' name='work[is_anonymous]' />
+    <input type='checkbox' value='true' name='work[is_anonymous]' id='work_is_anonymous' />
+    <label for='work_is_anonymous'>
+      <svg id='is-anonymous-unchecked' width='24px' height='24px' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+          <g transform='matrix(1.33333,0,0,1.33333,-4,-4)'>
+              <path d='M19,5L19,19L5,19L5,5L19,5M19,3L5,3C3.9,3 3,3.9 3,5L3,19C3,20.1 3.9,21 5,21L19,21C20.1,21 21,20.1 21,19L21,5C21,3.9 20.1,3 19,3Z' />
+          </g>
+      </svg>
+      <svg id='is-anonymous-checked' width='24px' height='24px' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+          <g transform='matrix(1.33333,0,0,1.33333,-4,-4)'>
+              <path d='M19,3L5,3C3.89,3 3,3.9 3,5L3,19C3,20.1 3.89,21 5,21L19,21C20.11,21 21,20.1 21,19L21,5C21,3.9 20.11,3 19,3ZM10,17L5,12L6.41,10.59L10,14.17L17.59,6.58L19,8L10,17Z' />
+          </g>
+      </svg>
+      <span class='checkbox-label'>Publish anonymously?</span>
+    </label>
+    <p class='form-hint'>Check this box if you'd like to publish this work 100% anonymously. It will appear in search results and on the home page without your name, and will NOT be listed on your profile.</p>
+  </div>
+
   <!-- TODO: make selected the current novel if @work.novel is not nil -->
   <% user_novels = current_user.novels.map { |novel| [novel.title, novel.id] } %>
   <label class='control-label string required input-label'>Novel</label><br />
