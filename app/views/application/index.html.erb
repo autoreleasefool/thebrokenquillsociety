@@ -25,7 +25,11 @@
         <p class='author'>
           <strong>
             <% unless work.user.blank? %>
-              <%= link_to work.user.name, user_path(work.user) %>
+              <% if work.is_anonymous %>
+                anonymous
+              <% else %>
+                <%= link_to work.user.name, user_path(work.user) %>
+              <% end %>
             <% else %>
               <span class='time'>[Deleted]</span>
             <% end %>

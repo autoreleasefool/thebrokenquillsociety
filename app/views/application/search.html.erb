@@ -31,8 +31,17 @@
       <% @work_search_results.each do |work| %>
         <h3 class='title'><%= link_to work.title, work %></h3>
         <p class='author'>
-          <strong><%= link_to work.user.name, user_path(work.user) %></strong>
-          <span class='time'> - <%= work.created_at.strftime('%B %-d, %Y') %></span>
+          <strong>
+            <% unless work.user.blank? %>
+              <% if work.is_anonymous %>
+                anonymous
+              <% else %>
+                <%= link_to work.user.name, user_path(work.user) %>
+              <% end %>
+            <% else %>
+              <span class='time'>[Deleted]</span>
+            <% end %>
+          </strong> <span class='time'> - <%= time_ago_in_words(work.created_at) %> ago</span>
         </p>
         <div class='excerpt'>
           <%= simple_format work.body[0..length_of_preview(work.body)].strip() + '...' %>

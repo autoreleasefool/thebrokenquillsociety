@@ -1,7 +1,7 @@
 <div id='work' class='centered-content<%= mobile_modifier %>'>
   <h1 id='work-title' class='title'><%= @work.title %></h1>
   <h2 id='work-author'>Written by
-    <% if @work.is_anonymous %>Anonymous<% else %><%= link_to @work.user.name, user_path(@work.user) %><% end %>
+    <% if @work.is_anonymous %>anonymous<% else %><%= link_to @work.user.name, user_path(@work.user) %><% end %>
     <% if !current_user.blank? && (current_user == @work.user || current_user.is_admin?) && show_admin_options %>
       <span id='work-options'>&nbsp;(<%= link_to 'edit', edit_work_path(@work) %> - <%= link_to 'delete', work_path(@work), method: :delete, data: { confirm: 'Are you sure you want to delete this work? It cannot be recovered.' } %>)
       </span>
