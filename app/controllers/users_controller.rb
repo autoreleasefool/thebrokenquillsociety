@@ -13,7 +13,19 @@ class UsersController < ApplicationController
   # User's profile
   def show
     @user = User.friendly.find(params[:id])
-    @works = @user.works.where(is_private: false).order('created_at DESC').paginate(page: params[:page], per_page: 10)
+    if @user == current_user
+      @works = @user
+        .works
+        .order('created_at DESC')
+        .paginate(page: params[:page], per_page: 10)
+    else
+      @works = @user
+          .works
+          .where(is_private: false)
+          .where(is_anonymous: false)
+          .order('created_at DESC')
+          .paginate(page: params[:page], per_page: 10)
+    end
     @novels = @user.novels.order('updated_at DESC').paginate(page: params[:page], per_page: 10)
     @title = @user.name
 

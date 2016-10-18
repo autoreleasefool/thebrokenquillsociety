@@ -9,6 +9,9 @@
   <% unless @user.last_seen.blank? %>
     <p id='last-seen'>They were last seen <%= time_ago_in_words(@user.last_seen) %> ago<p>
   <% end %>
+  <% if !current_user.blank? && current_user == @user %>
+    <p class='centered'>Since you're logged in, we'll show you your private and anonymous works, but don't worry, nobody else sees these.
+  <% end %>
 
   <% unless @user.nanowrimo_name.blank? %>
     <hr class='thick' />
