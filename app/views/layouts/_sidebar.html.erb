@@ -14,7 +14,7 @@
     <hr />
     <%= link_to 'About', about_club_path, class: 'sidebar-link' %>
     <%= link_to 'Facebook', 'https://www.facebook.com/groups/516871465136612', target: '_blank', class: 'sidebar-link' %>
-    <%= link_to 'GitHub', 'https://github.com/josephroque/thebrokenquillsociety', target: '_blank', class: 'sidebar-link' %>
+    <%= link_to 'GitHub', 'https://github.com/josephroquedev/thebrokenquillsociety', target: '_blank', class: 'sidebar-link' %>
     <% if !current_user.blank? && current_user.is_admin? %>
       <%= link_to 'Admin', admin_options_path, class: 'sidebar-link' %>
     <% end %>

@@ -5,7 +5,7 @@ A website for the University of Ottawa Creative Writing Club. Provides a hub for
 ## See it in action
 
 This website is currently live at [thebrokenquillsociety.com](http://thebrokenquillsociety.com).<br />
-For the version which the website is using, see the most recent [release](https://github.com/josephroqueca/thebrokenquillsociety/releases).
+For the version which the website is using, see the most recent [release](https://github.com/josephroquedev/thebrokenquillsociety/releases).
 
 ## Screenshots
 
