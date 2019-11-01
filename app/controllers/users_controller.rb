@@ -28,14 +28,6 @@ class UsersController < ApplicationController
     end
     @novels = @user.novels.order('updated_at DESC').paginate(page: params[:page], per_page: 10)
     @title = @user.name
-
-    unless @user.nanowrimo_name.blank?
-      formatted_name = @user.nanowrimo_name.gsub(/\s/,'-')
-      formatted_name.gsub!(/\./,'')
-      response = HTTParty.get('http://nanowrimo.org/wordcount_api/wc/' + formatted_name)
-      user_info = response.parsed_response
-      @wordcount = user_info['wc']['user_wordcount']
-    end
   end
 
   # User's favourited works
@@ -91,9 +83,6 @@ class UsersController < ApplicationController
     end
     unless params[:user][:about].blank?
       Rails.logger.debug "About: " + params[:user][:about] if Rails.logger.debug?
-    end
-    unless params[:user][:nanowrimo_name].blank?
-      Rails.logger.debug "NaNoWriMo: " + params[:user][:nanowrimo_name] if Rails.logger.debug?
     end
     unless params[:user][:admin_description].blank?
       Rails.logger.debug "Admin: " + params[:user][:admin_description] if Rails.logger.debug?
@@ -185,12 +174,12 @@ class UsersController < ApplicationController
 
   # Parameters required/allowed to create a user entry
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :tag_list, :about, :nanowrimo_name, :admin_description)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :tag_list, :about, :admin_description)
   end
 
   # Parameters required/allowed to update a user entry
   def user_params_update
-    params.require(:user).permit(:name, :tag_list, :about, :nanowrimo_name, :admin_description)
+    params.require(:user).permit(:name, :tag_list, :about, :admin_description)
   end
 
   # Checks to ensure a valid user is logged in before actions are taken

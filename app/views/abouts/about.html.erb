@@ -33,9 +33,6 @@
         <% else %>
           <%= simple_format user.about[0..500], class: 'body' %>
         <% end %>
-        <% unless user.nanowrimo_name.blank? %>
-        <p class='about'><strong>NaNoWriMo:</strong> <%= link_to user.nanowrimo_name, 'http://nanowrimo.org/participants/' + user.nanowrimo_name, target: '_blank' %></p>
-        <% end%>
 
         <% unless user == @admins.last %>
          <hr />

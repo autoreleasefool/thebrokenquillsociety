@@ -50,19 +50,6 @@
     <div class='alert alert-danger'><%= @user_errors[:email] %></div>
   <% end %>
 
-  <%= f.input :nanowrimo_name,
-        :as => :string,
-        required: false,
-        error: false,
-        label: 'NaNoWriMo username',
-        wrapper_html: { class: 'remove-bottom-margin' },
-        input_html: { class: 'flat-input' },
-        label_html: { class: 'input-label' } %>
-  <p class='form-hint'>This field is not required! You can set your username from <a href='http://nanowrimo.org/'>NaNoWriMo</a> here, and your word count statistics will appear in your profile.</p>
-  <% if @user_errors && @user_errors[:nanowrimo_name] %>
-    <div class='alert alert-danger'><%= @user_errors[:nanowrimo_name] %></div>
-  <% end %>
-
   <%= f.input :tag_list,
         required: true,
         error: false,

@@ -145,7 +145,6 @@ ActiveRecord::Schema.define(version: 20161018021814) do
     t.datetime "updated_at",           null: false
     t.boolean  "is_admin"
     t.datetime "last_seen"
-    t.text     "nanowrimo_name"
     t.text     "admin_description"
     t.string   "slug"
     t.integer  "unread_notifications"

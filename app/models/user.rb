@@ -38,9 +38,6 @@ extend FriendlyId
   # Add friendly urls
   friendly_id :name, use: :slugged
 
-  # Checks for valid nanowrimo name
-  validate :check_nanowrimo_name
-
   # Verifying valid username
   validates :name,
     presence: true,
@@ -84,21 +81,6 @@ extend FriendlyId
   # Returns a random token.
   def User.new_token
     SecureRandom.urlsafe_base64
-  end
-
-  # If a nanowrimo username was provided, checks to make sure it returns a valid account
-  def check_nanowrimo_name
-    self.nanowrimo_name.strip!
-    if self.nanowrimo_name && self.nanowrimo_name.length > 0
-      nano_check = self.nanowrimo_name.gsub(/\s/,'-')
-      nano_check.gsub!(/\./,'')
-      url = URI.parse('http://nanowrimo.org/wordcount_api/wc/' + self.nanowrimo_name)
-      request = Net::HTTP::Get.new(url)
-      response = Net::HTTP.start(url.host, url.port){ |http| http.request(request) }
-      if response.body.include? 'user does not exist'
-        errors.add(:nanowrimo_name, 'This is not a valid NaNoWriMo username.')
-      end
-    end
   end
 
   # Sets the password reset attributes.

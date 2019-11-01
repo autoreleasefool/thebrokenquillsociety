@@ -13,15 +13,6 @@
     <p class='centered'>Since you're logged in, we'll show you your private and anonymous works, but don't worry, nobody else sees these.
   <% end %>
 
-  <% unless @user.nanowrimo_name.blank? %>
-    <hr class='thick' />
-    <h3 class='title'>NaNoWriMo Statistics</h3>
-
-    <p id='nano-info'>
-      <strong>Username:</strong> <%= link_to @user.nanowrimo_name, 'http://nanowrimo.org/participants/' + @user.nanowrimo_name, target: '_blank' %><br />
-      <strong>Wordcount:</strong> <%= @wordcount %></p>
-  <% end %>
-
   <% if !current_user.blank? && current_user != @user %>
     <div class='centered'>
       <% if current_user.follow_ids.include?(@user.id) %>
