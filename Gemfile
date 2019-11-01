@@ -32,7 +32,7 @@ gem 'simple_form'
 # Add tags to models
 gem 'acts-as-taggable-on', '~> 4.0'
 # Adds pagination to controllers
-gem 'will_paginate', github: 'jonatack/will_paginate'
+gem 'will_paginate', '3.1.0'
 # Pagination formatting
 gem 'bootstrap-will_paginate', '0.0.10'
 # Clean HTTP requests
@@ -57,7 +57,7 @@ group :development do
   gem 'web-console', '~> 3.3.1'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'spring', '1.7.2'
 end
 
 # Install unicorn for production
