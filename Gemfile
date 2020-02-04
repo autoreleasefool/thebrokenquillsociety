@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.0.0.1'
+gem 'rails', '5.0.1'
 # Use postgres as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Bootstrap SASS for design
@@ -17,32 +17,32 @@ gem 'coffee-rails', '~> 4.2.1'
 gem 'rake', '~> 11.2.2'
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.2.1'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+gem 'turbolinks', '~> 5.0.1'
 # JQuery turbolinks compatibility
-gem 'jquery-turbolinks'
+gem 'jquery-turbolinks', '~> 2.1.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 1.0.0', group: :doc
 
 # Creating forms
-gem 'simple_form'
+gem 'simple_form', '~> 3.3.1'
 # Add tags to models
 gem 'acts-as-taggable-on', '~> 4.0'
 # Adds pagination to controllers
-gem 'will_paginate', '3.1.0'
+gem 'will_paginate', '~> 3.1.0'
 # Pagination formatting
 gem 'bootstrap-will_paginate', '0.0.10'
 # Clean HTTP requests
-gem 'httparty'
+gem 'httparty', '~> 0.14.0'
 # User-friendly urls
 gem 'friendly_id', '~> 5.1.0'
 # Clean up input for models
 gem 'auto_strip_attributes', '~> 2.1'
 # Get information about the browser
-gem 'browser'
+gem 'browser', '~> 2.2.0'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
