@@ -7,7 +7,7 @@ Follow the guidelines below to contribute to this project.
 1. Run the following commands to clone the repository and setup the development environment:
 
 ```
-git clone https://github.com/josephroque/thebrokenquillsociety.git
+git clone https://github.com/autoreleasefool/thebrokenquillsociety.git
 cd thebrokenquillsociety
 bundle install
 rails acts_as_taggable_on_engine:install:migrations db:create db:migrate
